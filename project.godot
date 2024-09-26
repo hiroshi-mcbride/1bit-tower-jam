@@ -23,6 +23,10 @@ GlobalSignals="*res://src/global/global_signals.gd"
 
 project/assembly_name="godot template"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg")
+
 [input]
 
 move_up={
