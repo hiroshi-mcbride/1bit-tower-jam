@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://c204g7tfrfxb8"]
+
+[ext_resource type="Script" path="res://src/timer.gd" id="1_hs7hb"]
+[ext_resource type="PackedScene" uid="uid://d276ouk4ubk0d" path="res://assets/level2.tscn" id="2_x8lkj"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_psl12"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_hsahl"]
+sky_material = SubResource("ProceduralSkyMaterial_psl12")
+
+[sub_resource type="Environment" id="Environment_6gyjn"]
+background_mode = 2
+sky = SubResource("Sky_hsahl")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Level1" type="Node3D"]
+process_mode = 1
+
+[node name="doors" type="Node3D" parent="."]
+
+[node name="Timer" type="Timer" parent="doors"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+script = ExtResource("1_hs7hb")
+level2 = ExtResource("2_x8lkj")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6gyjn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
