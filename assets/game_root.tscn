@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://ckbx81cqrqyme"]
 
 [ext_resource type="Script" path="res://src/global/scene_manager.gd" id="1_qafgu"]
-[ext_resource type="PackedScene" uid="uid://2sfwp1rvu1q0" path="res://assets/main_menu.tscn" id="2_tloi7"]
-[ext_resource type="PackedScene" uid="uid://dkrrx5tfhjgkx" path="res://assets/pause_menu.tscn" id="3_8l3r8"]
-[ext_resource type="PackedScene" uid="uid://c204g7tfrfxb8" path="res://assets/level.tscn" id="4_arsbm"]
+[ext_resource type="PackedScene" uid="uid://2sfwp1rvu1q0" path="res://assets/ui/main_menu.tscn" id="2_tloi7"]
+[ext_resource type="PackedScene" uid="uid://dkrrx5tfhjgkx" path="res://assets/ui/pause_menu.tscn" id="3_8l3r8"]
+[ext_resource type="PackedScene" uid="uid://c204g7tfrfxb8" path="res://assets/levels/level.tscn" id="4_arsbm"]
 
 [node name="GameRoot" type="Node3D"]
 process_mode = 3

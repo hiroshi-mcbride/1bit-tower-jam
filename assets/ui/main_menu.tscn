@@ -10,15 +10,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.085
-anchor_bottom = 0.094
-offset_right = 329.08
-offset_bottom = 8.088
-text = "adfasdfasdfadsfadsfasdfghegearghfftgfr"
-
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
