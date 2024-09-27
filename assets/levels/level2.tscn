@@ -1,3 +1,43 @@
-[gd_scene format=3 uid="uid://d276ouk4ubk0d"]
+[gd_scene load_steps=4 format=3 uid="uid://d276ouk4ubk0d"]
+
+[ext_resource type="PackedScene" uid="uid://dlcv3qlvulmni" path="res://assets/player/player.tscn" id="1_bh17y"]
+[ext_resource type="Texture2D" uid="uid://0oo4bohhlm8l" path="res://assets/texture005.png" id="2_ye440"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usis2"]
+size = Vector2(286, 31.8824)
 
 [node name="Level2" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_bh17y")]
+position = Vector2(7, -12)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1, 49)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("2_ye440")
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(32, 0)
+texture = ExtResource("2_ye440")
+
+[node name="Sprite2D3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(64, 0)
+texture = ExtResource("2_ye440")
+
+[node name="Sprite2D4" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-96, 0.0588)
+texture = ExtResource("2_ye440")
+
+[node name="Sprite2D5" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-64, 0.0588)
+texture = ExtResource("2_ye440")
+
+[node name="Sprite2D6" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-32, 0.0588)
+texture = ExtResource("2_ye440")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_usis2")

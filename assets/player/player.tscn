@@ -1,0 +1,145 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlcv3qlvulmni"]
+
+[ext_resource type="PackedScene" uid="uid://da0rv0t3qamn" path="res://assets/player/icepick.tscn" id="1_f4ijt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5bc4"]
+size = Vector2(22, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7eyc"]
+size = Vector2(24, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvf2x"]
+size = Vector2(32, 8)
+
+[node name="Player" type="Node2D"]
+
+[node name="Hand_Q" type="PinJoint2D" parent="."]
+position = Vector2(-9, -23)
+node_a = NodePath("../Icepick_Q")
+node_b = NodePath("../Arm_Q")
+
+[node name="Hand_E" type="PinJoint2D" parent="."]
+position = Vector2(-9, -7)
+node_a = NodePath("../Icepick_E")
+node_b = NodePath("../Arm_E")
+
+[node name="Icepick_E" parent="." instance=ExtResource("1_f4ijt")]
+position = Vector2(2, -8)
+
+[node name="Icepick_Q" parent="." instance=ExtResource("1_f4ijt")]
+position = Vector2(2, -24)
+
+[node name="Arm_Q" type="RigidBody2D" parent="."]
+position = Vector2(-20, -23)
+collision_mask = 2
+mass = 0.175
+
+[node name="ColorRect" type="ColorRect" parent="Arm_Q"]
+offset_left = -11.0
+offset_top = -3.0
+offset_right = 11.0
+offset_bottom = 3.0
+color = Color(0.279218, 0.445954, 0.986714, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arm_Q"]
+shape = SubResource("RectangleShape2D_k5bc4")
+
+[node name="Arm_E" type="RigidBody2D" parent="."]
+position = Vector2(-20, -7)
+collision_mask = 2
+mass = 0.175
+
+[node name="ColorRect" type="ColorRect" parent="Arm_E"]
+offset_left = -11.0
+offset_top = -3.0
+offset_right = 11.0
+offset_bottom = 3.0
+color = Color(0.279218, 0.445954, 0.986714, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arm_E"]
+shape = SubResource("RectangleShape2D_k5bc4")
+
+[node name="Torso" type="RigidBody2D" parent="."]
+position = Vector2(-43, -14)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Torso"]
+shape = SubResource("RectangleShape2D_i7eyc")
+
+[node name="ColorRect" type="ColorRect" parent="Torso"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -8.0
+offset_right = 12.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.160784, 0.509804, 0.866667, 1)
+
+[node name="Shoulder_Q" type="PinJoint2D" parent="."]
+position = Vector2(-31, -21)
+node_a = NodePath("../Arm_Q")
+node_b = NodePath("../Torso")
+
+[node name="Shoulder_E" type="PinJoint2D" parent="."]
+position = Vector2(-31, -8)
+node_a = NodePath("../Arm_E")
+node_b = NodePath("../Torso")
+
+[node name="Leg_Q" type="RigidBody2D" parent="."]
+position = Vector2(-71, -22)
+collision_mask = 2
+
+[node name="ColorRect" type="ColorRect" parent="Leg_Q"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -4.0
+offset_right = 16.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.160784, 0.509804, 0.866667, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Leg_Q"]
+shape = SubResource("RectangleShape2D_xvf2x")
+
+[node name="Leg_E" type="RigidBody2D" parent="."]
+position = Vector2(-71, -6)
+collision_mask = 2
+
+[node name="ColorRect" type="ColorRect" parent="Leg_E"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -4.0
+offset_right = 16.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.160784, 0.509804, 0.866667, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Leg_E"]
+shape = SubResource("RectangleShape2D_xvf2x")
+
+[node name="Hip_Q" type="PinJoint2D" parent="."]
+position = Vector2(-55, -20)
+node_a = NodePath("../Torso")
+node_b = NodePath("../Leg_Q")
+
+[node name="Hip_E" type="PinJoint2D" parent="."]
+position = Vector2(-55, -8)
+node_a = NodePath("../Torso")
+node_b = NodePath("../Leg_E")
