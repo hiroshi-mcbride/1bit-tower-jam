@@ -1,26 +1,67 @@
-[gd_scene load_steps=4 format=3 uid="uid://c204g7tfrfxb8"]
+[gd_scene load_steps=7 format=3 uid="uid://c204g7tfrfxb8"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_psl12"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[ext_resource type="Script" path="res://assets/levels/character_body_2d.gd" id="1_ugmak"]
+[ext_resource type="Texture2D" uid="uid://dnwrdbah314s6" path="res://assets/blueboy_idle.png" id="2_hqvhj"]
+[ext_resource type="Texture2D" uid="uid://0oo4bohhlm8l" path="res://assets/texture005.png" id="3_x01ko"]
 
-[sub_resource type="Sky" id="Sky_hsahl"]
-sky_material = SubResource("ProceduralSkyMaterial_psl12")
+[sub_resource type="SpriteFrames" id="SpriteFrames_2sn2a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hqvhj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[sub_resource type="Environment" id="Environment_6gyjn"]
-background_mode = 2
-sky = SubResource("Sky_hsahl")
-tonemap_mode = 2
-glow_enabled = true
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2fwt"]
 
-[node name="Level1" type="Node3D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fpywh"]
+size = Vector2(286, 31.8824)
+
+[node name="Level1" type="Node2D"]
 process_mode = 1
+position = Vector2(0, 1.24425)
+scale = Vector2(1, 0.940958)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_6gyjn")
+[node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-shadow_enabled = true
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_ugmak")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+rotation = 0.300599
+sprite_frames = SubResource("SpriteFrames_2sn2a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_l2fwt")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(2, 32.6856)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("3_x01ko")
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(32, 0)
+texture = ExtResource("3_x01ko")
+
+[node name="Sprite2D3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(64, 0)
+texture = ExtResource("3_x01ko")
+
+[node name="Sprite2D4" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-96, 0.0588)
+texture = ExtResource("3_x01ko")
+
+[node name="Sprite2D5" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-64, 0.0588)
+texture = ExtResource("3_x01ko")
+
+[node name="Sprite2D6" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-32, 0.0588)
+texture = ExtResource("3_x01ko")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_fpywh")
