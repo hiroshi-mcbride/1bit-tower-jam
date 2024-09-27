@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dkrrx5tfhjgkx" path="res://assets/ui/pause_menu.tscn" id="3_8l3r8"]
 [ext_resource type="PackedScene" uid="uid://c204g7tfrfxb8" path="res://assets/levels/level.tscn" id="4_arsbm"]
 
-[node name="GameRoot" type="Node3D"]
+[node name="GameRoot" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_qafgu")
 main_menu_file = ExtResource("2_tloi7")

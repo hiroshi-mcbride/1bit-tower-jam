@@ -6,5 +6,5 @@ func _ready() -> void:
 	pressed.connect(_on_pressed)
 	pass # Replace with function body.
 
-func _on_pressed():
+func _on_pressed() -> void:
 	GlobalSignals.game_started.emit()
