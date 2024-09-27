@@ -2,6 +2,7 @@ extends Node2D
 
 @export var ice_axe_left: IceAxe
 @export var ice_axe_right: IceAxe
+@export var rigidbodies: Array[RigidBody2D]
 
 @onready var left_pivot: PinJoint2D = $Shoulder_Q
 @onready var right_pivot: PinJoint2D = $Shoulder_E
@@ -39,4 +40,18 @@ func _physics_process(delta: float) -> void:
 	
 	# Switching sides
 	if Input.is_action_just_released("color_switch"):
-		pass
+		# Flip player collision masks
+		for rigidbody in rigidbodies:
+			if rigidbody.get_collision_mask_value(1):
+				rigidbody.set_collision_mask_value(1, false)
+				rigidbody.set_collision_mask_value(2, true)
+			else:
+				rigidbody.set_collision_mask_value(1, true)
+				rigidbody.set_collision_mask_value(2, false)
+			
+			rigidbody.apply_scale(Vector2(-1,1))
+		
+		translate(Vector2(200,0))
+		# Flip player sprites
+		
+		# Flip player color

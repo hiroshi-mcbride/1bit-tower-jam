@@ -9,11 +9,12 @@ size = Vector2(22, 6)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i7eyc"]
 size = Vector2(16, 24)
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("ice_axe_left", "ice_axe_right")]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("ice_axe_left", "ice_axe_right", "rigidbodies")]
 position = Vector2(0, 1)
 script = ExtResource("1_l1tqt")
 ice_axe_left = NodePath("IceAxe_Q")
 ice_axe_right = NodePath("IceAxe_E")
+rigidbodies = [NodePath("IceAxe_Q"), NodePath("IceAxe_E"), NodePath("Arm_Q"), NodePath("Arm_E"), NodePath("Torso")]
 
 [node name="Hand_Q" type="PinJoint2D" parent="."]
 position = Vector2(-30, -21)
@@ -33,6 +34,7 @@ angular_limit_upper = 2.44346
 
 [node name="IceAxe_Q" parent="." node_paths=PackedStringArray("hand", "shoulder") instance=ExtResource("1_f4ijt")]
 position = Vector2(-30, -21)
+scale = Vector2(1, 1)
 mass = 1.0
 center_of_mass = Vector2(-24, 6)
 is_left_hand = true
@@ -43,6 +45,7 @@ shoulder_torque = 25.0
 
 [node name="IceAxe_E" parent="." node_paths=PackedStringArray("hand", "shoulder") instance=ExtResource("1_f4ijt")]
 position = Vector2(30, -21)
+scale = Vector2(1, 1)
 mass = 1.0
 hand = NodePath("../Hand_E")
 hand_torque = 70.0
