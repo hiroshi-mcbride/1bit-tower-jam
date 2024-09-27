@@ -3,6 +3,7 @@ extends Node2D
 @export var ice_axe_left: IceAxe
 @export var ice_axe_right: IceAxe
 @export var rigidbodies: Array[RigidBody2D]
+@export var sprites: Array[Sprite2D]
 
 @onready var left_pivot: PinJoint2D = $Shoulder_Q
 @onready var right_pivot: PinJoint2D = $Shoulder_E
@@ -55,3 +56,5 @@ func _physics_process(delta: float) -> void:
 		# Flip player sprites
 		
 		# Flip player color
+		for sprite in sprites:
+			pass

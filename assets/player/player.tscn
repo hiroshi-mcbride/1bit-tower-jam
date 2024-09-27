@@ -38,7 +38,6 @@ angular_limit_upper = 2.44346
 
 [node name="IceAxe_Q" parent="." node_paths=PackedStringArray("hand", "shoulder") instance=ExtResource("1_f4ijt")]
 position = Vector2(-30, -21)
-scale = Vector2(1, 1)
 mass = 1.0
 center_of_mass = Vector2(-24, 6)
 is_left_hand = true
@@ -49,7 +48,6 @@ shoulder_torque = 25.0
 
 [node name="IceAxe_E" parent="." node_paths=PackedStringArray("hand", "shoulder") instance=ExtResource("1_f4ijt")]
 position = Vector2(30, -21)
-scale = Vector2(1, 1)
 mass = 1.0
 hand = NodePath("../Hand_E")
 hand_torque = 70.0
@@ -64,7 +62,7 @@ angular_damp = 0.05
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arm_Q"]
 shape = SubResource("RectangleShape2D_k5bc4")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Arm_Q"]
+[node name="Sprite2D" type="Sprite2D" parent="Arm_Q"]
 position = Vector2(-5.96046e-08, 0)
 scale = Vector2(0.40678, 0.444444)
 texture = ExtResource("3_d4hpc")
