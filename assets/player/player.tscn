@@ -15,7 +15,7 @@ ice_axe_left = NodePath("IceAxe_Q")
 ice_axe_right = NodePath("IceAxe_E")
 
 [node name="Hand_Q" type="PinJoint2D" parent="."]
-position = Vector2(-31, -21)
+position = Vector2(-30, -21)
 node_a = NodePath("../IceAxe_Q")
 node_b = NodePath("../Arm_Q")
 angular_limit_enabled = true
@@ -32,23 +32,25 @@ angular_limit_upper = 0.150098
 
 [node name="IceAxe_Q" parent="." node_paths=PackedStringArray("hand", "shoulder") instance=ExtResource("1_f4ijt")]
 position = Vector2(-31, -21)
-collision_layer = 2
+collision_mask = 1
+mass = 1.0
+center_of_mass = Vector2(-24, 6)
 is_left_hand = true
-hand = NodePath("../Hand_E")
-shoulder = NodePath("../Shoulder_E")
+hand = NodePath("../Hand_Q")
+shoulder = NodePath("../Shoulder_Q")
 shoulder_torque = 25.0
 
 [node name="IceAxe_E" parent="." node_paths=PackedStringArray("hand", "shoulder") instance=ExtResource("1_f4ijt")]
 position = Vector2(32, -21)
-collision_layer = 2
+collision_mask = 1
+mass = 1.0
 hand = NodePath("../Hand_E")
 shoulder = NodePath("../Shoulder_E")
 shoulder_torque = 25.0
 
 [node name="Arm_Q" type="RigidBody2D" parent="."]
-position = Vector2(-20, -20)
+position = Vector2(-17, -20)
 collision_layer = 2
-angular_damp = 7.214
 
 [node name="ColorRect" type="ColorRect" parent="Arm_Q"]
 offset_left = -11.0
@@ -64,7 +66,6 @@ shape = SubResource("RectangleShape2D_k5bc4")
 [node name="Arm_E" type="RigidBody2D" parent="."]
 position = Vector2(20, -20)
 collision_layer = 2
-angular_damp = 7.214
 
 [node name="ColorRect" type="ColorRect" parent="Arm_E"]
 offset_left = -11.0
@@ -80,8 +81,9 @@ shape = SubResource("RectangleShape2D_k5bc4")
 [node name="Torso" type="RigidBody2D" parent="."]
 position = Vector2(0, -11)
 collision_layer = 2
-inertia = 5.48
+mass = 5.337
 lock_rotation = true
+angular_damp = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Torso"]
 shape = SubResource("RectangleShape2D_i7eyc")
@@ -104,8 +106,12 @@ color = Color(0.160784, 0.509804, 0.866667, 1)
 position = Vector2(-9, -21)
 node_a = NodePath("../Arm_Q")
 node_b = NodePath("../Torso")
+angular_limit_lower = -0.190241
+angular_limit_upper = 0.190241
 
 [node name="Shoulder_E" type="PinJoint2D" parent="."]
 position = Vector2(9, -21)
 node_a = NodePath("../Arm_E")
 node_b = NodePath("../Torso")
+angular_limit_lower = -0.286234
+angular_limit_upper = 0.286234
