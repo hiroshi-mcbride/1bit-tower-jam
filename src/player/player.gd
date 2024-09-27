@@ -8,6 +8,7 @@ extends Node2D
 
 
 func _physics_process(delta: float) -> void:
+	# Climbing logic
 	if Input.is_action_just_pressed("axe_left"):
 		ice_axe_left.swing()
 		if ice_axe_right.is_on_wall:
@@ -35,5 +36,7 @@ func _physics_process(delta: float) -> void:
 		if !Input.is_action_pressed("axe_left"):
 			ice_axe_left.drop()
 		ice_axe_right.stop_pulling()
-
 	
+	# Switching sides
+	if Input.is_action_just_released("color_switch"):
+		pass
