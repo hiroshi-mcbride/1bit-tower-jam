@@ -22,18 +22,13 @@ func _ready() -> void:
 		$Area2D.rotation_degrees = 180
 		$CollisionShape2D.rotation_degrees = 180
 	
-	
 	timer.timeout.connect(_on_timeout)
 
 
 func swing() -> void:
-	
 	is_swinging = true
 	shoulder.motor_target_velocity = -shoulder_torque
 	shoulder.motor_enabled = true
-	timer.start()
-	#hand.motor_target_velocity = -hand_torque
-	#hand.motor_enabled = true
 
 
 func drop() -> void:
@@ -42,14 +37,17 @@ func drop() -> void:
 	is_swinging = false
 	shoulder.motor_target_velocity = 0
 	shoulder.motor_enabled = false
-	timer.stop()
-	#hand.motor_target_velocity = 0
-	#hand.motor_enabled = false
+	timer.start()
 
 
 func pull() -> void:
-	shoulder.motor_target_velocity = shoulder_torque * 2
-	shoulder.motor_enabled = true
+	hand.motor_target_velocity = hand_torque
+	hand.motor_enabled = true
+
+
+func stop_pulling() -> void:
+	hand.motor_target_velocity = 0
+	hand.motor_enabled = false
 
 
 func hold() -> void:

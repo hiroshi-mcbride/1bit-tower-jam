@@ -12,6 +12,7 @@ collision_mask = 0
 mass = 2.0
 center_of_mass_mode = 1
 center_of_mass = Vector2(24, 6)
+angular_damp = 0.05
 script = ExtResource("1_fv1u3")
 hand_torque = 20.0
 shoulder_torque = 40.0
@@ -33,6 +34,6 @@ shape = SubResource("CircleShape2D_1gdr3")
 polygon = PackedVector2Array(0, -2, 0, 3, 21, -3, 24.1342, 4.52209, 25, 8, 26, -6, 23, -10, 16, -10, 20, -6)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.107
+wait_time = 0.5
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
