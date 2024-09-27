@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c204g7tfrfxb8"]
 
-[ext_resource type="PackedScene" uid="uid://dlcv3qlvulmni" path="res://assets/player/player.tscn" id="2_mdfpn"]
+[ext_resource type="PackedScene" uid="uid://b48tp36h3w26s" path="res://assets/player/player.tscn" id="2_mdfpn"]
 [ext_resource type="Texture2D" uid="uid://0oo4bohhlm8l" path="res://assets/texture005.png" id="3_x01ko"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fpywh"]
@@ -75,6 +75,7 @@ texture = ExtResource("3_x01ko")
 shape = SubResource("RectangleShape2D_fpywh")
 
 [node name="Player" parent="." instance=ExtResource("2_mdfpn")]
-position = Vector2(21, -34.2675)
+position = Vector2(44, -93.7813)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.5, 0.5)

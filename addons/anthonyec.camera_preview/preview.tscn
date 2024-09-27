@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://btc01wc11tiid" path="res://addons/anthonyec.camera_preview/GuiResizerTopLeft.svg" id="2_t64ej"]
 [ext_resource type="Texture2D" uid="uid://04l05jxuyt7k" path="res://addons/anthonyec.camera_preview/GuiResizerTopRight.svg" id="3_6yuab"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_dg1oy"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_4eq3h"]
 viewport_path = NodePath("Panel/SubViewport")
 
 [sub_resource type="Gradient" id="Gradient_11p6r"]
@@ -54,10 +54,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -520.0
-offset_top = -908.889
-offset_right = -270.0
-offset_bottom = -20.0
+offset_left = -260.0
+offset_top = -150.0
+offset_right = -10.0
+offset_bottom = -10.0
 grow_horizontal = 0
 grow_vertical = 0
 pivot_offset = Vector2(450, 300)
@@ -94,7 +94,7 @@ theme_override_constants/margin_bottom = 2
 [node name="TextureRect" type="TextureRect" parent="Panel/ViewportMarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = SubResource("ViewportTexture_dg1oy")
+texture = SubResource("ViewportTexture_4eq3h")
 expand_mode = 1
 
 [node name="Gradient" type="TextureRect" parent="Panel"]

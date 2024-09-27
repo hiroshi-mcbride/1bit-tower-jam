@@ -23,10 +23,3 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-	
-	if Input.is_action_just_pressed("pick_left"):
-		pass
-
-
-	if Input.is_action_just_pressed("pick_right"):
-		pass

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlcv3qlvulmni"]
+[gd_scene load_steps=6 format=3 uid="uid://b48tp36h3w26s"]
 
 [ext_resource type="PackedScene" uid="uid://da0rv0t3qamn" path="res://assets/player/icepick.tscn" id="1_f4ijt"]
+[ext_resource type="Script" path="res://src/player/player.gd" id="1_l1tqt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5bc4"]
 size = Vector2(22, 6)
@@ -11,26 +12,41 @@ size = Vector2(24, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvf2x"]
 size = Vector2(32, 8)
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("ice_axe_left", "ice_axe_right")]
+position = Vector2(-1, -4)
+script = ExtResource("1_l1tqt")
+ice_axe_left = NodePath("IceAxe_Q")
+ice_axe_right = NodePath("IceAxe_E")
 
 [node name="Hand_Q" type="PinJoint2D" parent="."]
 position = Vector2(-9, -23)
-node_a = NodePath("../Icepick_Q")
+node_a = NodePath("../IceAxe_Q")
 node_b = NodePath("../Arm_Q")
+angular_limit_enabled = true
+angular_limit_lower = -1.5708
+angular_limit_upper = 1.5708
 
 [node name="Hand_E" type="PinJoint2D" parent="."]
 position = Vector2(-9, -7)
-node_a = NodePath("../Icepick_E")
+node_a = NodePath("../IceAxe_E")
 node_b = NodePath("../Arm_E")
+angular_limit_enabled = true
+angular_limit_lower = -1.5708
+angular_limit_upper = 1.5708
 
-[node name="Icepick_E" parent="." instance=ExtResource("1_f4ijt")]
-position = Vector2(2, -8)
+[node name="IceAxe_Q" parent="." instance=ExtResource("1_f4ijt")]
+position = Vector2(-6, -34)
+rotation = -0.985489
+freeze = true
 
-[node name="Icepick_Q" parent="." instance=ExtResource("1_f4ijt")]
-position = Vector2(2, -24)
+[node name="IceAxe_E" parent="." instance=ExtResource("1_f4ijt")]
+position = Vector2(-6, -17)
+rotation = -1.00697
+freeze = true
 
 [node name="Arm_Q" type="RigidBody2D" parent="."]
 position = Vector2(-20, -23)
+collision_layer = 2
 collision_mask = 2
 mass = 0.175
 
@@ -47,6 +63,7 @@ shape = SubResource("RectangleShape2D_k5bc4")
 
 [node name="Arm_E" type="RigidBody2D" parent="."]
 position = Vector2(-20, -7)
+collision_layer = 2
 collision_mask = 2
 mass = 0.175
 
@@ -63,6 +80,7 @@ shape = SubResource("RectangleShape2D_k5bc4")
 
 [node name="Torso" type="RigidBody2D" parent="."]
 position = Vector2(-43, -14)
+collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Torso"]
@@ -86,14 +104,19 @@ color = Color(0.160784, 0.509804, 0.866667, 1)
 position = Vector2(-31, -21)
 node_a = NodePath("../Arm_Q")
 node_b = NodePath("../Torso")
+angular_limit_enabled = true
+angular_limit_lower = -3.14159
 
 [node name="Shoulder_E" type="PinJoint2D" parent="."]
 position = Vector2(-31, -8)
 node_a = NodePath("../Arm_E")
 node_b = NodePath("../Torso")
+angular_limit_enabled = true
+angular_limit_lower = -3.14159
 
 [node name="Leg_Q" type="RigidBody2D" parent="."]
 position = Vector2(-71, -22)
+collision_layer = 2
 collision_mask = 2
 
 [node name="ColorRect" type="ColorRect" parent="Leg_Q"]
@@ -115,6 +138,7 @@ shape = SubResource("RectangleShape2D_xvf2x")
 
 [node name="Leg_E" type="RigidBody2D" parent="."]
 position = Vector2(-71, -6)
+collision_layer = 2
 collision_mask = 2
 
 [node name="ColorRect" type="ColorRect" parent="Leg_E"]
