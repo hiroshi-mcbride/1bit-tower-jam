@@ -36,7 +36,6 @@ func drop() -> void:
 	freeze = false
 	is_swinging = false
 	shoulder.motor_target_velocity = 0
-	shoulder.motor_enabled = false
 	timer.start()
 
 
@@ -57,10 +56,13 @@ func hold() -> void:
 	is_on_wall = true
 	freeze = true
 
-func _on_timeout() -> void:
-	timer.stop()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if !timer.is_stopped:
 		return
 	hold()
+
+
+func _on_timeout() -> void:
+	shoulder.motor_enabled = false
+	timer.stop()

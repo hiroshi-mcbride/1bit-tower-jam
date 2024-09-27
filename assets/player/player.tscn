@@ -42,7 +42,7 @@ mass = 1.0
 center_of_mass = Vector2(-24, 6)
 is_left_hand = true
 hand = NodePath("../Hand_Q")
-hand_torque = 60.0
+hand_torque = 70.0
 shoulder = NodePath("../Shoulder_Q")
 shoulder_torque = 25.0
 
@@ -51,7 +51,7 @@ position = Vector2(30, -21)
 collision_mask = 1
 mass = 1.0
 hand = NodePath("../Hand_E")
-hand_torque = 60.0
+hand_torque = 70.0
 shoulder = NodePath("../Shoulder_E")
 shoulder_torque = 25.0
 
