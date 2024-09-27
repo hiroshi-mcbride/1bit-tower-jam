@@ -75,7 +75,8 @@ texture = ExtResource("3_x01ko")
 shape = SubResource("RectangleShape2D_fpywh")
 
 [node name="Player" parent="." instance=ExtResource("2_mdfpn")]
-position = Vector2(44, -93.7813)
+position = Vector2(-48, -109.722)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(100, -39.3217)
 zoom = Vector2(0.5, 0.5)
