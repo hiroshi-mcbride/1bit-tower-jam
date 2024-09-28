@@ -18,12 +18,12 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalSignals="*res://src/global/global_signals.gd"
+LayerNames="*res://addons/layerNames/layerNames.gd"
 
 [display]
 
 window/size/resizable=false
 window/stretch/mode="viewport"
-window/stretch/scale=4.0
 window/stretch/scale_mode="integer"
 window/vsync/vsync_mode=2
 
@@ -33,7 +33,7 @@ project/assembly_name="godot template"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/godot-rapier2d/plugin.cfg")
+enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/godot-rapier2d/plugin.cfg", "res://addons/layerNames/plugin.cfg")
 
 [importer_defaults]
 
