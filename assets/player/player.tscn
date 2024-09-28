@@ -44,8 +44,8 @@ center_of_mass = Vector2(-24, 6)
 is_left_hand = true
 hand = NodePath("../Hand_Q")
 hand_torque = 70.0
-flipped_angular_limit_lower = -120.0
-flipped_angular_limit_upper = 80.0
+flipped_angular_limit_lower = -80.0
+flipped_angular_limit_upper = 100.0
 shoulder = NodePath("../Shoulder_Q")
 shoulder_torque = 25.0
 
