@@ -1,17 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://c204g7tfrfxb8"]
+[gd_scene load_steps=12 format=3 uid="uid://c204g7tfrfxb8"]
 
 [ext_resource type="Texture2D" uid="uid://h5bkjb3ab43v" path="res://assets/white_square.png" id="1_4o7ax"]
 [ext_resource type="Texture2D" uid="uid://c4ewhx62ftptf" path="res://assets/black_square.png" id="1_43fhn"]
 [ext_resource type="PackedScene" uid="uid://b48tp36h3w26s" path="res://assets/player/player.tscn" id="2_mdfpn"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sulcy"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6366"]
 size = Vector2(461.824, 39.9423)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xsbb2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fdul8"]
 size = Vector2(39, 450.605)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oft87"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o84nx"]
 size = Vector2(420, 31.8824)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ds2f1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tr1ei"]
 size = Vector2(489, 31.8824)
@@ -26,6 +34,7 @@ position = Vector2(66, -95.9068)
 rotation = -1.57079
 collision_layer = 2
 collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_sulcy")
 
 [node name="Sprite2D" type="Sprite2D" parent="WhiteStaticBody2D2"]
 position = Vector2(15.9421, 140)
@@ -40,6 +49,7 @@ shape = SubResource("RectangleShape2D_d6366")
 position = Vector2(-117, -115.036)
 collision_layer = 4
 collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_xsbb2")
 
 [node name="Sprite2D" type="Sprite2D" parent="BlackStaticBody2D2"]
 position = Vector2(-117, -3.18824)
@@ -54,6 +64,7 @@ shape = SubResource("RectangleShape2D_fdul8")
 position = Vector2(3, 32.6856)
 collision_layer = 2
 collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_oft87")
 
 [node name="Sprite2D" type="Sprite2D" parent="WhiteStaticBody2D"]
 scale = Vector2(5.54599, 0.168173)
@@ -67,6 +78,7 @@ shape = SubResource("RectangleShape2D_o84nx")
 position = Vector2(372, 32.6856)
 collision_layer = 4
 collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_ds2f1")
 
 [node name="Sprite2D" type="Sprite2D" parent="BlackStaticBody2D"]
 scale = Vector2(3.86992, -0.168673)

@@ -26,7 +26,7 @@ position = Vector2(-30, -21)
 node_a = NodePath("../IceAxe_Q")
 node_b = NodePath("../Arm_Q")
 angular_limit_enabled = true
-angular_limit_lower = -0.698132
+angular_limit_lower = -1.0472
 angular_limit_upper = 2.44346
 
 [node name="Hand_E" type="PinJoint2D" parent="."]
@@ -35,7 +35,7 @@ node_a = NodePath("../IceAxe_E")
 node_b = NodePath("../Arm_E")
 angular_limit_enabled = true
 angular_limit_lower = -0.698132
-angular_limit_upper = 2.44346
+angular_limit_upper = 2.79253
 
 [node name="IceAxe_Q" parent="." node_paths=PackedStringArray("hand", "shoulder") instance=ExtResource("1_f4ijt")]
 position = Vector2(-30, -21)
@@ -44,6 +44,8 @@ center_of_mass = Vector2(-24, 6)
 is_left_hand = true
 hand = NodePath("../Hand_Q")
 hand_torque = 70.0
+flipped_angular_limit_lower = -160.0
+flipped_angular_limit_upper = 40.0
 shoulder = NodePath("../Shoulder_Q")
 shoulder_torque = 25.0
 
@@ -52,6 +54,8 @@ position = Vector2(30, -21)
 mass = 1.0
 hand = NodePath("../Hand_E")
 hand_torque = 70.0
+flipped_angular_limit_lower = -140.0
+flipped_angular_limit_upper = 60.0
 shoulder = NodePath("../Shoulder_E")
 shoulder_torque = 25.0
 

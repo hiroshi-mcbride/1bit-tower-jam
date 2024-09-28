@@ -4,6 +4,8 @@ extends RigidBody2D
 @export var is_left_hand: bool
 @export var hand: PinJoint2D
 @export var hand_torque: float
+@export var flipped_angular_limit_lower: float
+@export var flipped_angular_limit_upper: float
 @export var shoulder: PinJoint2D
 @export var shoulder_torque: float
 
@@ -28,6 +30,8 @@ func _ready() -> void:
 func swing() -> void:
 	shoulder.motor_target_velocity = -shoulder_torque
 	shoulder.motor_enabled = true
+	hand.motor_target_velocity = -hand_torque
+	hand.motor_enabled = true
 
 
 func drop() -> void:
@@ -50,6 +54,8 @@ func stop_pulling() -> void:
 func hold() -> void:
 	shoulder.motor_target_velocity = 0
 	shoulder.motor_enabled = false
+	hand.motor_target_velocity = 0
+	hand.motor_enabled = false
 	is_on_wall = true
 	freeze = true
 
@@ -57,10 +63,12 @@ func hold() -> void:
 func _on_area_2d_body_entered(_body: Node2D) -> void:
 	if !timer.is_stopped:
 		return
+	
 	hold()
 
 
 func _on_timeout() -> void:
+	hand.motor_enabled = false
 	shoulder.motor_enabled = false
 	timer.stop()
 
@@ -69,9 +77,13 @@ func flip(color_flipped: bool) -> void:
 	hand_torque = -hand_torque
 	shoulder_torque = -shoulder_torque
 	
-	var temp_lower = hand.angular_limit_lower
-	hand.angular_limit_lower = -hand.angular_limit_upper
-	hand.angular_limit_upper = -temp_lower
+	var temp_limit = rad_to_deg(hand.angular_limit_lower)
+	hand.angular_limit_lower = deg_to_rad(flipped_angular_limit_lower)
+	flipped_angular_limit_lower = temp_limit
+	
+	temp_limit = rad_to_deg(hand.angular_limit_upper)
+	hand.angular_limit_upper = deg_to_rad(flipped_angular_limit_upper)
+	flipped_angular_limit_upper = temp_limit
 	
 	area_2d.collision_mask = LayerNames.PHYSICS_2D.WHITE if color_flipped else !LayerNames.PHYSICS_2D.WHITE
 	area_2d.collision_mask = LayerNames.PHYSICS_2D.BLACK if !color_flipped else !LayerNames.PHYSICS_2D.BLACK
