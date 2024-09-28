@@ -64,6 +64,7 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 	if !timer.is_stopped:
 		return
 	
+	print(_body.name)
 	hold()
 
 
