@@ -4,6 +4,7 @@ extends Node2D
 @export var ice_axe_right: IceAxe
 @export var rigidbodies: Array[RigidBody2D]
 @export var sprites: Array[CanvasItem]
+@onready var torso: Flippable = $Torso
 
 var color_flipped: bool = false
 
@@ -48,13 +49,15 @@ func _physics_process(_delta: float) -> void:
 		# Flip player collision masks & rigidbodies
 		for rigidbody in rigidbodies:
 			# TEMP warp
-			translate(Vector2(-25 if color_flipped else 25,0))
+			#translate(Vector2(-25 if color_flipped else 25,0))
 			
 			rigidbody.collision_mask = LayerNames.PHYSICS_2D.WHITE if color_flipped else !LayerNames.PHYSICS_2D.WHITE
 			rigidbody.collision_mask = LayerNames.PHYSICS_2D.BLACK if !color_flipped else !LayerNames.PHYSICS_2D.BLACK
 			
 			# Flip rigidbodies (& sprites)
-			rigidbody.apply_scale(Vector2(-1,1))
+			#rigidbody.apply_scale(Vector2(-1,1))
+		torso.translate(Vector2(-25 if color_flipped else 25,0))
+		torso.is_flipped = !torso.is_flipped
 		
 		# Flip ice axe collision masks & rigidbodies
 		ice_axe_left.flip(color_flipped)

@@ -9,9 +9,10 @@ extends RigidBody2D
 @export var shoulder: PinJoint2D
 @export var shoulder_torque: float
 
-@onready var timer: Timer = $Timer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var area_2d: Area2D = $Area2D
+@onready var trigger: CollisionShape2D = $Area2D/Trigger
+@onready var collider: CollisionPolygon2D = $Collider
 
 var is_on_wall: bool = false
 var flipped: bool = false
@@ -21,8 +22,9 @@ func _ready() -> void:
 	#HACK: pin joint gets super weird at rotations around 180, so i'm rotating the child nodes instead
 	if is_left_hand:
 		$Sprite2D.rotation_degrees = 180
-		$Area2D.rotation_degrees = 180
-		$CollisionShape2D.rotation_degrees = 180
+		area_2d.rotation_degrees = 180
+		collider.rotation_degrees = 180
+		center_of_mass.x = -center_of_mass.x
 
 
 func swing() -> void:
@@ -65,6 +67,18 @@ func stop_pulling() -> void:
 func flip(color_flipped: bool) -> void:
 	hand_torque = -hand_torque
 	shoulder_torque = -shoulder_torque
+	
+	# Make sure all sub-components are properly flipped
+	trigger.position.y = 8 if color_flipped else -8
+	sprite_2d.flip_v = !color_flipped
+	center_of_mass.y = -center_of_mass.y
+	
+	# flip all vertices in the Polygon collider
+	var new_polygon: PackedVector2Array
+	for v in collider.polygon:
+		v.y = -v.y
+		new_polygon.append(v)
+	collider.polygon = new_polygon
 	
 	var temp_limit = rad_to_deg(hand.angular_limit_lower)
 	hand.angular_limit_lower = deg_to_rad(flipped_angular_limit_lower)
