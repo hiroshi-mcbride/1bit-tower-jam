@@ -56,7 +56,10 @@ func _physics_process(_delta: float) -> void:
 			
 			# Flip rigidbodies (& sprites)
 			#rigidbody.apply_scale(Vector2(-1,1))
-		torso.translate(Vector2(-25 if color_flipped else 25,0))
+		
+		ice_axe_left.freeze = false
+		ice_axe_right.freeze = false
+		torso.translate(Vector2(-40 if color_flipped else 40,0))
 		torso.is_flipped = !torso.is_flipped
 		
 		# Flip ice axe collision masks & rigidbodies
