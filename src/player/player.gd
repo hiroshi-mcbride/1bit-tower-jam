@@ -7,6 +7,7 @@ extends Node2D
 @onready var torso: Flippable = $Torso
 
 var color_flipped: bool = false
+var distance: float
 
 func _ready() -> void:
 	sprites.append(ice_axe_left.sprite_2d)
@@ -34,15 +35,19 @@ func _physics_process(_delta: float) -> void:
 		ice_axe_left.stop_pulling()
 	
 	# These extra checks make climbing smoother
-	if ice_axe_right.is_on_wall:
-		if !Input.is_action_pressed("axe_right"):
-			ice_axe_right.drop()
-		ice_axe_left.stop_pulling()
-	
 	if ice_axe_left.is_on_wall:
 		if !Input.is_action_pressed("axe_left"):
 			ice_axe_left.drop()
 		ice_axe_right.stop_pulling()
+		
+		distance = max(distance, torso.global_position.distance_to(ice_axe_left.area_2d.get_child(0).global_position))
+	
+	if ice_axe_right.is_on_wall:
+		if !Input.is_action_pressed("axe_right"):
+			ice_axe_right.drop()
+		ice_axe_left.stop_pulling()
+		
+		distance = max(distance, torso.global_position.distance_to(ice_axe_right.area_2d.get_child(0).global_position))
 	
 	# Color switching logic
 	if Input.is_action_just_pressed("color_switch") && (ice_axe_left.is_on_wall || ice_axe_right.is_on_wall):
@@ -50,7 +55,7 @@ func _physics_process(_delta: float) -> void:
 		for rigidbody in rigidbodies:
 			rigidbody.collision_mask = LayerNames.PHYSICS_2D.WHITE if color_flipped else LayerNames.PHYSICS_2D.BLACK
 		
-		torso.translate(Vector2(-40 if color_flipped else 40,0))
+		torso.translate(Vector2((-1 if color_flipped else 1) * distance,0))
 		torso.is_flipped = !torso.is_flipped
 		
 		# Flip ice axe collision masks & rigidbodies
