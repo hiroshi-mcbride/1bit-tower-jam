@@ -14,8 +14,10 @@ extends RigidBody2D
 @onready var trigger: CollisionShape2D = $Area2D/Trigger
 @onready var collider: CollisionPolygon2D = $Collider
 
+
 var is_on_wall: bool = false
 var flipped: bool = false
+var area_entered: bool = false
 
 
 func _ready() -> void:
@@ -25,6 +27,14 @@ func _ready() -> void:
 		area_2d.rotation_degrees = 180
 		collider.rotation_degrees = 180
 		center_of_mass.x = -center_of_mass.x
+
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	if area_entered and is_on_wall:
+		# TODO: store collision point and normal
+		# and maybe push back the axe a bit so it doesn't overlap with the wall?
+		freeze = true
+		area_entered = false
 
 
 func swing() -> void:
@@ -49,10 +59,11 @@ func disable_motors() -> void:
 
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
+	area_entered = true
 	is_on_wall = true
-	freeze = true
+	#freeze = true
 	disable_motors()
-	
+
 
 func pull() -> void:
 	hand.motor_target_velocity = hand_torque
