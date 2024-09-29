@@ -55,12 +55,12 @@ func _physics_process(_delta: float) -> void:
 		for rigidbody in rigidbodies:
 			rigidbody.collision_mask = LayerNames.PHYSICS_2D.WHITE if color_flipped else LayerNames.PHYSICS_2D.BLACK
 		
-		torso.translate(Vector2((-1 if color_flipped else 1) * distance,0))
+		torso.translate(Vector2(-distance if color_flipped else distance,0))
 		torso.is_flipped = !torso.is_flipped
 		
 		# Flip ice axe collision masks & rigidbodies
-		ice_axe_left.flip(color_flipped)
-		ice_axe_right.flip(color_flipped)
+		ice_axe_left.flip(color_flipped, distance)
+		ice_axe_right.flip(color_flipped, distance)
 		
 		# Flip player color
 		for sprite in sprites:

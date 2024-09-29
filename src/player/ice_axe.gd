@@ -75,10 +75,13 @@ func stop_pulling() -> void:
 	hand.motor_enabled = false
 
 
-func flip(color_flipped: bool) -> void:
+func flip(color_flipped: bool, distance: float) -> void:
 	# Flip torque directions
 	hand_torque = -hand_torque
 	shoulder_torque = -shoulder_torque
+	
+	if is_on_wall:
+		translate(Vector2(distance if color_flipped else -distance,0))
 	
 	# Make sure all sub-components are properly flipped
 	trigger.position.y = 8 if color_flipped else -8
