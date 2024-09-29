@@ -107,4 +107,5 @@ func flip(color_flipped: bool, distance: float) -> void:
 	# Flip the collision mask
 	area_2d.collision_mask = LayerNames.PHYSICS_2D.WHITE if color_flipped else LayerNames.PHYSICS_2D.BLACK
 	
-	freeze = true
+	if is_on_wall:
+		freeze = true
