@@ -48,17 +48,8 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("color_switch") && (ice_axe_left.is_on_wall || ice_axe_right.is_on_wall):
 		# Flip player collision masks & rigidbodies
 		for rigidbody in rigidbodies:
-			# TEMP warp
-			#translate(Vector2(-25 if color_flipped else 25,0))
-			
-			rigidbody.collision_mask = LayerNames.PHYSICS_2D.WHITE if color_flipped else !LayerNames.PHYSICS_2D.WHITE
-			rigidbody.collision_mask = LayerNames.PHYSICS_2D.BLACK if !color_flipped else !LayerNames.PHYSICS_2D.BLACK
-			
-			# Flip rigidbodies (& sprites)
-			#rigidbody.apply_scale(Vector2(-1,1))
+			rigidbody.collision_mask = LayerNames.PHYSICS_2D.WHITE if color_flipped else LayerNames.PHYSICS_2D.BLACK
 		
-		ice_axe_left.freeze = false
-		ice_axe_right.freeze = false
 		torso.translate(Vector2(-40 if color_flipped else 40,0))
 		torso.is_flipped = !torso.is_flipped
 		

@@ -76,6 +76,7 @@ func stop_pulling() -> void:
 
 
 func flip(color_flipped: bool) -> void:
+	# Flip torque directions
 	hand_torque = -hand_torque
 	shoulder_torque = -shoulder_torque
 	
@@ -84,13 +85,14 @@ func flip(color_flipped: bool) -> void:
 	sprite_2d.flip_v = !color_flipped
 	center_of_mass.y = -center_of_mass.y
 	
-	# flip all vertices in the Polygon collider
+	# Flip all vertices in the Polygon collider
 	var new_polygon: PackedVector2Array
 	for v in collider.polygon:
 		v.y = -v.y
 		new_polygon.append(v)
 	collider.polygon = new_polygon
 	
+	# Flip angular limits
 	var temp_limit = rad_to_deg(hand.angular_limit_lower)
 	hand.angular_limit_lower = deg_to_rad(flipped_angular_limit_lower)
 	flipped_angular_limit_lower = temp_limit
@@ -99,7 +101,7 @@ func flip(color_flipped: bool) -> void:
 	hand.angular_limit_upper = deg_to_rad(flipped_angular_limit_upper)
 	flipped_angular_limit_upper = temp_limit
 	
-	area_2d.collision_mask = LayerNames.PHYSICS_2D.WHITE if color_flipped else !LayerNames.PHYSICS_2D.WHITE
-	area_2d.collision_mask = LayerNames.PHYSICS_2D.BLACK if !color_flipped else !LayerNames.PHYSICS_2D.BLACK
+	# Flip the collision mask
+	area_2d.collision_mask = LayerNames.PHYSICS_2D.WHITE if color_flipped else LayerNames.PHYSICS_2D.BLACK
 	
 	freeze = true
