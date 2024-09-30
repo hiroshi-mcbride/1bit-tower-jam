@@ -14,9 +14,8 @@ extends RigidBody2D
 @onready var trigger: CollisionShape2D = $Area2D/Trigger
 @onready var collider: CollisionPolygon2D = $Collider
 
-
+var hit_pos: Vector2 = Vector2.ZERO
 var is_on_wall: bool = false
-var flipped: bool = false
 var area_entered: bool = false
 
 
@@ -32,6 +31,7 @@ func _ready() -> void:
 func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 	if area_entered and is_on_wall:
 		# TODO: store collision point and normal
+		hit_pos = area_2d.get_child(0).global_position
 		# and maybe push back the axe a bit so it doesn't overlap with the wall?
 		freeze = true
 		area_entered = false
@@ -61,7 +61,6 @@ func disable_motors() -> void:
 func _on_area_2d_body_entered(_body: Node2D) -> void:
 	area_entered = true
 	is_on_wall = true
-	#freeze = true
 	disable_motors()
 
 
@@ -80,8 +79,14 @@ func flip(color_flipped: bool, distance: float) -> void:
 	hand_torque = -hand_torque
 	shoulder_torque = -shoulder_torque
 	
+	# Remove the previous translation if the ice axe is on the wall,
+	# and calculate the x offset between the ice axe and trigger
+	var offset = 0
 	if is_on_wall:
-		translate(Vector2(distance if color_flipped else -distance,0))
+		print(global_position.x)
+		print(area_2d.get_child(0).global_position.x)
+		offset = area_2d.get_child(0).global_position.x - global_position.x
+		global_translate(Vector2(distance if color_flipped else -distance, 0))
 	
 	# Make sure all sub-components are properly flipped
 	trigger.position.y = 8 if color_flipped else -8
@@ -94,6 +99,9 @@ func flip(color_flipped: bool, distance: float) -> void:
 		v.y = -v.y
 		new_polygon.append(v)
 	collider.polygon = new_polygon
+	
+	# Apply the offset after flipping
+	global_translate(Vector2(offset, 0))
 	
 	# Flip angular limits
 	var temp_limit = rad_to_deg(hand.angular_limit_lower)
@@ -109,3 +117,4 @@ func flip(color_flipped: bool, distance: float) -> void:
 	
 	if is_on_wall:
 		freeze = true
+		is_on_wall = false
