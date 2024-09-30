@@ -17,19 +17,20 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WhiteStaticBody" node_paths=PackedStringArray("other_polygon")]
-polygon = PackedVector2Array(-14, -0.259576, 38, -48.0832, 222, -39.5812, 225, -137.354, 226, -302.08, 102, -297.829, 77, -544.386, 250, -564.578, 662, -515.692, 658, 214.415, 85, 202.725, -99, 211.227, -354, 210.164, -539, 214.415, -545, -16.2008)
+polygon = PackedVector2Array(-14, -0.259576, 45, -28.9537, 236, -21.5145, 237, -264.883, 122, -285.076, 106, -226.625, 19, -423.233, 250, -564.578, 662, -515.692, 658, 214.415, 85, 202.725, -99, 211.227, -354, 210.164, -539, 214.415, -545, -16.2008)
 script = ExtResource("2_qqtmi")
 other_polygon = NodePath("../Polygon2D")
 
 [node name="Polygon2D" type="Polygon2D" parent="WhiteStaticBody"]
-polygon = PackedVector2Array(-14, -0.259576, 38, -48.0832, 222, -39.5812, 225, -137.354, 226, -302.08, 102, -297.829, 77, -544.386, 250, -564.578, 662, -515.692, 658, 214.415, 85, 202.725, -99, 211.227, -354, 210.164, -539, 214.415, -545, -16.2008)
+polygon = PackedVector2Array(-14, -0.259576, 45, -28.9537, 236, -21.5145, 237, -264.883, 122, -285.076, 106, -226.625, 19, -423.233, 250, -564.578, 662, -515.692, 658, 214.415, 85, 202.725, -99, 211.227, -354, 210.164, -539, 214.415, -545, -16.2008)
 
 [node name="BlackStaticBody" type="StaticBody2D" parent="."]
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BlackStaticBody" node_paths=PackedStringArray("other_polygon")]
-polygon = PackedVector2Array(-14, -0.259576, 38, -48.0832, 222, -39.5812, 225, -137.354, 226, -302.08, 102, -297.829, 77, -544.386, 250, -564.578, 662, -515.692, 673, -973.736, -37, -936.539, -555, -1087.45, -734, -1055.57, -873, 237.796, -539, 214.415, -545, -16.2008)
+position = Vector2(0, -0.259567)
+polygon = PackedVector2Array(-14, -0.259576, 45, -28.9537, 236, -21.5145, 237, -264.883, 122, -285.076, 106, -226.625, 19, -423.233, 250, -564.578, 662, -515.692, 344, -1035.12, -285, -942.656, -614, -890.582, -712, -362.397, -539, 214.415, -545, -16.2008)
 script = ExtResource("2_qqtmi")
 other_polygon = NodePath("../../WhiteStaticBody/Polygon2D")
 
