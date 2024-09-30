@@ -29,7 +29,7 @@ func _ready() -> void:
 		center_of_mass.x = -center_of_mass.x
 
 
-func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 	if area_entered and is_on_wall:
 		# TODO: store collision point and normal
 		# and maybe push back the axe a bit so it doesn't overlap with the wall?

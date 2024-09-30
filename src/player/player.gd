@@ -71,5 +71,5 @@ func _physics_process(_delta: float) -> void:
 		
 		color_flipped = !color_flipped
 
-func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 	pass
