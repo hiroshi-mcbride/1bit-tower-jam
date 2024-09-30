@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b48tp36h3w26s"]
+
+[ext_resource type="Script" path="res://src/player/player.gd" id="1_l1tqt"]
+[ext_resource type="PackedScene" uid="uid://l0g2a5t8bhtb" path="res://assets/player/player.tscn" id="2_0bfjn"]
+
+[node name="Player" type="Node2D" node_paths=PackedStringArray("ice_axe_left", "ice_axe_right", "rigidbodies", "sprites")]
+position = Vector2(0, 1)
+script = ExtResource("1_l1tqt")
+ice_axe_left = NodePath("")
+ice_axe_right = NodePath("")
+rigidbodies = [NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath("")]
+sprites = [NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath("")]
+
+[node name="Torso" parent="." instance=ExtResource("2_0bfjn")]

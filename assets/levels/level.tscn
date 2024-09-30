@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c204g7tfrfxb8"]
 
-[ext_resource type="PackedScene" uid="uid://b48tp36h3w26s" path="res://assets/player/player.tscn" id="2_mdfpn"]
+[ext_resource type="PackedScene" uid="uid://l0g2a5t8bhtb" path="res://assets/player/player.tscn" id="2_mdfpn"]
 [ext_resource type="Script" path="res://src/world/polygon_copier.gd" id="2_qqtmi"]
 
 [node name="Level1" type="Node2D"]
@@ -34,4 +34,4 @@ script = ExtResource("2_qqtmi")
 other_polygon = NodePath("../../WhiteStaticBody/Polygon2D")
 
 [node name="Player" parent="." instance=ExtResource("2_mdfpn")]
-position = Vector2(-48, -109.722)
+position = Vector2(-103, -25.7655)

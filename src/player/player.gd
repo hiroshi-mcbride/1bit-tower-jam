@@ -1,12 +1,12 @@
-extends Node2D
+extends RigidBody2D
 
 @export var ice_axe_left: IceAxe
 @export var ice_axe_right: IceAxe
 @export var rigidbodies: Array[RigidBody2D]
 @export var sprites: Array[CanvasItem]
-@onready var torso: Flippable = $Torso
 
 var color_flipped: bool = false
+var flip_entered: bool = false
 var distance: float
 
 func _ready() -> void:
@@ -40,23 +40,23 @@ func _physics_process(_delta: float) -> void:
 			ice_axe_left.drop()
 		ice_axe_right.stop_pulling()
 		
-		distance = max(distance, torso.global_position.distance_to(ice_axe_left.area_2d.get_child(0).global_position))
+		distance = max(distance, global_position.distance_to(ice_axe_left.area_2d.get_child(0).global_position))
 	
 	if ice_axe_right.is_on_wall:
 		if !Input.is_action_pressed("axe_right"):
 			ice_axe_right.drop()
 		ice_axe_left.stop_pulling()
 		
-		distance = max(distance, torso.global_position.distance_to(ice_axe_right.area_2d.get_child(0).global_position))
+		distance = max(distance, global_position.distance_to(ice_axe_right.area_2d.get_child(0).global_position))
 	
 	# Color switching logic
 	if Input.is_action_just_pressed("color_switch") && (ice_axe_left.is_on_wall || ice_axe_right.is_on_wall):
+		flip_entered = true
 		# Flip player collision masks & rigidbodies
 		for rigidbody in rigidbodies:
 			rigidbody.collision_mask = LayerNames.PHYSICS_2D.WHITE if color_flipped else LayerNames.PHYSICS_2D.BLACK
 		
-		torso.translate(Vector2(-distance if color_flipped else distance,0))
-		torso.is_flipped = !torso.is_flipped
+		translate(Vector2(-distance if color_flipped else distance,0))
 		
 		# Flip ice axe collision masks & rigidbodies
 		ice_axe_left.flip(color_flipped, distance)
@@ -70,3 +70,6 @@ func _physics_process(_delta: float) -> void:
 				sprite.set_modulate(Color.WHITE)
 		
 		color_flipped = !color_flipped
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	pass
