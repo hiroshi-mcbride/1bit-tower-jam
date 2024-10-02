@@ -145,3 +145,4 @@ textures/canvas_textures/default_texture_filter=0
 textures/default_filters/anisotropic_filtering_level=0
 textures/decals/filter=2
 textures/light_projectors/filter=2
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
