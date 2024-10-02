@@ -88,10 +88,9 @@ func flip(color_flipped: bool, distance: float) -> void:
 		offset = area_2d.get_child(0).global_position.x - global_position.x
 		global_translate(Vector2(distance if color_flipped else -distance, 0))
 	
-	# Make sure all sub-components are properly flipped
-	trigger.position.y = 8 if color_flipped else -8
+	# Flip the sprite
 	sprite_2d.flip_v = !color_flipped
-	center_of_mass.y = -center_of_mass.y
+	sprite_2d.offset = Vector2(0, -48.0 if color_flipped else 0)
 	
 	# Flip all vertices in the Polygon collider
 	var new_polygon: PackedVector2Array

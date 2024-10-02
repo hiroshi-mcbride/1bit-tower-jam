@@ -46,7 +46,7 @@ func _physics_process(_delta: float) -> void:
 			ice_axe_right.drop()
 		ice_axe_left.stop_pulling()
 	
-	# If only one axe is on the wall
+	# If only one axe is on the wall (clever bool check! -hiro)
 	if (ice_axe_left.is_on_wall != ice_axe_right.is_on_wall):
 		# Update the flip_position and distance to that axe's hit position
 		flip_position = ice_axe_left.hit_pos if ice_axe_left.is_on_wall else ice_axe_right.hit_pos
