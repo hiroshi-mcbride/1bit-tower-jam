@@ -9,7 +9,6 @@ scale = Vector2(1, 0.940958)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(52, -149.044)
-zoom = Vector2(2, 2)
 
 [node name="WhiteStaticBody" type="StaticBody2D" parent="."]
 collision_layer = 2
