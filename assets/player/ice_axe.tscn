@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://da0rv0t3qamn"]
+[gd_scene load_steps=5 format=3 uid="uid://da0rv0t3qamn"]
 
 [ext_resource type="Script" path="res://src/player/ice_axe.gd" id="1_fv1u3"]
 [ext_resource type="Texture2D" uid="uid://br0u1njar2t1a" path="res://assets/player/icepick_v3.1.png" id="2_5ipfu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pl3v0"]
+rough = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1gdr3"]
 radius = 2.0
@@ -9,6 +12,7 @@ radius = 2.0
 [node name="IceAxe" type="RigidBody2D"]
 collision_mask = 2
 mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_pl3v0")
 center_of_mass_mode = 1
 center_of_mass = Vector2(24, 0)
 continuous_cd = 1
@@ -33,7 +37,10 @@ position = Vector2(25, 0)
 shape = SubResource("CircleShape2D_1gdr3")
 
 [node name="Collider" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(24, -5, 25, -2, 25, -15, 22, -18, 15, -17, 21, -10)
+polygon = PackedVector2Array(24, -5, 25, 0, 25, -15, 22, -18, 15, -17, 18.7319, -12.6461, 8, -9, 1, -4, 1, -1, 13, -8, 20, -11)
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(25, 0)
+enabled = false
+target_position = Vector2(5, 13)
+collision_mask = 2
