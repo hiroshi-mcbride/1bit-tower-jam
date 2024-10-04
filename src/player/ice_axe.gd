@@ -8,7 +8,6 @@ extends RigidBody2D
 @export var flipped_angular_limit_upper: float
 @export var shoulder: PinJoint2D
 @export var shoulder_torque: float
-@export var ray_cast_angle_exclusion_angle: float = 0
 @export var unflipped_ray_cast_angle_exclusion_angle: float = 0
 @export var flipped_ray_cast_angle_exclusion_angle: float = 180
 @export var ray_cast_angle_exclusion_range: float = 90
@@ -24,9 +23,11 @@ var is_on_wall: bool = false
 var area_entered: bool = false
 var ray_entered: bool = false
 var dist: Vector2
-
+var ray_cast_angle_exclusion_angle: float
 
 func _ready() -> void:
+	ray_cast_angle_exclusion_angle = unflipped_ray_cast_angle_exclusion_angle
+	
 	#HACK: pin joint gets super weird at rotations around 180, so i'm rotating the child nodes instead
 	if is_left_hand:
 		$Sprite2D.rotation_degrees = 180
