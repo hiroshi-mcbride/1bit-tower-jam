@@ -12,6 +12,7 @@ extends RigidBody2D
 @export var unflipped_ray_cast_angle_exclusion_angle: float = 0
 @export var flipped_ray_cast_angle_exclusion_angle: float = 180
 @export var ray_cast_angle_exclusion_range: float = 90
+@export var ray_cast_dot_limit: float = 0.5
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var trigger: CollisionShape2D = $Area2D/Trigger
@@ -37,11 +38,10 @@ func _ready() -> void:
 
 func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 	if ray_cast_2d.enabled and ray_cast_2d.is_colliding():
-		# get the global raycast direction
+		# Get the global raycast direction
 		var global_direction = ray_cast_2d.global_transform.basis_xform(ray_cast_2d.target_position).normalized()
 		
-		# prevent the axe from freezing if it hits a floor or ceiling
-		# TODO: make these angles flippable
+		# Prevent the axe from freezing if it hits a floor or ceiling
 		if rad_to_deg(global_direction.angle()) > ray_cast_angle_exclusion_angle + ray_cast_angle_exclusion_range \
 		or rad_to_deg(global_direction.angle()) < ray_cast_angle_exclusion_angle - ray_cast_angle_exclusion_range:
 			return
@@ -49,8 +49,8 @@ func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 		var normal = ray_cast_2d.get_collision_normal()
 		var dot: float = ray_cast_2d.get_collision_normal().dot(global_direction)
 		
-		# freeze the axe if it hits the wall within a certain range of angles
-		if dot < -0.5 or dot > 0.5:
+		# Freeze the axe if it hits the wall within a certain range of angles
+		if dot < -ray_cast_dot_limit or dot > ray_cast_dot_limit:
 			dist = ray_cast_2d.get_collision_point() - ray_cast_2d.global_position
 			disable_motors()
 			global_translate(dist)
