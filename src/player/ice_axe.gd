@@ -8,6 +8,10 @@ extends RigidBody2D
 @export var flipped_angular_limit_upper: float
 @export var shoulder: PinJoint2D
 @export var shoulder_torque: float
+@export var ray_cast_angle_exclusion_angle: float = 0
+@export var unflipped_ray_cast_angle_exclusion_angle: float = 0
+@export var flipped_ray_cast_angle_exclusion_angle: float = 180
+@export var ray_cast_angle_exclusion_range: float = 90
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var trigger: CollisionShape2D = $Area2D/Trigger
@@ -32,14 +36,14 @@ func _ready() -> void:
 
 
 func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
-	
 	if ray_cast_2d.enabled and ray_cast_2d.is_colliding():
 		# get the global raycast direction
 		var global_direction = ray_cast_2d.global_transform.basis_xform(ray_cast_2d.target_position).normalized()
 		
 		# prevent the axe from freezing if it hits a floor or ceiling
 		# TODO: make these angles flippable
-		if rad_to_deg(global_direction.angle()) > 60 or rad_to_deg(global_direction.angle()) < -60:
+		if rad_to_deg(global_direction.angle()) > ray_cast_angle_exclusion_angle + ray_cast_angle_exclusion_range \
+		or rad_to_deg(global_direction.angle()) < ray_cast_angle_exclusion_angle - ray_cast_angle_exclusion_range:
 			return
 		
 		var normal = ray_cast_2d.get_collision_normal()
@@ -125,6 +129,8 @@ func flip(color_flipped: bool, distance: float) -> void:
 	
 	# Flip the collision mask
 	ray_cast_2d.collision_mask = LayerNames.PHYSICS_2D.WHITE if color_flipped else LayerNames.PHYSICS_2D.BLACK
+	ray_cast_2d.target_position.y = -ray_cast_2d.target_position.y
+	ray_cast_angle_exclusion_angle = unflipped_ray_cast_angle_exclusion_angle if color_flipped else flipped_ray_cast_angle_exclusion_angle
 	
 	if is_on_wall:
 		freeze = true
