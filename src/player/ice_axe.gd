@@ -47,7 +47,7 @@ func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 		or rad_to_deg(global_direction.angle()) < ray_cast_angle_exclusion_angle - ray_cast_angle_exclusion_range:
 			return
 		
-		var normal = ray_cast_2d.get_collision_normal()
+		#var normal = ray_cast_2d.get_collision_normal()
 		var dot: float = ray_cast_2d.get_collision_normal().dot(global_direction)
 		
 		# Freeze the axe if it hits the wall within a certain range of angles
@@ -106,7 +106,7 @@ func flip(color_flipped: bool, distance: float) -> void:
 	
 	# Flip the sprite
 	sprite_2d.flip_v = !color_flipped
-	sprite_2d.offset = Vector2(0, -48.0 if color_flipped else 0)
+	sprite_2d.offset = Vector2(0, -48.0 if color_flipped else 0.0)
 	
 	# Flip all vertices in the Polygon collider
 	var new_polygon: PackedVector2Array
