@@ -6,7 +6,8 @@ extends Polygon2D
 
 
 func _init():
-	collision_polygon.draw.connect(update_polygon_shape)
+	if Engine.is_editor_hint():
+		collision_polygon.draw.connect(update_polygon_shape)
 
 
 func update_polygon_shape():
