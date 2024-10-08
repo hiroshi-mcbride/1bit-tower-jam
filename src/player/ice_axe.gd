@@ -58,7 +58,6 @@ func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 			ray_cast_2d.enabled = false
 			freeze = true
 			is_on_wall = true
-	
 
 
 func swing() -> void:

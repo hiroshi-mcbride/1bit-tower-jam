@@ -11,9 +11,6 @@ process_mode = 1
 position = Vector2(0, 1.24425)
 scale = Vector2(1, 0.940958)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(52, -149.044)
-
 [node name="WhiteStaticBody" type="StaticBody2D" parent="."]
 collision_layer = 2
 collision_mask = 0
@@ -36,3 +33,13 @@ polygon = PackedVector2Array(-14, -0.259576, 45, -28.9537, 236, -21.5145, 237, -
 
 [node name="Player" parent="." instance=ExtResource("2_mdfpn")]
 position = Vector2(-103, -25.7655)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.0
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
