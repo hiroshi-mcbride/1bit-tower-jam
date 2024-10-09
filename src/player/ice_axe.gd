@@ -1,6 +1,7 @@
 class_name IceAxe
 extends RigidBody2D
 
+
 @export var is_left_hand: bool
 @export var hand: PinJoint2D
 @export var hand_torque: float
@@ -25,6 +26,7 @@ var area_entered: bool = false
 var ray_entered: bool = false
 var dist: Vector2
 var ray_cast_angle_exclusion_angle: float
+
 
 func _ready() -> void:
 	ray_cast_angle_exclusion_angle = unflipped_ray_cast_angle_exclusion_angle
