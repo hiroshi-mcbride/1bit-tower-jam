@@ -19,6 +19,7 @@ extends RigidBody2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 
 var hit_pos: Vector2 = Vector2.ZERO
+var hit_angle: float
 var is_on_wall: bool = false
 var area_entered: bool = false
 var ray_entered: bool = false
@@ -52,7 +53,8 @@ func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 		
 		# Freeze the axe if it hits the wall within a certain range of angles
 		if dot < -ray_cast_dot_limit or dot > ray_cast_dot_limit:
-			dist = ray_cast_2d.get_collision_point() - ray_cast_2d.global_position
+			hit_pos = ray_cast_2d.get_collision_point()
+			dist = hit_pos - ray_cast_2d.global_position
 			disable_motors()
 			global_translate(dist)
 			ray_cast_2d.enabled = false
