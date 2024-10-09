@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c204g7tfrfxb8"]
+[gd_scene load_steps=7 format=3 uid="uid://c204g7tfrfxb8"]
 
+[ext_resource type="Script" path="res://src/world/polygontool.gd" id="1_6pbfe"]
+[ext_resource type="Script" path="res://src/world/polygontoolhelper.gd" id="1_c36oo"]
 [ext_resource type="PackedScene" uid="uid://l0g2a5t8bhtb" path="res://assets/player/player.tscn" id="2_mdfpn"]
+[ext_resource type="Script" path="res://src/world/polygon_shape_updater.gd" id="3_g0ryx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1n8qv"]
 
@@ -11,25 +14,40 @@ process_mode = 1
 position = Vector2(0, 1.24425)
 scale = Vector2(1, 0.940958)
 
-[node name="WhiteStaticBody" type="StaticBody2D" parent="."]
+[node name="WhiteStaticBody" type="StaticBody2D" parent="." node_paths=PackedStringArray("other_helper")]
 collision_layer = 2
 collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_1n8qv")
+script = ExtResource("1_c36oo")
+other_helper = NodePath("../BlackStaticBody")
+color = Color(1, 1, 1, 1)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WhiteStaticBody"]
-polygon = PackedVector2Array(-14, -0.259576, 45, -28.9537, 236, -21.5145, 237, -264.883, 122, -285.076, 106, -226.625, 19, -423.233, 250, -564.578, 662, -515.692, 658, 214.415, 85, 202.725, -99, 211.227, -354, 210.164, -539, 214.415, -545, -16.2008)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WhiteStaticBody" node_paths=PackedStringArray("helper")]
+polygon = PackedVector2Array(-638, 78.3837, 223, 73.0699, 208, -496.562, -113, -475.307, -168, -272.323, -474, -354.154, -511, -798.382, -128, -1015.18, 782, -586.896, 959, -1133.15, 677, -1090.64, 473, -1229.86, 765, -1427.53, 520, -1733.6, 54, -1776.11, 72, -1455.16, -273, -1398.83, -750, -1467.91, -687, -1834.56, -669, -2102.37, -155, -2151.26, 599, -2100.25, 1289, -1848.38, 1526, -974.798, 1412, -477.433, 1276, 84.7602, 823, 336.631, 468, 366.388, -44, 357.886, -704, 355.761, -1097, 323.878, -1347, -107.597, -1397, -806.884, -1448, -1540.18, -1395, -2012.04, -1070, -2091.74, -951, -1698.53, -886, -997.116, -951, -533.758)
+script = ExtResource("1_6pbfe")
+helper = NodePath("..")
+generate = true
 
-[node name="Polygon2D" type="Polygon2D" parent="WhiteStaticBody"]
-polygon = PackedVector2Array(-14, -0.259576, 45, -28.9537, 236, -21.5145, 237, -264.883, 122, -285.076, 106, -226.625, 19, -423.233, 250, -564.578, 662, -515.692, 658, 214.415, 85, 202.725, -99, 211.227, -354, 210.164, -539, 214.415, -545, -16.2008)
+[node name="Polygon2D" type="Polygon2D" parent="WhiteStaticBody/CollisionPolygon2D" node_paths=PackedStringArray("collision_polygon")]
+polygon = PackedVector2Array(-638, 78.3837, 223, 73.0699, 208, -496.562, -113, -475.307, -168, -272.323, -474, -354.154, -511, -798.382, -128, -1015.18, 782, -586.896, 959, -1133.15, 677, -1090.64, 473, -1229.86, 765, -1427.53, 520, -1733.6, 54, -1776.11, 72, -1455.16, -273, -1398.83, -750, -1467.91, -687, -1834.56, -669, -2102.37, -155, -2151.26, 599, -2100.25, 1289, -1848.38, 1526, -974.798, 1412, -477.433, 1276, 84.7602, 823, 336.631, 468, 366.388, -44, 357.886, -704, 355.761, -1097, 323.878, -1347, -107.597, -1397, -806.884, -1448, -1540.18, -1395, -2012.04, -1070, -2091.74, -951, -1698.53, -886, -997.116, -951, -533.758)
+script = ExtResource("3_g0ryx")
+collision_polygon = NodePath("..")
 
-[node name="BlackStaticBody" type="StaticBody2D" parent="."]
+[node name="BlackStaticBody" type="StaticBody2D" parent="." node_paths=PackedStringArray("other_helper")]
 collision_layer = 4
 collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_pckde")
+script = ExtResource("1_c36oo")
+other_helper = NodePath("../WhiteStaticBody")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BlackStaticBody"]
-position = Vector2(0, -0.259567)
-polygon = PackedVector2Array(-14, -0.259576, 45, -28.9537, 236, -21.5145, 237, -264.883, 122, -285.076, 106, -226.625, 19, -423.233, 250, -564.578, 662, -515.692, 344, -1035.12, -285, -942.656, -614, -890.582, -712, -362.397, -539, 214.415, -545, -16.2008)
+[node name="OtherCollisionPolygon2D" type="CollisionPolygon2D" parent="BlackStaticBody"]
+polygon = PackedVector2Array(-638, 78.3837, 223, 73.0699, 208, -496.562, -113, -475.307, -168, -272.323, -474, -354.154, -511, -798.382, -128, -1015.18, 782, -586.896, 959, -1133.15, 677, -1090.64, 473, -1229.86, 765, -1427.53, 520, -1733.6, 54, -1776.11, 72, -1455.16, -273, -1398.83, -750, -1467.91, -687, -1834.56, -669, -2102.37, -1070, -2091.74, -951, -1698.53, -886, -997.116, -951, -533.758)
+
+[node name="OtherPolygon2D" type="Polygon2D" parent="BlackStaticBody/OtherCollisionPolygon2D" node_paths=PackedStringArray("collision_polygon")]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-638, 78.3837, 223, 73.0699, 208, -496.562, -113, -475.307, -168, -272.323, -474, -354.154, -511, -798.382, -128, -1015.18, 782, -586.896, 959, -1133.15, 677, -1090.64, 473, -1229.86, 765, -1427.53, 520, -1733.6, 54, -1776.11, 72, -1455.16, -273, -1398.83, -750, -1467.91, -687, -1834.56, -669, -2102.37, -1070, -2091.74, -951, -1698.53, -886, -997.116, -951, -533.758)
+script = ExtResource("3_g0ryx")
+collision_polygon = NodePath("..")
 
 [node name="Player" parent="." instance=ExtResource("2_mdfpn")]
 position = Vector2(-103, -25.7655)
