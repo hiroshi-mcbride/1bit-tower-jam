@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://l0g2a5t8bhtb"]
+[gd_scene load_steps=10 format=3 uid="uid://l0g2a5t8bhtb"]
 
-[ext_resource type="PackedScene" uid="uid://da0rv0t3qamn" path="res://assets/player/ice_axe.tscn" id="1_f4ijt"]
+[ext_resource type="PackedScene" uid="uid://da0rv0t3qamn" path="res://assets/player/ice_axe_q.tscn" id="1_f4ijt"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_l1tqt"]
 [ext_resource type="Texture2D" uid="uid://brji4fcl28o58" path="res://assets/player/arm.png" id="3_d4hpc"]
 [ext_resource type="Texture2D" uid="uid://cla7lhsitq35m" path="res://assets/player/torso.png" id="4_uj8xa"]
 [ext_resource type="Texture2D" uid="uid://ccsxsn6d210bc" path="res://assets/player/head.png" id="5_vo8gi"]
 [ext_resource type="Texture2D" uid="uid://cp5j7ttpfxprd" path="res://assets/player/leg.png" id="6_ba137"]
+[ext_resource type="PackedScene" uid="uid://cqlf5ehegyfsc" path="res://assets/player/ice_axe_e.tscn" id="7_kupps"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i7eyc"]
 size = Vector2(16, 31)
@@ -21,8 +22,8 @@ lock_rotation = true
 angular_damp = 100.0
 script = ExtResource("1_l1tqt")
 ice_axe_left = NodePath("IceAxe_Q")
-ice_axe_right = NodePath("IceAxe_E")
-rigidbodies = [NodePath("."), NodePath("Arm_Q"), NodePath("Arm_E"), NodePath("IceAxe_Q"), NodePath("IceAxe_E")]
+ice_axe_right = NodePath("IceAxe_E2")
+rigidbodies = [NodePath("."), NodePath("Arm_Q"), NodePath("Arm_E"), NodePath("IceAxe_Q"), NodePath("IceAxe_E2")]
 sprites = [NodePath("torso"), NodePath("head"), NodePath("leg_r"), NodePath("leg_l"), NodePath("Arm_Q/Sprite2D"), NodePath("Arm_E/Sprite2D")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -92,7 +93,7 @@ scale = Vector2(0.40678, 0.444444)
 texture = ExtResource("3_d4hpc")
 
 [node name="Hand_Q" type="PinJoint2D" parent="."]
-position = Vector2(-30, -9)
+position = Vector2(-31, -9)
 node_a = NodePath("../IceAxe_Q")
 node_b = NodePath("../Arm_Q")
 angular_limit_enabled = true
@@ -101,17 +102,16 @@ angular_limit_upper = 2.44346
 
 [node name="Hand_E" type="PinJoint2D" parent="."]
 position = Vector2(30, -9)
-node_a = NodePath("../IceAxe_E")
+node_a = NodePath("../IceAxe_E2")
 node_b = NodePath("../Arm_E")
 angular_limit_enabled = true
 angular_limit_lower = -0.698132
 angular_limit_upper = 2.79253
 
 [node name="IceAxe_Q" parent="." node_paths=PackedStringArray("hand", "shoulder") instance=ExtResource("1_f4ijt")]
-position = Vector2(-30, -9)
+position = Vector2(-59, -12)
 mass = 1.0
 angular_damp = 0.06
-is_left_hand = true
 hand = NodePath("../Hand_Q")
 hand_torque = 45.0
 flipped_angular_limit_lower = -120.0
@@ -119,10 +119,9 @@ flipped_angular_limit_upper = 100.0
 shoulder = NodePath("../Shoulder_Q")
 shoulder_torque = 20.0
 
-[node name="IceAxe_E" parent="." node_paths=PackedStringArray("hand", "shoulder") instance=ExtResource("1_f4ijt")]
-position = Vector2(30, -9)
+[node name="IceAxe_E2" parent="." node_paths=PackedStringArray("hand", "shoulder") instance=ExtResource("7_kupps")]
+position = Vector2(58, -7)
 mass = 1.0
-angular_damp = 0.06
 hand = NodePath("../Hand_E")
 hand_torque = 45.0
 flipped_angular_limit_lower = -120.0

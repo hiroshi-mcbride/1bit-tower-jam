@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://da0rv0t3qamn"]
+[gd_scene load_steps=5 format=3 uid="uid://cqlf5ehegyfsc"]
 
-[ext_resource type="Script" path="res://src/player/ice_axe.gd" id="1_fv1u3"]
-[ext_resource type="Texture2D" uid="uid://br0u1njar2t1a" path="res://assets/player/icepick_v3.1.png" id="2_5ipfu"]
+[ext_resource type="Script" path="res://src/player/ice_axe.gd" id="1_cshx0"]
+[ext_resource type="Texture2D" uid="uid://wen4q0xnsyfc" path="res://assets/player/icepick_v3.2.png" id="2_dx0my"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pl3v0"]
 rough = true
@@ -9,38 +9,37 @@ rough = true
 [sub_resource type="CircleShape2D" id="CircleShape2D_1gdr3"]
 radius = 2.0
 
-[node name="IceAxe" type="RigidBody2D"]
+[node name="IceAxe_E" type="RigidBody2D"]
 collision_mask = 2
 mass = 2.0
 physics_material_override = SubResource("PhysicsMaterial_pl3v0")
 center_of_mass_mode = 1
-center_of_mass = Vector2(24, 0)
 continuous_cd = 1
 contact_monitor = true
 max_contacts_reported = 1
 angular_damp = 0.05
-script = ExtResource("1_fv1u3")
+script = ExtResource("1_cshx0")
 hand_torque = 20.0
 shoulder_torque = 40.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-29, 0)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_5ipfu")
+texture = ExtResource("2_dx0my")
 centered = false
 offset = Vector2(0, -48)
 
 [node name="Area2D" type="Area2D" parent="."]
+rotation = -3.14159
 collision_mask = 2
 
 [node name="Trigger" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(25, 0)
 shape = SubResource("CircleShape2D_1gdr3")
 
 [node name="Collider" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(24, -5, 25, 0, 25, -15, 22, -18, 15, -17, 18.7319, -12.6461, 8, -9, 1, -4, 1, -1, 13, -8, 20, -11)
+polygon = PackedVector2Array(-6, -11, -4, -8, 0, 0, -1, -5, -2, -10, -3, -12, -6, -15, -7, -13, -27, -5, -24, -4, -16, -7)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(25, 0)
 enabled = false
-target_position = Vector2(5, 13)
+target_position = Vector2(0, 8)
 collision_mask = 2
