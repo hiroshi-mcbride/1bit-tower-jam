@@ -1,6 +1,8 @@
 class_name IceAxe
 extends RigidBody2D
 
+signal axe_hit()
+
 @export var hand: PinJoint2D
 @export var hand_torque: float = 45.0
 @export var shoulder: PinJoint2D
@@ -57,7 +59,7 @@ func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 			dist = hit_pos - ray_cast_2d.global_position
 			disable_motors()
 			global_translate(dist)
-			
+			axe_hit.emit()
 			ray_cast_2d.enabled = false
 			freeze = true
 			is_on_wall = true

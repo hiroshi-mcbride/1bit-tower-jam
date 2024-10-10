@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamInteractive" load_steps=3 format=3 uid="uid://dlrkr1bphkrrn"]
+
+[ext_resource type="AudioStream" uid="uid://cnmbkbxdaat53" path="res://assets/music/tower theme.mp3" id="1_gqtlg"]
+[ext_resource type="AudioStream" uid="uid://bc6nc71c5ri22" path="res://assets/music/tower theme loop.mp3" id="2_cmsna"]
+
+[resource]
+clip_count = 2
+clip_0/name = &"Tower Theme"
+clip_0/stream = ExtResource("1_gqtlg")
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
+clip_1/name = &"Tower Theme Loop"
+clip_1/stream = ExtResource("2_cmsna")
+clip_1/auto_advance = 0

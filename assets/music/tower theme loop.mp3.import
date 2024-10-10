@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bc6nc71c5ri22"
+path="res://.godot/imported/tower theme loop.mp3-bd07d9719e0864586a3bcf0473307bd9.mp3str"
+
+[deps]
+
+source_file="res://assets/music/tower theme loop.mp3"
+dest_files=["res://.godot/imported/tower theme loop.mp3-bd07d9719e0864586a3bcf0473307bd9.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=107.0
+beat_count=0
+bar_beats=4
