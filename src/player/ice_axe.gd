@@ -43,15 +43,12 @@ func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 		var global_direction = ray_cast_2d.global_transform.basis_xform(ray_cast_2d.target_position).normalized()
 		
 		# Prevent the axe from freezing if it hits a floor or ceiling
-		print(fposmod(rad_to_deg(global_direction.angle()), 360.0))
 		if fposmod(rad_to_deg(global_direction.angle()), 360) < fposmod(ray_cast_angle_exclusion_angle + ray_cast_angle_exclusion_range, 360) &&\
-		fposmod(rad_to_deg(global_direction.angle()), 360) > fposmod(ray_cast_angle_exclusion_angle - ray_cast_angle_exclusion_range, 360):
-			print("exclude")
+		   fposmod(rad_to_deg(global_direction.angle()), 360) > fposmod(ray_cast_angle_exclusion_angle - ray_cast_angle_exclusion_range, 360):
 			return
 		
 		var wall_normal = ray_cast_2d.get_collision_normal()
 		hit_angle = wall_normal.angle_to(-global_direction)
-		#var normal = ray_cast_2d.get_collision_normal()
 		var dot: float = wall_normal.dot(global_direction)
 		
 		# Freeze the axe if it hits the wall within a certain range of angles
