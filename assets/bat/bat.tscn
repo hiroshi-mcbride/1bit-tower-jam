@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmghy70lwdw71"]
+[gd_scene load_steps=13 format=3 uid="uid://dmghy70lwdw71"]
 
 [ext_resource type="Texture2D" uid="uid://le8is6b8elrb" path="res://icon.svg" id="1_gr5bu"]
 [ext_resource type="Script" path="res://assets/bat/bat.gd" id="1_xpgfq"]
@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://y4d1uca33vw0" path="res://assets/components/health_component.tscn" id="4_vfycp"]
 [ext_resource type="PackedScene" uid="uid://dmuxv52hjgxge" path="res://assets/components/hitbox_component.tscn" id="5_qw8w4"]
 [ext_resource type="PackedScene" uid="uid://doratto4po304" path="res://assets/components/hurtbox_component.tscn" id="6_qrgix"]
+[ext_resource type="Script" path="res://assets/states/state_machine.gd" id="7_tyhce"]
+[ext_resource type="Script" path="res://assets/bat/bat_idle.gd" id="8_h8d6a"]
+[ext_resource type="Script" path="res://assets/bat/bat_chase.gd" id="9_3to8h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k8t6y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ticgl"]
 radius = 25.0
@@ -13,12 +18,15 @@ radius = 25.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_rgt74"]
 radius = 25.0
 
-[node name="Bat" type="Node2D"]
+[node name="Bat" type="CharacterBody2D"]
 script = ExtResource("1_xpgfq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_gr5bu")
+
+[node name="PhysicsCollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k8t6y")
 
 [node name="DangerSensorComponent" parent="." instance=ExtResource("3_lj35r")]
 
@@ -39,3 +47,13 @@ health = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 shape = SubResource("CircleShape2D_rgt74")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("7_tyhce")
+initial_state = NodePath("BatIdle")
+
+[node name="BatIdle" type="Node" parent="StateMachine"]
+script = ExtResource("8_h8d6a")
+
+[node name="BatChase" type="Node" parent="StateMachine"]
+script = ExtResource("9_3to8h")
