@@ -19,8 +19,6 @@ contact_monitor = true
 max_contacts_reported = 1
 angular_damp = 0.05
 script = ExtResource("1_cshx0")
-hand_torque = 20.0
-shoulder_torque = 40.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-30, 0)

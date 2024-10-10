@@ -2,7 +2,9 @@ class_name IceAxe
 extends RigidBody2D
 
 @export var hand: PinJoint2D
-@export var hand_torque: float
+@export var hand_torque: float = 45.0
+@export var shoulder: PinJoint2D
+@export var shoulder_torque: float = 15.0
 @export var unflipped_angular_limit_lower: float
 @export var unflipped_on_wall_angular_limit_lower: float
 @export var flipped_angular_limit_lower: float
@@ -11,13 +13,10 @@ extends RigidBody2D
 @export var unflipped_on_wall_angular_limit_upper: float
 @export var flipped_angular_limit_upper: float
 @export var flipped_on_wall_angular_limit_upper: float
-@export var shoulder: PinJoint2D
-@export var shoulder_torque: float
-@export var unflipped_ray_cast_angle_exclusion_angle: float = 0
-@export var flipped_ray_cast_angle_exclusion_angle: float = -180
-@export var ray_cast_ceiling_angle_inclusion_range: float = 100
-@export var ray_cast_floor_angle_inclusion_range: float = 80
-@export var ray_cast_dot_limit: float = 0.2
+var unflipped_ray_cast_angle_exclusion_angle: float = 180
+var flipped_ray_cast_angle_exclusion_angle: float = 0
+@export var ray_cast_angle_exclusion_range: float = 80
+@export var ray_cast_dot_limit: float = 0.5
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var trigger: CollisionShape2D = $Area2D/Trigger
@@ -44,12 +43,10 @@ func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 		var global_direction = ray_cast_2d.global_transform.basis_xform(ray_cast_2d.target_position).normalized()
 		
 		# Prevent the axe from freezing if it hits a floor or ceiling
-		print(rad_to_deg(global_direction.angle()))
-		if rad_to_deg(global_direction.angle()) > ray_cast_angle_exclusion_angle + ray_cast_floor_angle_inclusion_range:
-			print("> exclude floor")
-			return
-		elif rad_to_deg(global_direction.angle()) < ray_cast_angle_exclusion_angle - ray_cast_ceiling_angle_inclusion_range:
-			print("< exclude ceiling")
+		print(fposmod(rad_to_deg(global_direction.angle()), 360.0))
+		if fposmod(rad_to_deg(global_direction.angle()), 360) < fposmod(ray_cast_angle_exclusion_angle + ray_cast_angle_exclusion_range, 360) &&\
+		fposmod(rad_to_deg(global_direction.angle()), 360) > fposmod(ray_cast_angle_exclusion_angle - ray_cast_angle_exclusion_range, 360):
+			print("exclude")
 			return
 		
 		var wall_normal = ray_cast_2d.get_collision_normal()

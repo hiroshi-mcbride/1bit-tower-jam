@@ -9,9 +9,9 @@ extends CollisionPolygon2D
 			else:
 				helper = value
 
-var polygon2d: Polygon2D
-var other_collision_polygon: CollisionPolygon2D
-var other_polygon2d: Polygon2D
+@export var polygon2d: Polygon2D
+@export var other_collision_polygon: CollisionPolygon2D
+@export var other_polygon2d: Polygon2D
 
 @export var generate: bool = false:
 	set(value):
