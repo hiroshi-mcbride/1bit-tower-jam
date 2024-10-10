@@ -3,15 +3,21 @@ extends RigidBody2D
 
 @export var hand: PinJoint2D
 @export var hand_torque: float
+@export var unflipped_angular_limit_lower: float
+@export var unflipped_on_wall_angular_limit_lower: float
 @export var flipped_angular_limit_lower: float
+@export var flipped_on_wall_angular_limit_lower: float
+@export var unflipped_angular_limit_upper: float
+@export var unflipped_on_wall_angular_limit_upper: float
 @export var flipped_angular_limit_upper: float
+@export var flipped_on_wall_angular_limit_upper: float
 @export var shoulder: PinJoint2D
 @export var shoulder_torque: float
 @export var unflipped_ray_cast_angle_exclusion_angle: float = 0
-@export var flipped_ray_cast_angle_exclusion_angle: float = 180
-@export var ray_cast_ceiling_angle_inclusion_range: float = 90
-@export var ray_cast_floor_angle_inclusion_range: float = 150
-@export var ray_cast_dot_limit: float = 0.5
+@export var flipped_ray_cast_angle_exclusion_angle: float = -180
+@export var ray_cast_ceiling_angle_inclusion_range: float = 100
+@export var ray_cast_floor_angle_inclusion_range: float = 80
+@export var ray_cast_dot_limit: float = 0.2
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var trigger: CollisionShape2D = $Area2D/Trigger
@@ -25,6 +31,7 @@ var area_entered: bool = false
 var ray_entered: bool = false
 var dist: Vector2
 var ray_cast_angle_exclusion_angle: float
+var flipped: bool = false
 
 
 func _ready() -> void:
@@ -39,7 +46,7 @@ func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 		# Prevent the axe from freezing if it hits a floor or ceiling
 		print(rad_to_deg(global_direction.angle()))
 		if rad_to_deg(global_direction.angle()) > ray_cast_angle_exclusion_angle + ray_cast_floor_angle_inclusion_range:
-			print(" > exclude floor")
+			print("> exclude floor")
 			return
 		elif rad_to_deg(global_direction.angle()) < ray_cast_angle_exclusion_angle - ray_cast_ceiling_angle_inclusion_range:
 			print("< exclude ceiling")
@@ -60,7 +67,10 @@ func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 			ray_cast_2d.enabled = false
 			freeze = true
 			is_on_wall = true
-
+			
+			# Greaten the angular limits of the hands during grippy time
+			hand.angular_limit_lower = deg_to_rad(flipped_on_wall_angular_limit_lower if flipped else unflipped_on_wall_angular_limit_lower)
+			hand.angular_limit_upper = deg_to_rad(flipped_on_wall_angular_limit_upper if flipped else unflipped_on_wall_angular_limit_upper)
 
 func swing() -> void:
 	shoulder.motor_target_velocity = -shoulder_torque
@@ -72,6 +82,11 @@ func swing() -> void:
 
 func drop() -> void:
 	is_on_wall = false
+	
+	# Lessen the angular limits of the hands during loosy time
+	hand.angular_limit_lower = deg_to_rad(flipped_angular_limit_lower if flipped else unflipped_angular_limit_lower)
+	hand.angular_limit_upper = deg_to_rad(flipped_angular_limit_upper if flipped else unflipped_angular_limit_upper)
+	
 	ray_cast_2d.enabled = false
 	freeze = false
 	disable_motors()
@@ -94,19 +109,26 @@ func stop_pulling() -> void:
 	hand.motor_enabled = false
 
 
-func flip(color_flipped: bool, distance: float) -> void:
+func flip(color_flipped: bool, _distance: float) -> void:
+	flipped = color_flipped
+	
 	# Flip torque directions
 	hand_torque = -hand_torque
 	shoulder_torque = -shoulder_torque
 	
-	# Apply rotation based on at what angle the axe hit the wall
+	# Apply rotation based on at what angle the axe hit the wall, and flip angular limits
 	if is_on_wall:
 		hit_angle = -hit_angle
 		rotate(hit_angle * 2)
+		hand.angular_limit_lower = deg_to_rad(flipped_on_wall_angular_limit_lower if flipped else unflipped_on_wall_angular_limit_lower)
+		hand.angular_limit_upper = deg_to_rad(flipped_on_wall_angular_limit_upper if flipped else unflipped_on_wall_angular_limit_upper)
+	else:
+		hand.angular_limit_lower = deg_to_rad(flipped_angular_limit_lower if flipped else unflipped_angular_limit_lower)
+		hand.angular_limit_upper = deg_to_rad(flipped_angular_limit_upper if flipped else unflipped_angular_limit_upper)
 	
 	# Flip the sprite
-	sprite_2d.flip_v = !color_flipped
-	sprite_2d.offset = Vector2(0, -18.0 if color_flipped else 0.0)
+	sprite_2d.flip_v = flipped
+	sprite_2d.offset = Vector2(0, 0.0 if flipped else -18.0 )
 	
 	# Flip all vertices in the Polygon collider
 	var new_polygon: PackedVector2Array
@@ -115,23 +137,10 @@ func flip(color_flipped: bool, distance: float) -> void:
 		new_polygon.append(v)
 	collider.polygon = new_polygon
 	
-	# Flip angular limits
-	var temp_limit = rad_to_deg(hand.angular_limit_lower)
-	hand.angular_limit_lower = deg_to_rad(flipped_angular_limit_lower)
-	flipped_angular_limit_lower = temp_limit
-	
-	temp_limit = rad_to_deg(hand.angular_limit_upper)
-	hand.angular_limit_upper = deg_to_rad(flipped_angular_limit_upper)
-	flipped_angular_limit_upper = temp_limit
-	
 	# Flip the collision mask
-	ray_cast_2d.collision_mask = LayerNames.PHYSICS_2D.WHITE if color_flipped else LayerNames.PHYSICS_2D.BLACK
+	ray_cast_2d.collision_mask = LayerNames.PHYSICS_2D.BLACK if flipped else LayerNames.PHYSICS_2D.WHITE
 	ray_cast_2d.target_position.y = -ray_cast_2d.target_position.y
-	ray_cast_angle_exclusion_angle = unflipped_ray_cast_angle_exclusion_angle if color_flipped else flipped_ray_cast_angle_exclusion_angle
+	ray_cast_angle_exclusion_angle = flipped_ray_cast_angle_exclusion_angle if flipped else unflipped_ray_cast_angle_exclusion_angle
 	
 	if is_on_wall:
 		freeze = true
-		
-		# not sure why this was set to false? 
-		# i'm leaving it true so the player can flip back and forth
-		#is_on_wall = false

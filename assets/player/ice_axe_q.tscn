@@ -21,7 +21,6 @@ angular_damp = 0.05
 script = ExtResource("1_52qgx")
 hand_torque = 20.0
 shoulder_torque = 40.0
-ray_cast_dot_limit = 0.2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(30, -9.09495e-13)

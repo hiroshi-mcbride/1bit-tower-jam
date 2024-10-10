@@ -70,20 +70,19 @@ func _physics_process(_delta: float) -> void:
 			color_switch(is_left_axe)
 
 
-func color_switch(is_left_axe: bool) -> void:
+func color_switch(_is_left_axe: bool) -> void:
 	flip_entered = true
+	color_flipped = !color_flipped
 	
 	# Flip player collision masks
 	for rigidbody in rigidbodies:
-		rigidbody.collision_mask = LayerNames.PHYSICS_2D.WHITE if color_flipped else LayerNames.PHYSICS_2D.BLACK
+		rigidbody.collision_mask = LayerNames.PHYSICS_2D.BLACK if color_flipped else LayerNames.PHYSICS_2D.WHITE
 	
 	# Flip everything visually
-	
-	
 	#ice_axe_left.reparent(get_parent())
 	#ice_axe_right.reparent(get_parent())
 	
-	#global_translate(Vector2(-distance if color_flipped else distance, 0))
+	#global_translate(Vector2(distance if color_flipped else -distance, 0))
 	
 	#ice_axe_left.reparent(self)
 	#ice_axe_right.reparent(self)
@@ -92,7 +91,6 @@ func color_switch(is_left_axe: bool) -> void:
 	ice_axe_left.flip(color_flipped, distance)
 	ice_axe_right.flip(color_flipped, distance)
 	
-	
 	# Flip player color
 	for sprite in sprites:
 		if sprite.get_modulate() == Color.WHITE:
@@ -100,7 +98,6 @@ func color_switch(is_left_axe: bool) -> void:
 		elif sprite.get_modulate() == Color.BLACK:
 			sprite.set_modulate(Color.WHITE)
 		
-	color_flipped = !color_flipped
 	flip_position = Vector2.ZERO
 	distance = 0
 
