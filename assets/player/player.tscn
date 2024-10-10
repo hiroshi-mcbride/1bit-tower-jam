@@ -109,7 +109,7 @@ angular_limit_lower = -0.698132
 angular_limit_upper = 2.79253
 
 [node name="IceAxe_Q" parent="." node_paths=PackedStringArray("hand", "shoulder") instance=ExtResource("1_f4ijt")]
-position = Vector2(-59, -12)
+position = Vector2(-60, -9)
 mass = 1.0
 angular_damp = 0.06
 hand = NodePath("../Hand_Q")
@@ -120,7 +120,7 @@ shoulder = NodePath("../Shoulder_Q")
 shoulder_torque = 20.0
 
 [node name="IceAxe_E2" parent="." node_paths=PackedStringArray("hand", "shoulder") instance=ExtResource("7_kupps")]
-position = Vector2(58, -7)
+position = Vector2(59, -9)
 mass = 1.0
 hand = NodePath("../Hand_E")
 hand_torque = 45.0

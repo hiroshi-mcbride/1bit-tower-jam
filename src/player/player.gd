@@ -51,13 +51,14 @@ func _physics_process(_delta: float) -> void:
 		# Update the flip_position and distance to that axe's hit position
 		flip_position = ice_axe_left.hit_pos if ice_axe_left.is_on_wall else ice_axe_right.hit_pos
 		distance = flip_position.x - global_position.x
+		var is_left_axe: bool = ice_axe_left.is_on_wall
 		
 		# Color switching logic
 		if Input.is_action_just_pressed("color_switch"):
-			color_switch()
+			color_switch(is_left_axe)
 
 
-func color_switch() -> void:
+func color_switch(is_left_axe: bool) -> void:
 	flip_entered = true
 	
 	# Flip player collision masks
@@ -66,17 +67,19 @@ func color_switch() -> void:
 	
 	# Flip everything visually
 	
+	
 	#ice_axe_left.reparent(get_parent())
 	#ice_axe_right.reparent(get_parent())
 	
-	global_translate(Vector2(-distance if color_flipped else distance, 0))
+	#global_translate(Vector2(-distance if color_flipped else distance, 0))
+	
+	#ice_axe_left.reparent(self)
+	#ice_axe_right.reparent(self)
 	
 	# Flip ice axe collision masks
 	ice_axe_left.flip(color_flipped, distance)
 	ice_axe_right.flip(color_flipped, distance)
 	
-	#ice_axe_left.reparent(self)
-	#ice_axe_right.reparent(self)
 	
 	# Flip player color
 	for sprite in sprites:

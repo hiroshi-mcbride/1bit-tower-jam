@@ -94,15 +94,11 @@ func flip(color_flipped: bool, distance: float) -> void:
 	
 	# Remove the previous translation if the ice axe is on the wall,
 	# and calculate the x offset between the ice axe and trigger
-	var offset = 0
+	#var offset = 0
 	if is_on_wall:
-		#offset = area_2d.get_child(0).global_position.x - global_position.x
-		#global_translate(Vector2(5 if color_flipped else -5, 0))
-		freeze = false
-		
-		rotate(-hit_angle * 2 if !color_flipped else hit_angle * 2)
-		freeze = true
-	global_translate(Vector2(offset, 0))
+		hit_angle = -hit_angle
+		rotate(hit_angle * 2)
+	#global_translate(Vector2(offset, 0))
 	
 	# Flip the sprite
 	sprite_2d.flip_v = !color_flipped
@@ -114,9 +110,6 @@ func flip(color_flipped: bool, distance: float) -> void:
 		v.y = -v.y
 		new_polygon.append(v)
 	collider.polygon = new_polygon
-	
-	# Apply the offset after flipping
-	
 	
 	# Flip angular limits
 	var temp_limit = rad_to_deg(hand.angular_limit_lower)
@@ -134,4 +127,4 @@ func flip(color_flipped: bool, distance: float) -> void:
 	
 	if is_on_wall:
 		freeze = true
-		is_on_wall = false
+		#is_on_wall = false
