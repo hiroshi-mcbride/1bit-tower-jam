@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://dmghy70lwdw71"]
+
+[ext_resource type="Texture2D" uid="uid://le8is6b8elrb" path="res://icon.svg" id="1_gr5bu"]
+[ext_resource type="Script" path="res://assets/bat/bat.gd" id="1_xpgfq"]
+[ext_resource type="PackedScene" uid="uid://di00aoah5eh3v" path="res://assets/components/danger_sensor_component.tscn" id="3_lj35r"]
+[ext_resource type="PackedScene" uid="uid://y4d1uca33vw0" path="res://assets/components/health_component.tscn" id="4_vfycp"]
+[ext_resource type="PackedScene" uid="uid://dmuxv52hjgxge" path="res://assets/components/hitbox_component.tscn" id="5_qw8w4"]
+[ext_resource type="PackedScene" uid="uid://doratto4po304" path="res://assets/components/hurtbox_component.tscn" id="6_qrgix"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ticgl"]
+radius = 25.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rgt74"]
+radius = 25.0
+
+[node name="Bat" type="Node2D"]
+script = ExtResource("1_xpgfq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_gr5bu")
+
+[node name="DangerSensorComponent" parent="." instance=ExtResource("3_lj35r")]
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_vfycp")]
+health = 1
+
+[node name="HitboxComponent" parent="." instance=ExtResource("5_qw8w4")]
+collision_layer = 0
+damage = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_ticgl")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health") instance=ExtResource("6_qrgix")]
+collision_layer = 0
+collision_mask = 4
+health = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CircleShape2D_rgt74")
