@@ -1,6 +1,7 @@
 class_name Player
 extends RigidBody2D
 
+@onready var health_component: HealthComponent = $HealthComponent
 
 @export var ice_axe_left: IceAxe
 @export var ice_axe_right: IceAxe
@@ -12,7 +13,7 @@ var color_flipped: bool = false
 var flip_entered: bool = false
 var distance: float
 var flip_position: Vector2 = Vector2.ZERO
-
+var saved_spawn_pos: Vector2
 
 func _ready() -> void:
 	# Singleton pattern
@@ -25,6 +26,12 @@ func _ready() -> void:
 	# Get sprite references that are inside other scenes
 	sprites.append(ice_axe_left.sprite_2d)
 	sprites.append(ice_axe_right.sprite_2d)
+	
+	# Connect signals
+	health_component.die.connect(respawn)
+	health_component.hit.connect(hit)
+	
+	saved_spawn_pos = global_position
 
 
 func _physics_process(_delta: float) -> void:
@@ -103,4 +110,13 @@ func color_switch(_is_left_axe: bool) -> void:
 
 
 func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
+	pass
+
+
+func respawn() -> void:
+	global_position = saved_spawn_pos
+	health_component.gain_health(1)
+
+
+func hit() -> void:
 	pass

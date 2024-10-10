@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://l0g2a5t8bhtb"]
+[gd_scene load_steps=13 format=3 uid="uid://l0g2a5t8bhtb"]
 
 [ext_resource type="PackedScene" uid="uid://da0rv0t3qamn" path="res://assets/player/ice_axe_q.tscn" id="1_f4ijt"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_l1tqt"]
@@ -7,12 +7,17 @@
 [ext_resource type="Texture2D" uid="uid://ccsxsn6d210bc" path="res://assets/player/head.png" id="5_vo8gi"]
 [ext_resource type="Texture2D" uid="uid://cp5j7ttpfxprd" path="res://assets/player/leg.png" id="6_ba137"]
 [ext_resource type="PackedScene" uid="uid://cqlf5ehegyfsc" path="res://assets/player/ice_axe_e.tscn" id="7_kupps"]
+[ext_resource type="PackedScene" uid="uid://y4d1uca33vw0" path="res://assets/components/health_component.tscn" id="8_bxfbr"]
+[ext_resource type="PackedScene" uid="uid://doratto4po304" path="res://assets/components/hurtbox_component.tscn" id="9_i0wew"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i7eyc"]
 size = Vector2(14, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5bc4"]
 size = Vector2(23, 6)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wehpb"]
+radius = 15.0
 
 [node name="Player" type="RigidBody2D" node_paths=PackedStringArray("ice_axe_left", "ice_axe_right", "rigidbodies", "sprites")]
 position = Vector2(0, -12)
@@ -137,3 +142,12 @@ unflipped_angular_limit_upper = 120.0
 unflipped_on_wall_angular_limit_upper = 140.0
 flipped_angular_limit_upper = 20.0
 flipped_on_wall_angular_limit_upper = 60.0
+
+[node name="HealthComponent" parent="." instance=ExtResource("8_bxfbr")]
+health = 1
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health") instance=ExtResource("9_i0wew")]
+health = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CircleShape2D_wehpb")
