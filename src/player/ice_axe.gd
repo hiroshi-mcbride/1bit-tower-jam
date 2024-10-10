@@ -92,17 +92,14 @@ func flip(color_flipped: bool, distance: float) -> void:
 	hand_torque = -hand_torque
 	shoulder_torque = -shoulder_torque
 	
-	# Remove the previous translation if the ice axe is on the wall,
-	# and calculate the x offset between the ice axe and trigger
-	#var offset = 0
+	# Apply rotation based on at what angle the axe hit the wall
 	if is_on_wall:
 		hit_angle = -hit_angle
 		rotate(hit_angle * 2)
-	#global_translate(Vector2(offset, 0))
 	
 	# Flip the sprite
 	sprite_2d.flip_v = !color_flipped
-	sprite_2d.offset = Vector2(0, -48.0 if color_flipped else 0.0)
+	sprite_2d.offset = Vector2(0, -18.0 if color_flipped else 0.0)
 	
 	# Flip all vertices in the Polygon collider
 	var new_polygon: PackedVector2Array
@@ -127,4 +124,7 @@ func flip(color_flipped: bool, distance: float) -> void:
 	
 	if is_on_wall:
 		freeze = true
+		
+		# not sure why this was set to false? 
+		# i'm leaving it true so the player can flip back and forth
 		#is_on_wall = false
