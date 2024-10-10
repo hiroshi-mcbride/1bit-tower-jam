@@ -1,16 +1,28 @@
+class_name Player
 extends RigidBody2D
+
 
 @export var ice_axe_left: IceAxe
 @export var ice_axe_right: IceAxe
 @export var rigidbodies: Array[RigidBody2D]
 @export var sprites: Array[CanvasItem]
 
+static var instance: Player = null
 var color_flipped: bool = false
 var flip_entered: bool = false
 var distance: float
 var flip_position: Vector2 = Vector2.ZERO
 
+
 func _ready() -> void:
+	# Singleton pattern
+	if instance == null:
+		instance = self
+	if instance != self:
+		push_warning("Multiple players found in scene, deleting last loaded")
+		queue_free()
+	
+	# Get sprite references that are inside other scenes
 	sprites.append(ice_axe_left.sprite_2d)
 	sprites.append(ice_axe_right.sprite_2d)
 
