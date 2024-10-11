@@ -30,6 +30,7 @@ autoplay = "flying"
 frame_progress = 0.307107
 
 [node name="DangerSensorComponent" parent="." instance=ExtResource("3_cciob")]
+flipped = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_rd471")]
 health = 1
