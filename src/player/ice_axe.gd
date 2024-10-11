@@ -123,7 +123,7 @@ func stop_pulling() -> void:
 	hand.motor_enabled = false
 
 
-func flip(color_flipped: bool, _distance: float) -> void:
+func flip(color_flipped: bool, distance: float) -> void:
 	flipped = color_flipped
 	
 	# Flip torque directions
@@ -132,6 +132,9 @@ func flip(color_flipped: bool, _distance: float) -> void:
 	
 	# Apply rotation based on at what angle the axe hit the wall, and flip angular limits
 	if is_on_wall:
+		# Undo distance translation
+		global_translate(Vector2(-distance if color_flipped else distance, 0))
+		
 		hit_angle = -hit_angle
 		rotate(hit_angle * 2)
 		hand.angular_limit_lower = deg_to_rad(flipped_on_wall_angular_limit_lower if flipped else unflipped_on_wall_angular_limit_lower)
