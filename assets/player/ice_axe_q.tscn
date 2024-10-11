@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://da0rv0t3qamn"]
+[gd_scene load_steps=5 format=3 uid="uid://bvnv1y16o8ah7"]
 
 [ext_resource type="Script" path="res://src/player/ice_axe.gd" id="1_52qgx"]
 [ext_resource type="Texture2D" uid="uid://d0ffhrh7iymlh" path="res://assets/player/iceaxe_v5.1.png" id="2_uukd0"]
@@ -10,6 +10,7 @@ rough = true
 radius = 2.0
 
 [node name="IceAxe_Q" type="RigidBody2D"]
+collision_layer = 0
 collision_mask = 2
 mass = 2.0
 physics_material_override = SubResource("PhysicsMaterial_pl3v0")

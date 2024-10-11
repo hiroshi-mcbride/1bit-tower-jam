@@ -26,7 +26,7 @@ enum PHYSICS_2D {
 PLAYER = 1,
 WHITE = 2,
 BLACK = 4,
-LAYER_4 = 8,
+BAT = 8,
 LAYER_5 = 16,
 LAYER_6 = 32,
 LAYER_7 = 64,

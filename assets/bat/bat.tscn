@@ -6,25 +6,30 @@
 [ext_resource type="PackedScene" uid="uid://y4d1uca33vw0" path="res://assets/components/health_component.tscn" id="4_vfycp"]
 [ext_resource type="PackedScene" uid="uid://dmuxv52hjgxge" path="res://assets/components/hitbox_component.tscn" id="5_qw8w4"]
 [ext_resource type="PackedScene" uid="uid://doratto4po304" path="res://assets/components/hurtbox_component.tscn" id="6_qrgix"]
-[ext_resource type="Script" path="res://assets/states/state_machine.gd" id="7_tyhce"]
+[ext_resource type="Script" path="res://src/states/state_machine.gd" id="7_tyhce"]
 [ext_resource type="Script" path="res://assets/bat/bat_idle.gd" id="8_h8d6a"]
 [ext_resource type="Script" path="res://assets/bat/bat_chase.gd" id="9_3to8h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k8t6y"]
+radius = 3.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ticgl"]
-radius = 25.0
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rgt74"]
-radius = 25.0
+radius = 4.0
 
 [node name="Bat" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 2
 script = ExtResource("1_xpgfq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 4)
 sprite_frames = ExtResource("2_wd3hf")
 animation = &"flying"
-frame_progress = 0.850535
+autoplay = "flying"
+frame_progress = 0.487358
 
 [node name="PhysicsCollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_k8t6y")
@@ -35,14 +40,14 @@ shape = SubResource("CircleShape2D_k8t6y")
 health = 1
 
 [node name="HitboxComponent" parent="." instance=ExtResource("5_qw8w4")]
-collision_layer = 0
+collision_layer = 8
 damage = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_ticgl")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health") instance=ExtResource("6_qrgix")]
-collision_layer = 0
+collision_layer = 8
 collision_mask = 4
 health = NodePath("../HealthComponent")
 

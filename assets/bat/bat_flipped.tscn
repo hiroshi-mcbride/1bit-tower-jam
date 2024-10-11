@@ -1,0 +1,65 @@
+[gd_scene load_steps=13 format=3 uid="uid://b65qohlwd6fe1"]
+
+[ext_resource type="Script" path="res://assets/bat/bat.gd" id="1_d2lr7"]
+[ext_resource type="SpriteFrames" uid="uid://qm8qnoggaj8j" path="res://assets/bat/bat_sprite_frames.tres" id="2_pwub2"]
+[ext_resource type="PackedScene" uid="uid://di00aoah5eh3v" path="res://assets/components/danger_sensor_component.tscn" id="3_cciob"]
+[ext_resource type="PackedScene" uid="uid://y4d1uca33vw0" path="res://assets/components/health_component.tscn" id="4_rd471"]
+[ext_resource type="PackedScene" uid="uid://dmuxv52hjgxge" path="res://assets/components/hitbox_component.tscn" id="5_fimw2"]
+[ext_resource type="PackedScene" uid="uid://doratto4po304" path="res://assets/components/hurtbox_component.tscn" id="6_i21ut"]
+[ext_resource type="Script" path="res://src/states/state_machine.gd" id="7_vaq4t"]
+[ext_resource type="Script" path="res://assets/bat/bat_idle.gd" id="8_onbv5"]
+[ext_resource type="Script" path="res://assets/bat/bat_chase.gd" id="9_4ev8j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k8t6y"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ticgl"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rgt74"]
+radius = 4.0
+
+[node name="Bat" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_d2lr7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 4)
+sprite_frames = ExtResource("2_pwub2")
+animation = &"flying"
+frame_progress = 0.307107
+
+[node name="PhysicsCollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k8t6y")
+
+[node name="DangerSensorComponent" parent="." instance=ExtResource("3_cciob")]
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_rd471")]
+health = 1
+
+[node name="HitboxComponent" parent="." instance=ExtResource("5_fimw2")]
+collision_layer = 8
+damage = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_ticgl")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health") instance=ExtResource("6_i21ut")]
+collision_layer = 8
+collision_mask = 2
+health = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CircleShape2D_rgt74")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("7_vaq4t")
+initial_state = NodePath("BatIdle")
+
+[node name="BatIdle" type="Node" parent="StateMachine"]
+script = ExtResource("8_onbv5")
+
+[node name="BatChase" type="Node" parent="StateMachine"]
+script = ExtResource("9_4ev8j")

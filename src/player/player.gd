@@ -109,14 +109,13 @@ func color_switch(_is_left_axe: bool) -> void:
 	distance = 0
 
 
-func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
-	pass
-
-
 func respawn() -> void:
 	global_position = saved_spawn_pos
-	health_component.gain_health(1)
+	health_component.gain_health(100)
 
 
 func hit() -> void:
-	pass
+	print("hit")
+	ice_axe_left.drop()
+	ice_axe_right.drop()
+	health_component.gain_health(1)

@@ -3,7 +3,7 @@ extends BatState
 
 
 const STATE_TYPE = StateType.IDLE
-const CHASE_START_DISTANCE: float = 50.0
+const CHASE_START_DISTANCE: float = 125.0
 
 
 func get_state_type() -> int:
