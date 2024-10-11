@@ -1,0 +1,31 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=13 format=3 uid="uid://xh0w7obt8x52"]
+
+[ext_resource type="AudioStream" uid="uid://hqdxieoajlf0" path="res://assets/sfx/axe_swing-001.ogg" id="1_8avps"]
+[ext_resource type="AudioStream" uid="uid://bhkg23w0dtfvl" path="res://assets/sfx/axe_swing-002.ogg" id="2_w5gao"]
+[ext_resource type="AudioStream" uid="uid://b1memn6vtkcib" path="res://assets/sfx/axe_swing-011.ogg" id="3_rl8da"]
+[ext_resource type="AudioStream" uid="uid://dhj3tjr5k080k" path="res://assets/sfx/axe_swing-012.ogg" id="4_cur3v"]
+[ext_resource type="AudioStream" uid="uid://7o57onufj3h5" path="res://assets/sfx/axe_swing-003.ogg" id="5_gfnmc"]
+[ext_resource type="AudioStream" uid="uid://dbhxpw161qv7p" path="res://assets/sfx/axe_swing-004.ogg" id="6_lst2i"]
+[ext_resource type="AudioStream" uid="uid://b2eqaprgm205s" path="res://assets/sfx/axe_swing-005.ogg" id="7_qsvna"]
+[ext_resource type="AudioStream" uid="uid://bw48c7qs6mkwv" path="res://assets/sfx/axe_swing-006.ogg" id="8_0jtnl"]
+[ext_resource type="AudioStream" uid="uid://b1oxu1g23s1gm" path="res://assets/sfx/axe_swing-007.ogg" id="9_2u3ta"]
+[ext_resource type="AudioStream" uid="uid://blea8nyei6h4q" path="res://assets/sfx/axe_swing-008.ogg" id="10_y6s6b"]
+[ext_resource type="AudioStream" uid="uid://blrem31f5l6i7" path="res://assets/sfx/axe_swing-009.ogg" id="11_it1t5"]
+[ext_resource type="AudioStream" uid="uid://ddghi2u0vsuct" path="res://assets/sfx/axe_swing-010.ogg" id="12_1ycdt"]
+
+[resource]
+random_pitch = 1.1
+random_volume_offset_db = 0.1
+streams_count = 12
+stream_0/stream = ExtResource("1_8avps")
+stream_1/stream = ExtResource("2_w5gao")
+stream_2/stream = ExtResource("5_gfnmc")
+stream_3/stream = ExtResource("6_lst2i")
+stream_4/stream = ExtResource("7_qsvna")
+stream_5/stream = ExtResource("8_0jtnl")
+stream_6/stream = ExtResource("9_2u3ta")
+stream_7/stream = ExtResource("10_y6s6b")
+stream_8/stream = ExtResource("11_it1t5")
+stream_9/stream = ExtResource("12_1ycdt")
+stream_10/stream = ExtResource("3_rl8da")
+stream_11/stream = ExtResource("4_cur3v")

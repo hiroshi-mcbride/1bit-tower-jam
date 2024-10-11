@@ -24,6 +24,7 @@ extends RigidBody2D
 @onready var timer: Timer = $Timer
 
 signal axe_hit()
+signal axe_swing()
 
 var flipped: bool = false
 var hit_pos: Vector2 = Vector2.ZERO
@@ -88,6 +89,7 @@ func swing() -> void:
 	hand.motor_target_velocity = -shoulder_torque
 	hand.motor_enabled = true
 	ray_cast_2d.enabled = true
+	axe_swing.emit()
 	timer.start()
 
 
