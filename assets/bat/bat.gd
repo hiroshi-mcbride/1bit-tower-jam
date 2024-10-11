@@ -18,3 +18,7 @@ func die() -> void:
 
 func hit() -> void:
 	pass
+
+
+func _on_hurtbox_component_area_entered(_area: Area2D) -> void:
+	die()

@@ -29,6 +29,7 @@ offset = Vector2(0, -18)
 
 [node name="Area2D" type="Area2D" parent="."]
 rotation = -3.14159
+collision_layer = 0
 collision_mask = 2
 
 [node name="Trigger" type="CollisionShape2D" parent="Area2D"]

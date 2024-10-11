@@ -14,10 +14,10 @@
 radius = 3.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ticgl"]
-radius = 8.0
+radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rgt74"]
-radius = 4.0
+radius = 5.0
 
 [node name="Bat" type="CharacterBody2D"]
 collision_layer = 8
@@ -40,7 +40,7 @@ shape = SubResource("CircleShape2D_k8t6y")
 health = 1
 
 [node name="HitboxComponent" parent="." instance=ExtResource("5_qw8w4")]
-collision_layer = 8
+collision_layer = 0
 damage = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
@@ -48,7 +48,7 @@ shape = SubResource("CircleShape2D_ticgl")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health") instance=ExtResource("6_qrgix")]
 collision_layer = 8
-collision_mask = 4
+collision_mask = 2
 health = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
@@ -63,3 +63,6 @@ script = ExtResource("8_h8d6a")
 
 [node name="BatChase" type="Node" parent="StateMachine"]
 script = ExtResource("9_3to8h")
+
+[connection signal="area_entered" from="HurtboxComponent" to="." method="_on_hurtbox_component_area_entered"]
+[connection signal="area_shape_entered" from="HurtboxComponent" to="HurtboxComponent" method="_on_area_shape_entered"]

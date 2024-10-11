@@ -18,7 +18,7 @@ scale = Vector2(1, 0.940958)
 [node name="WhiteStaticBody" type="StaticBody2D" parent="." node_paths=PackedStringArray("other_helper")]
 position = Vector2(-2, -7.6988)
 collision_layer = 2
-collision_mask = 0
+collision_mask = 10
 physics_material_override = SubResource("PhysicsMaterial_1n8qv")
 script = ExtResource("1_c36oo")
 other_helper = NodePath("../BlackStaticBody")
@@ -69,7 +69,7 @@ collision_polygon = NodePath("..")
 [node name="BlackStaticBody" type="StaticBody2D" parent="." node_paths=PackedStringArray("other_helper")]
 position = Vector2(-2, -7.6988)
 collision_layer = 4
-collision_mask = 0
+collision_mask = 12
 physics_material_override = SubResource("PhysicsMaterial_pckde")
 script = ExtResource("1_c36oo")
 other_helper = NodePath("../WhiteStaticBody")
@@ -134,5 +134,34 @@ scale = Vector2(1, 0.833126)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(1108, -7146.12, 681, -6515.96, 1235, -6957.67, 1777, -6485.95, 1447, -7141.32)
 
-[node name="Bat" parent="." instance=ExtResource("5_tc25b")]
-position = Vector2(-42, -147.981)
+[node name="EnemiesWhite" type="Node" parent="."]
+
+[node name="Bat" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(-54, -100)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat2" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(253, -505)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat3" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(97, -230)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat4" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(164, -603)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat5" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(219, -242)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat6" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(191, -308)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat7" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(120, -366)
+scale = Vector2(1, 0.940958)
+
+[node name="EnemiesBlack" type="Node" parent="."]

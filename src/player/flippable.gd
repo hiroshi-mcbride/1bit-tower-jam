@@ -1,5 +1,6 @@
 class_name Flippable extends Node2D
 
+
 var is_flipped: bool = false:
 	get:
 		return is_flipped
