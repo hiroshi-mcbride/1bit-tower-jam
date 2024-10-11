@@ -20,5 +20,11 @@ func hit() -> void:
 	pass
 
 
-func _on_hurtbox_component_area_entered(_area: Area2D) -> void:
+func _on_hurtbox_component_body_entered(_body: Node2D) -> void:
+	# When hitting a wll
+	die()
+
+
+func _on_hitbox_component_area_entered(_area: Area2D) -> void:
+	# When hitting a player
 	die()

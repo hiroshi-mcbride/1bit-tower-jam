@@ -115,7 +115,6 @@ func respawn() -> void:
 
 
 func hit() -> void:
-	print("hit")
 	ice_axe_left.drop()
 	ice_axe_right.drop()
 	health_component.gain_health(1)

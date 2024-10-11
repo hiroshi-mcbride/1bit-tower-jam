@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b65qohlwd6fe1"]
+[gd_scene load_steps=12 format=3 uid="uid://b65qohlwd6fe1"]
 
 [ext_resource type="Script" path="res://assets/bat/bat.gd" id="1_d2lr7"]
 [ext_resource type="SpriteFrames" uid="uid://qm8qnoggaj8j" path="res://assets/bat/bat_sprite_frames.tres" id="2_pwub2"]
@@ -9,9 +9,6 @@
 [ext_resource type="Script" path="res://src/states/state_machine.gd" id="7_vaq4t"]
 [ext_resource type="Script" path="res://assets/bat/bat_idle.gd" id="8_onbv5"]
 [ext_resource type="Script" path="res://assets/bat/bat_chase.gd" id="9_4ev8j"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_k8t6y"]
-radius = 3.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ticgl"]
 radius = 8.0
@@ -29,15 +26,15 @@ modulate = Color(0, 0, 0, 1)
 position = Vector2(0, 4)
 sprite_frames = ExtResource("2_pwub2")
 animation = &"flying"
+autoplay = "flying"
 frame_progress = 0.307107
 
-[node name="PhysicsCollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_k8t6y")
-
 [node name="DangerSensorComponent" parent="." instance=ExtResource("3_cciob")]
+flipped = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_rd471")]
 health = 1
+maxHealth = 1
 
 [node name="HitboxComponent" parent="." instance=ExtResource("5_fimw2")]
 collision_layer = 0
@@ -47,7 +44,7 @@ damage = 1
 shape = SubResource("CircleShape2D_ticgl")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health") instance=ExtResource("6_i21ut")]
-collision_layer = 8
+collision_layer = 0
 collision_mask = 4
 health = NodePath("../HealthComponent")
 
@@ -63,3 +60,6 @@ script = ExtResource("8_onbv5")
 
 [node name="BatChase" type="Node" parent="StateMachine"]
 script = ExtResource("9_4ev8j")
+
+[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
+[connection signal="body_entered" from="HurtboxComponent" to="." method="_on_hurtbox_component_body_entered"]

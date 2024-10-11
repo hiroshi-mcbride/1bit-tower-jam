@@ -5,7 +5,7 @@ extends BatState
 const STATE_TYPE = StateType.CHASE
 const MIN_CHASE_SPEED: float = 60.0
 const MAX_CHASE_SPEED: float = 200.0
-const STEERING_VALUE: float = 5
+const STEERING_VALUE: float = 3
 const SMOOTHING_VALUE: float = 0.9
 var directions: PackedVector2Array = [Vector2(1,0),Vector2(1,-1),Vector2(0,-1),Vector2(-1,-1),Vector2(-1,0),Vector2(-1,1),Vector2(0,1),Vector2(1,1)]
 

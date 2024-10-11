@@ -5,8 +5,16 @@ extends Node
 @export var danger_value: float = 5.0
 @export var danger_secondary_value: float = 2.0
 @export var raycasts: Array[RayCast2D]
+@export var flipped: bool
 
 var danger_array: Array
+
+
+func _ready() -> void:
+	if flipped:
+		for raycast in raycasts:
+			raycast.collision_mask = LayerNames.PHYSICS_2D.BLACK if flipped else LayerNames.PHYSICS_2D.WHITE
+	
 
 
 func _physics_process(_delta: float) -> void:
