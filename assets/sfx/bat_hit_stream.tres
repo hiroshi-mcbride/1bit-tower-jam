@@ -1,0 +1,17 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://duvpqnc2qfd0g"]
+
+[ext_resource type="AudioStream" uid="uid://ialh5fulmrqc" path="res://assets/sfx/bat_hit-001.ogg" id="1_ga0y4"]
+[ext_resource type="AudioStream" uid="uid://jdhoacj6r6j" path="res://assets/sfx/bat_hit-002.ogg" id="2_ugoat"]
+[ext_resource type="AudioStream" uid="uid://45pvcu8vmlv8" path="res://assets/sfx/bat_hit-003.ogg" id="3_14omi"]
+[ext_resource type="AudioStream" uid="uid://b5gagbmsn3uoc" path="res://assets/sfx/bat_hit-004.ogg" id="4_jbme4"]
+[ext_resource type="AudioStream" uid="uid://dakegd37r5ve3" path="res://assets/sfx/bat_hit-005.ogg" id="5_txje1"]
+
+[resource]
+random_pitch = 1.1
+random_volume_offset_db = 0.1
+streams_count = 5
+stream_0/stream = ExtResource("1_ga0y4")
+stream_1/stream = ExtResource("2_ugoat")
+stream_2/stream = ExtResource("3_14omi")
+stream_3/stream = ExtResource("4_jbme4")
+stream_4/stream = ExtResource("5_txje1")
