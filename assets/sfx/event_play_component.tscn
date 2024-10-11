@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dow1gqxx3y27j"]
+
+[ext_resource type="Script" path="res://src/audio/event_oneshot_component.gd" id="1_7elgv"]
+
+[node name="EventPlayComponent" type="Node2D"]
+script = ExtResource("1_7elgv")

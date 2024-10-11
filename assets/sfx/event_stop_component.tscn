@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbivaqyebe0kt"]
+
+[ext_resource type="Script" path="res://src/audio/event_stop_component.gd" id="1_p5o6n"]
+
+[node name="EventStopComponent" type="Node2D"]
+script = ExtResource("1_p5o6n")

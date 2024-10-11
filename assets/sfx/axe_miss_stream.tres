@@ -1,0 +1,19 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=7 format=3 uid="uid://dyscwbw8iu6n8"]
+
+[ext_resource type="AudioStream" uid="uid://cv7a8on0qrgch" path="res://assets/sfx/axe_miss-001.ogg" id="1_nog32"]
+[ext_resource type="AudioStream" uid="uid://c3omfca7fpqyd" path="res://assets/sfx/axe_miss-002.ogg" id="2_p3sxr"]
+[ext_resource type="AudioStream" uid="uid://bos2uvfpny46a" path="res://assets/sfx/axe_miss-003.ogg" id="3_gvx62"]
+[ext_resource type="AudioStream" uid="uid://cy6rmquw1vaq4" path="res://assets/sfx/axe_miss-004.ogg" id="4_vxoo7"]
+[ext_resource type="AudioStream" uid="uid://s8ljs0gloxjf" path="res://assets/sfx/axe_miss-005.ogg" id="5_fjxi1"]
+[ext_resource type="AudioStream" uid="uid://cttp1yciuskle" path="res://assets/sfx/axe_miss-006.ogg" id="6_ok246"]
+
+[resource]
+random_pitch = 1.1
+random_volume_offset_db = 0.1
+streams_count = 6
+stream_0/stream = ExtResource("1_nog32")
+stream_1/stream = ExtResource("2_p3sxr")
+stream_2/stream = ExtResource("3_gvx62")
+stream_3/stream = ExtResource("4_vxoo7")
+stream_4/stream = ExtResource("5_fjxi1")
+stream_5/stream = ExtResource("6_ok246")
