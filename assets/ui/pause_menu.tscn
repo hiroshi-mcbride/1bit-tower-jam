@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkrrx5tfhjgkx"]
+[gd_scene load_steps=3 format=3 uid="uid://dkrrx5tfhjgkx"]
 
 [ext_resource type="Script" path="res://src/ui/pause_menu.gd" id="1_edowt"]
+[ext_resource type="Texture2D" uid="uid://bbpy6oeojkdld" path="res://assets/ui/paused.png" id="2_4e1eb"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -20,19 +21,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.196078)
+color = Color(0, 0, 0, 0.447059)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="overlay"]
+[node name="TextureRect" type="TextureRect" parent="overlay"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -165.0
-offset_top = -197.0
-offset_right = 164.0
-offset_bottom = -142.0
+offset_left = -23.5
+offset_top = -6.0
+offset_right = 23.5
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "PAUSED"
+texture = ExtResource("2_4e1eb")

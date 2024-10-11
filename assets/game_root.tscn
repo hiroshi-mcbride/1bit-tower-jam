@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ckbx81cqrqyme"]
 
 [ext_resource type="Script" path="res://src/global/scene_manager.gd" id="1_qafgu"]
-[ext_resource type="PackedScene" uid="uid://2sfwp1rvu1q0" path="res://assets/ui/main_menu.tscn" id="2_tloi7"]
+[ext_resource type="PackedScene" uid="uid://dt8c6rv0t35au" path="res://assets/ui/splash_screen.tscn" id="2_cb8ne"]
 [ext_resource type="PackedScene" uid="uid://dkrrx5tfhjgkx" path="res://assets/ui/pause_menu.tscn" id="3_8l3r8"]
 [ext_resource type="PackedScene" uid="uid://c204g7tfrfxb8" path="res://assets/levels/level.tscn" id="4_arsbm"]
 [ext_resource type="AudioStream" uid="uid://dlrkr1bphkrrn" path="res://assets/music/music_stream.tres" id="5_upb10"]
@@ -9,7 +9,7 @@
 [node name="GameRoot" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_qafgu")
-main_menu_file = ExtResource("2_tloi7")
+first_menu_file = ExtResource("2_cb8ne")
 pause_menu_file = ExtResource("3_8l3r8")
 first_level = ExtResource("4_arsbm")
 

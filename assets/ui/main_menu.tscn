@@ -23,5 +23,5 @@ offset_right = 49.0
 offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "start game"
+text = "startg ame2"
 script = ExtResource("1_mpptt")

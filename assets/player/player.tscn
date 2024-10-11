@@ -186,7 +186,7 @@ bus = &"SFX"
 
 [node name="BatHitStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_8ltb1")
-volume_db = -8.0
+volume_db = -5.0
 bus = &"SFX"
 
 [node name="EventPlayComponent" parent="BatHitStreamPlayer" instance=ExtResource("11_64ofr")]

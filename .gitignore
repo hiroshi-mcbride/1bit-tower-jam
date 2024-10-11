@@ -6,3 +6,4 @@
 addons/godot-rapier2d/bin/~libgodot_rapier.windows.x86_64-pc-windows-msvc.dll
 addons/godot-rapier2d/bin/~libgodot_rapier.windows.x86_64-pc-windows-msvc.dll~RF4c0135e.TMP
 *.TMP
+builds
