@@ -21,7 +21,7 @@ func hit() -> void:
 
 
 func _on_hurtbox_component_body_entered(_body: Node2D) -> void:
-	# When hitting a wall
+	# When hitting a wll
 	die()
 
 

@@ -62,3 +62,4 @@ script = ExtResource("8_onbv5")
 script = ExtResource("9_4ev8j")
 
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
+[connection signal="body_entered" from="HurtboxComponent" to="." method="_on_hurtbox_component_body_entered"]
