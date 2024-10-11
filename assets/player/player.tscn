@@ -178,7 +178,7 @@ bus = &"SFX"
 
 [node name="AxeMissStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_oicgn")
-volume_db = -9.674
+volume_db = -14.0
 bus = &"SFX"
 
 [node name="EventPlayComponent" parent="AxeMissStreamPlayer" instance=ExtResource("11_64ofr")]
