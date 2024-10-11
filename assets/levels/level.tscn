@@ -265,14 +265,6 @@ scale = Vector2(1, 0.940958)
 position = Vector2(-443, 74)
 scale = Vector2(1, 0.940958)
 
-[node name="Bat37" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(-520, 471)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat38" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(-527, 870)
-scale = Vector2(1, 0.940958)
-
 [node name="Bat39" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(-188, 1004)
 scale = Vector2(1, 0.940958)
