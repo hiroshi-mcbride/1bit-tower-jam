@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c204g7tfrfxb8"]
+[gd_scene load_steps=9 format=3 uid="uid://c204g7tfrfxb8"]
 
 [ext_resource type="Script" path="res://src/world/polygontool.gd" id="1_6pbfe"]
 [ext_resource type="Script" path="res://src/world/polygontoolhelper.gd" id="1_c36oo"]
 [ext_resource type="PackedScene" uid="uid://l0g2a5t8bhtb" path="res://assets/player/player.tscn" id="2_mdfpn"]
 [ext_resource type="Script" path="res://src/world/polygon_shape_updater.gd" id="3_g0ryx"]
 [ext_resource type="PackedScene" uid="uid://dmghy70lwdw71" path="res://assets/bat/bat.tscn" id="5_tc25b"]
+[ext_resource type="PackedScene" uid="uid://b65qohlwd6fe1" path="res://assets/bat/bat_flipped.tscn" id="6_3rti8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1n8qv"]
 
@@ -137,7 +138,7 @@ polygon = PackedVector2Array(1108, -7146.12, 681, -6515.96, 1235, -6957.67, 1777
 [node name="EnemiesWhite" type="Node" parent="."]
 
 [node name="Bat" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(-54, -100)
+position = Vector2(-16, -174)
 scale = Vector2(1, 0.940958)
 
 [node name="Bat2" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
@@ -145,7 +146,7 @@ position = Vector2(253, -505)
 scale = Vector2(1, 0.940958)
 
 [node name="Bat3" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(97, -230)
+position = Vector2(-25, -398)
 scale = Vector2(1, 0.940958)
 
 [node name="Bat4" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
@@ -153,7 +154,7 @@ position = Vector2(164, -603)
 scale = Vector2(1, 0.940958)
 
 [node name="Bat5" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(219, -242)
+position = Vector2(48, -285)
 scale = Vector2(1, 0.940958)
 
 [node name="Bat6" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
@@ -165,3 +166,12 @@ position = Vector2(120, -366)
 scale = Vector2(1, 0.940958)
 
 [node name="EnemiesBlack" type="Node" parent="."]
+
+[node name="Bat" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(510, -218)
+
+[node name="Bat2" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(520, -304)
+
+[node name="Bat3" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(528, -393)

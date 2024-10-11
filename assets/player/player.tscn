@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://chl37bcttp2bi" path="res://assets/player/ice_axe_e.tscn" id="7_kupps"]
 [ext_resource type="PackedScene" uid="uid://y4d1uca33vw0" path="res://assets/components/health_component.tscn" id="8_bxfbr"]
 [ext_resource type="PackedScene" uid="uid://doratto4po304" path="res://assets/components/hurtbox_component.tscn" id="9_i0wew"]
-[ext_resource type="AudioStream" uid="uid://c7rgp4y1lldxt" path="res://assets/sfx/axe_hit_stream.tres" id="10_qfyim"]
-[ext_resource type="AudioStream" uid="uid://xh0w7obt8x52" path="res://assets/sfx/axe_swing_stream.tres" id="12_pdko4"]
+[ext_resource type="AudioStream" path="res://assets/sfx/axe_hit_stream.tres" id="10_qfyim"]
+[ext_resource type="AudioStream" path="res://assets/sfx/axe_swing_stream.tres" id="12_pdko4"]
 [ext_resource type="Script" path="res://src/audio/event_stop_component.gd" id="13_q1s8m"]
 [ext_resource type="Script" path="res://src/audio/event_oneshot_component.gd" id="19_h5js4"]
 
