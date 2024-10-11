@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://l0g2a5t8bhtb"]
+[gd_scene load_steps=18 format=3 uid="uid://l0g2a5t8bhtb"]
 
 [ext_resource type="PackedScene" uid="uid://bvnv1y16o8ah7" path="res://assets/player/ice_axe_q.tscn" id="1_f4ijt"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_l1tqt"]
@@ -10,9 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://y4d1uca33vw0" path="res://assets/components/health_component.tscn" id="8_bxfbr"]
 [ext_resource type="PackedScene" uid="uid://doratto4po304" path="res://assets/components/hurtbox_component.tscn" id="9_i0wew"]
 [ext_resource type="AudioStream" uid="uid://c7rgp4y1lldxt" path="res://assets/sfx/axe_hit_stream.tres" id="10_qfyim"]
+[ext_resource type="PackedScene" uid="uid://dow1gqxx3y27j" path="res://assets/sfx/event_play_component.tscn" id="11_64ofr"]
 [ext_resource type="AudioStream" uid="uid://xh0w7obt8x52" path="res://assets/sfx/axe_swing_stream.tres" id="12_pdko4"]
-[ext_resource type="Script" path="res://src/audio/event_stop_component.gd" id="13_q1s8m"]
-[ext_resource type="Script" path="res://src/audio/event_oneshot_component.gd" id="19_h5js4"]
+[ext_resource type="PackedScene" uid="uid://dbivaqyebe0kt" path="res://assets/sfx/event_stop_component.tscn" id="13_4wtxd"]
+[ext_resource type="AudioStream" uid="uid://dyscwbw8iu6n8" path="res://assets/sfx/axe_miss_stream.tres" id="14_oicgn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i7eyc"]
 size = Vector2(14, 26)
@@ -34,13 +35,14 @@ script = ExtResource("1_l1tqt")
 ice_axe_left = NodePath("IceAxe_Q")
 ice_axe_right = NodePath("IceAxe_E")
 rigidbodies = [NodePath("Arm_Q"), NodePath("Arm_E"), NodePath("IceAxe_Q"), NodePath("IceAxe_E"), NodePath(".")]
-sprites = [NodePath("torso"), NodePath("head"), NodePath("leg_r"), NodePath("leg_l"), NodePath("Arm_Q/Sprite2D"), NodePath("Arm_E/Sprite2D")]
+sprites = [NodePath("CollisionShape2D/torso"), NodePath("head"), NodePath("leg_r"), NodePath("leg_l"), NodePath("Arm_Q/Sprite2D"), NodePath("Arm_E/Sprite2D")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_i7eyc")
 
-[node name="torso" type="Sprite2D" parent="."]
+[node name="torso" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(0, -4)
 texture = ExtResource("2_s6hgc")
 
 [node name="head" type="Sprite2D" parent="."]
@@ -163,23 +165,29 @@ shape = SubResource("CapsuleShape2D_sw4us")
 stream = ExtResource("10_qfyim")
 bus = &"SFX"
 
-[node name="EventOneshotComponent" type="Node2D" parent="AxeHitStreamPlayer"]
-script = ExtResource("19_h5js4")
+[node name="EventPlayComponent" parent="AxeHitStreamPlayer" instance=ExtResource("11_64ofr")]
 
 [node name="AxeSwingStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_pdko4")
 volume_db = -5.321
 bus = &"SFX"
 
-[node name="EventOneshotComponent" type="Node2D" parent="AxeSwingStreamPlayer"]
-script = ExtResource("19_h5js4")
+[node name="EventPlayComponent" parent="AxeSwingStreamPlayer" instance=ExtResource("11_64ofr")]
 
-[node name="EventStopComponent" type="Node2D" parent="AxeSwingStreamPlayer"]
-script = ExtResource("13_q1s8m")
+[node name="EventStopComponent" parent="AxeSwingStreamPlayer" instance=ExtResource("13_4wtxd")]
 
-[connection signal="axe_hit" from="IceAxe_Q" to="AxeHitStreamPlayer/EventOneshotComponent" method="_on_invoke"]
+[node name="AxeMissStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_oicgn")
+volume_db = -9.674
+bus = &"SFX"
+
+[node name="EventPlayComponent" parent="AxeMissStreamPlayer" instance=ExtResource("11_64ofr")]
+
+[connection signal="axe_hit" from="IceAxe_Q" to="AxeHitStreamPlayer/EventPlayComponent" method="_on_invoke"]
 [connection signal="axe_hit" from="IceAxe_Q" to="AxeSwingStreamPlayer/EventStopComponent" method="_on_invoke"]
-[connection signal="axe_swing" from="IceAxe_Q" to="AxeSwingStreamPlayer/EventOneshotComponent" method="_on_invoke"]
-[connection signal="axe_hit" from="IceAxe_E" to="AxeHitStreamPlayer/EventOneshotComponent" method="_on_invoke"]
+[connection signal="axe_miss" from="IceAxe_Q" to="AxeMissStreamPlayer/EventPlayComponent" method="_on_invoke"]
+[connection signal="axe_swing" from="IceAxe_Q" to="AxeSwingStreamPlayer/EventPlayComponent" method="_on_invoke"]
+[connection signal="axe_hit" from="IceAxe_E" to="AxeHitStreamPlayer/EventPlayComponent" method="_on_invoke"]
 [connection signal="axe_hit" from="IceAxe_E" to="AxeSwingStreamPlayer/EventStopComponent" method="_on_invoke"]
-[connection signal="axe_swing" from="IceAxe_E" to="AxeSwingStreamPlayer/EventOneshotComponent" method="_on_invoke"]
+[connection signal="axe_miss" from="IceAxe_E" to="AxeMissStreamPlayer/EventPlayComponent" method="_on_invoke"]
+[connection signal="axe_swing" from="IceAxe_E" to="AxeSwingStreamPlayer/EventPlayComponent" method="_on_invoke"]
