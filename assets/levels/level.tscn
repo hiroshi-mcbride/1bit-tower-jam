@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://l0g2a5t8bhtb" path="res://assets/player/player.tscn" id="2_mdfpn"]
 [ext_resource type="Script" path="res://src/world/polygon_shape_updater.gd" id="3_g0ryx"]
 [ext_resource type="PackedScene" uid="uid://dmghy70lwdw71" path="res://assets/bat/bat.tscn" id="5_tc25b"]
+[ext_resource type="Script" path="res://assets/levels/chunk.gd" id="5_tvi1u"]
 [ext_resource type="PackedScene" uid="uid://b65qohlwd6fe1" path="res://assets/bat/bat_flipped.tscn" id="6_3rti8"]
-[ext_resource type="AudioStream" uid="uid://dfbf1c3h20t0h" path="res://assets/sfx/wind-sound-fx-long-loop.ogg" id="7_5j7se"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1n8qv"]
 
@@ -55,7 +55,7 @@ script = ExtResource("3_g0ryx")
 collision_polygon = NodePath("..")
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="WhiteStaticBody" node_paths=PackedStringArray("helper", "polygon2d", "other_collision_polygon", "other_polygon2d")]
-polygon = PackedVector2Array(3628, 578.134, 2987, 969.225, 2491, 1167.96, 1903, 1286.99, 1311, 1327.37, 569, 1407.08, -31, 1383.7, -297, 1173.27, -281, 703.538, -283, 467.609, -393, 577.071, -405, 1223.22, -59, 1483.59, 446, 1492.1, 1028, 1434.71, 1695, 1390.07, 2432, 1286.99, 2832, 1167.96, 3194, 980.915, 3713, 651.464, 3867, 412.346, 3938, 204.047)
+polygon = PackedVector2Array(2495, 719.479, 2987, 969.225, 2491, 1167.96, 1609, 950.095, 673, 833.193, 593, 838.507, 569, 1407.08, -31, 1383.7, -297, 1173.27, -281, 703.538, -283, 467.609, -393, 577.071, -405, 1223.22, -59, 1483.59, 446, 1492.1, 1028, 1434.71, 1695, 1390.07, 2432, 1286.99, 2832, 1167.96, 3194, 980.915, 3713, 651.464, 3867, 412.346, 3938, 204.047)
 script = ExtResource("1_6pbfe")
 helper = NodePath("..")
 polygon2d = NodePath("Polygon2D")
@@ -64,7 +64,7 @@ other_polygon2d = NodePath("../../BlackStaticBody/OtherCollisionPolygon2D3/Other
 generate = false
 
 [node name="Polygon2D" type="Polygon2D" parent="WhiteStaticBody/CollisionPolygon2D3" node_paths=PackedStringArray("collision_polygon")]
-polygon = PackedVector2Array(3628, 578.134, 2987, 969.225, 2491, 1167.96, 1903, 1286.99, 1311, 1327.37, 569, 1407.08, -31, 1383.7, -297, 1173.27, -281, 703.538, -283, 467.609, -393, 577.071, -405, 1223.22, -59, 1483.59, 446, 1492.1, 1028, 1434.71, 1695, 1390.07, 2432, 1286.99, 2832, 1167.96, 3194, 980.915, 3713, 651.464, 3867, 412.346, 3938, 204.047)
+polygon = PackedVector2Array(2495, 719.479, 2987, 969.225, 2491, 1167.96, 1609, 950.095, 673, 833.193, 593, 838.507, 569, 1407.08, -31, 1383.7, -297, 1173.27, -281, 703.538, -283, 467.609, -393, 577.071, -405, 1223.22, -59, 1483.59, 446, 1492.1, 1028, 1434.71, 1695, 1390.07, 2432, 1286.99, 2832, 1167.96, 3194, 980.915, 3713, 651.464, 3867, 412.346, 3938, 204.047)
 script = ExtResource("3_g0ryx")
 collision_polygon = NodePath("..")
 
@@ -77,11 +77,11 @@ script = ExtResource("1_c36oo")
 other_helper = NodePath("../WhiteStaticBody")
 
 [node name="OtherCollisionPolygon2D" type="CollisionPolygon2D" parent="BlackStaticBody"]
-polygon = PackedVector2Array(98, 3.99141, 250, -47.0204, 328, -136.291, 333, -260.633, 380, -556.076, 332, -678.292, 228, -728.241, 153, -792.006, 157, -889.779, 206, -906.782, 185, -1021.56, 142, -1029, 108, -1090.64, 161, -1141.65, 246, -1146.96, 263, -1067.26, 216, -1030.06, 240, -907.845, 286, -922.724, 402, -933.351, 522, -1009.87, 711, -1091.7, 945, -1132.08, 1175, -1066.19, 1612, -1089.57, 1765, -1254.3, 1617, -1430.72, 1388, -1417.96, 1190, -1297.87, 1052, -1213.92, 853, -1238.36, 580, -1228.79, 392, -1363.76, 406, -1461.54, 371, -1467.91, 349, -1432.84, 335, -1474.29, 306, -1441.34, 289, -1479.6, 270, -1453.03, 253, -1485.98, 250, -1500.86, 406.917, -1479.56, 415, -1542.3, 467, -1606.07, 588, -1634.76, 621, -1752.73, 625, -1850.5, 569, -1927.02, 524, -1965.28, 415, -2022.67, 323, -2063.05, 252, -2091.74, 249, -1933.4, 225, -1730.41, 224, -1820.74, 238, -2010.98, 237.146, -2095.49, 188, -2114.06, 160, -2233.09, -588, -2204.14, -583, 1283.8, -89, 1570.74, 336, 1554.8, 447, 1492.1, -58, 1483.59, -405, 1223.22, -393, 577.071, -283, 467.609, -288, 2.12549, -290, -116.902, -316, -114.777, -227, -173.228, -151, -119.028, -178, -122.216, -168, -56.3256, -187, -56.3256, -185, -2.12549)
+polygon = PackedVector2Array(98, 3.99141, 250, -47.0204, 328, -136.291, 333, -260.633, 380, -556.076, 332, -678.292, 228, -728.241, 153, -792.006, 157, -889.779, 206, -906.782, 185, -1021.56, 142, -1029, 108, -1090.64, 161, -1141.65, 246, -1146.96, 263, -1067.26, 216, -1030.06, 240, -907.845, 286, -922.724, 402, -933.351, 522, -1009.87, 711, -1091.7, 945, -1132.08, 1175, -1066.19, 1612, -1089.57, 1765, -1254.3, 1617, -1430.72, 1388, -1417.96, 1190, -1297.87, 1052, -1213.92, 853, -1238.36, 580, -1228.79, 392, -1363.76, 406, -1461.54, 371, -1467.91, 349, -1432.84, 335, -1474.29, 306, -1441.34, 289, -1479.6, 270, -1453.03, 253, -1485.98, 250, -1500.86, 406.917, -1479.56, 415, -1542.3, 467, -1606.07, 588, -1634.76, 621, -1752.73, 625, -1850.5, 569, -1927.02, 524, -1965.28, 415, -2022.67, 323, -2063.05, 252, -2091.74, 249, -1933.4, 225, -1730.41, 224, -1820.74, 238, -2010.98, 237.146, -2095.49, 188, -2114.06, 160, -2233.09, -588, -2204.14, -583, 1283.8, -89, 1570.74, 839, 1559.05, 1030, 1434.71, 447, 1492.1, -58, 1483.59, -405, 1223.22, -393, 577.071, -283, 467.609, -288, 2.12549, -290, -116.902, -316, -114.777, -227, -173.228, -151, -119.028, -178, -122.216, -168, -56.3256, -187, -56.3256, -185, -2.12549)
 
 [node name="OtherPolygon2D" type="Polygon2D" parent="BlackStaticBody/OtherCollisionPolygon2D" node_paths=PackedStringArray("collision_polygon")]
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(98, 3.99141, 250, -47.0204, 328, -136.291, 333, -260.633, 380, -556.076, 332, -678.292, 228, -728.241, 153, -792.006, 157, -889.779, 206, -906.782, 185, -1021.56, 142, -1029, 108, -1090.64, 161, -1141.65, 246, -1146.96, 263, -1067.26, 216, -1030.06, 240, -907.845, 286, -922.724, 402, -933.351, 522, -1009.87, 711, -1091.7, 945, -1132.08, 1175, -1066.19, 1612, -1089.57, 1765, -1254.3, 1617, -1430.72, 1388, -1417.96, 1190, -1297.87, 1052, -1213.92, 853, -1238.36, 580, -1228.79, 392, -1363.76, 406, -1461.54, 371, -1467.91, 349, -1432.84, 335, -1474.29, 306, -1441.34, 289, -1479.6, 270, -1453.03, 253, -1485.98, 250, -1500.86, 406.917, -1479.56, 415, -1542.3, 467, -1606.07, 588, -1634.76, 621, -1752.73, 625, -1850.5, 569, -1927.02, 524, -1965.28, 415, -2022.67, 323, -2063.05, 252, -2091.74, 249, -1933.4, 225, -1730.41, 224, -1820.74, 238, -2010.98, 237.146, -2095.49, 188, -2114.06, 160, -2233.09, -588, -2204.14, -583, 1283.8, -89, 1570.74, 336, 1554.8, 447, 1492.1, -58, 1483.59, -405, 1223.22, -393, 577.071, -283, 467.609, -288, 2.12549, -290, -116.902, -316, -114.777, -227, -173.228, -151, -119.028, -178, -122.216, -168, -56.3256, -187, -56.3256, -185, -2.12549)
+polygon = PackedVector2Array(98, 3.99141, 250, -47.0204, 328, -136.291, 333, -260.633, 380, -556.076, 332, -678.292, 228, -728.241, 153, -792.006, 157, -889.779, 206, -906.782, 185, -1021.56, 142, -1029, 108, -1090.64, 161, -1141.65, 246, -1146.96, 263, -1067.26, 216, -1030.06, 240, -907.845, 286, -922.724, 402, -933.351, 522, -1009.87, 711, -1091.7, 945, -1132.08, 1175, -1066.19, 1612, -1089.57, 1765, -1254.3, 1617, -1430.72, 1388, -1417.96, 1190, -1297.87, 1052, -1213.92, 853, -1238.36, 580, -1228.79, 392, -1363.76, 406, -1461.54, 371, -1467.91, 349, -1432.84, 335, -1474.29, 306, -1441.34, 289, -1479.6, 270, -1453.03, 253, -1485.98, 250, -1500.86, 406.917, -1479.56, 415, -1542.3, 467, -1606.07, 588, -1634.76, 621, -1752.73, 625, -1850.5, 569, -1927.02, 524, -1965.28, 415, -2022.67, 323, -2063.05, 252, -2091.74, 249, -1933.4, 225, -1730.41, 224, -1820.74, 238, -2010.98, 237.146, -2095.49, 188, -2114.06, 160, -2233.09, -588, -2204.14, -583, 1283.8, -89, 1570.74, 839, 1559.05, 1030, 1434.71, 447, 1492.1, -58, 1483.59, -405, 1223.22, -393, 577.071, -283, 467.609, -288, 2.12549, -290, -116.902, -316, -114.777, -227, -173.228, -151, -119.028, -178, -122.216, -168, -56.3256, -187, -56.3256, -185, -2.12549)
 script = ExtResource("3_g0ryx")
 collision_polygon = NodePath("..")
 
@@ -95,11 +95,11 @@ script = ExtResource("3_g0ryx")
 collision_polygon = NodePath("..")
 
 [node name="OtherCollisionPolygon2D3" type="CollisionPolygon2D" parent="BlackStaticBody"]
-polygon = PackedVector2Array(3628, 578.134, 2987, 969.225, 2491, 1167.96, 1903, 1286.99, 1311, 1327.37, 569, 1407.08, -31, 1383.7, -297, 1173.27, -281, 703.538, 143, 867.201, 2499, 716.291, 3938, 204.047)
+polygon = PackedVector2Array(3628, 578.134, 2987, 969.225, 2491, 1167.96, 1610, 950.095, 674, 833.193, 593, 838.507, 569, 1407.08, -31, 1383.7, -297, 1173.27, -281, 703.538, 143, 867.201, 2499, 716.291, 3938, 204.047)
 
 [node name="OtherPolygon2D" type="Polygon2D" parent="BlackStaticBody/OtherCollisionPolygon2D3" node_paths=PackedStringArray("collision_polygon")]
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(3628, 578.134, 2987, 969.225, 2491, 1167.96, 1903, 1286.99, 1311, 1327.37, 569, 1407.08, -31, 1383.7, -297, 1173.27, -281, 703.538, 143, 867.201, 2499, 716.291, 3938, 204.047)
+polygon = PackedVector2Array(3628, 578.134, 2987, 969.225, 2491, 1167.96, 1610, 950.095, 674, 833.193, 593, 838.507, 569, 1407.08, -31, 1383.7, -297, 1173.27, -281, 703.538, 143, 867.201, 2499, 716.291, 3938, 204.047)
 script = ExtResource("3_g0ryx")
 collision_polygon = NodePath("..")
 
@@ -136,540 +136,401 @@ scale = Vector2(1, 0.833126)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(1108, -7146.12, 681, -6515.96, 1235, -6957.67, 1777, -6485.95, 1447, -7141.32)
 
-[node name="EnemiesWhite" type="Node" parent="."]
+[node name="EnemiesChunk1" type="Node2D" parent="."]
+position = Vector2(130, -567.766)
+script = ExtResource("5_tvi1u")
 
-[node name="Bat2" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
+[node name="EnemiesWhite" type="Node" parent="EnemiesChunk1"]
+
+[node name="Bat2" parent="EnemiesChunk1/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(253, -505)
 scale = Vector2(1, 0.940958)
 
-[node name="Bat4" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
+[node name="Bat4" parent="EnemiesChunk1/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(235, -313)
 scale = Vector2(1, 0.940958)
 
-[node name="Bat6" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(-147, -462)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat7" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
+[node name="Bat7" parent="EnemiesChunk1/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(64, -464)
 scale = Vector2(1, 0.940958)
 
-[node name="Bat9" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
+[node name="Bat9" parent="EnemiesChunk1/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(31, -680)
 scale = Vector2(1, 0.940958)
 
-[node name="Bat10" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
+[node name="Bat10" parent="EnemiesChunk1/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(33, -902)
 scale = Vector2(1, 0.940958)
 
-[node name="Bat11" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(-88, -1046)
+[node name="Bat35" parent="EnemiesChunk1/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(-346, -269)
 scale = Vector2(1, 0.940958)
 
-[node name="Bat12" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(63, -1240)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat13" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(325, -1160)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat14" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(437, -1032)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat15" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(699, -1103)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat16" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1046, -1112)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat17" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1301, -1114)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat18" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1499, -1137)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat19" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1371, -1251)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat20" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1489, -1262)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat21" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1619, -1200)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat22" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1421, -1184)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat23" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(122, -1425)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat24" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(288, -1523)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat25" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(439, -1596)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat26" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(498, -1755)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat27" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(327, -1873)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat28" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(429, -1805)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat29" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(80, -1924)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat30" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(-125, -1985)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat31" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(-29, -2124)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat32" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(-141, -1700)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat33" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(-268, -1281)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat34" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(-346, -718)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat35" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(-432, -363)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat36" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
+[node name="Bat36" parent="EnemiesChunk1/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(-443, 74)
 scale = Vector2(1, 0.940958)
 
-[node name="Bat39" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(-188, 1004)
-scale = Vector2(1, 0.940958)
+[node name="EnemiesBlack" type="Node" parent="EnemiesChunk1"]
 
-[node name="Bat40" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(115, 958)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat41" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(534, 1108)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat42" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(999, 919)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat43" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1339, 1083)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat44" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(-222, 778)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat45" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(125, -2327)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat46" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(813, -2445)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat47" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(735, -2627)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat48" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(838, -2752)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat49" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1168, -2364)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat50" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1291, -2483)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat51" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1225, -2266)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat52" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1220, -2672)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat53" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1028, -2782)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat54" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1258, -2946)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat55" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1151, -3106)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat56" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1274, -3193)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat57" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1069, -3289)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat58" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1347, -3350)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat59" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1181, -3268)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat60" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1042, -3441)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat61" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1126, -3617)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat62" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1007, -3799)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat63" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1340, -3730)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat64" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(861, -3113)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat65" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1232, -3990)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat66" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1100, -4141)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat67" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1100, -4485)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat71" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1121, -5160)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat72" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(961, -5418)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat73" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(462, -5639)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat74" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(172, -5821)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat75" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(300, -6170)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat76" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(398, -5176)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat77" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(587, -4627)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat78" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(747, -6438)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat79" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(756, -6780)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat80" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(824, -7172)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat81" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1079, -7500)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat82" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1475, -7758)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat83" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1361, -8022)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat84" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1831, -8102)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat85" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1567, -8319)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat86" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(2506, -7813)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat87" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(2902, -3743)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat88" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(2868, -2754)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat89" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(2945, -2467)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat90" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(2993, -2964)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat68" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1378, -4510)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat69" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1025, -4931)
-scale = Vector2(1, 0.940958)
-
-[node name="Bat70" parent="EnemiesWhite" instance=ExtResource("5_tc25b")]
-position = Vector2(1244, -4860)
-scale = Vector2(1, 0.940958)
-
-[node name="EnemiesBlack" type="Node" parent="."]
-
-[node name="Bat" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
+[node name="Bat" parent="EnemiesChunk1/EnemiesBlack" instance=ExtResource("6_3rti8")]
 position = Vector2(510, -218)
 
-[node name="Bat4" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
+[node name="Bat8" parent="EnemiesChunk1/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(-262, 144)
+
+[node name="Bat4" parent="EnemiesChunk1/EnemiesBlack" instance=ExtResource("6_3rti8")]
 position = Vector2(461, -361)
 
-[node name="Bat5" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
+[node name="Bat5" parent="EnemiesChunk1/EnemiesBlack" instance=ExtResource("6_3rti8")]
 position = Vector2(448, -694)
 
-[node name="Bat6" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(189, -1031)
-
-[node name="Bat7" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
+[node name="Bat7" parent="EnemiesChunk1/EnemiesBlack" instance=ExtResource("6_3rti8")]
 position = Vector2(299, -774)
 
-[node name="Bat9" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1801, -993)
+[node name="Bat9" parent="EnemiesChunk1/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(631, -951)
 
-[node name="Bat10" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1891, -1215)
-
-[node name="Bat11" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1722, -1470)
-
-[node name="Bat12" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1453, -1431)
-
-[node name="Bat13" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1246, -1415)
-
-[node name="Bat14" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1073, -1306)
-
-[node name="Bat15" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1110, -1457)
-
-[node name="Bat16" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(816, -1265)
-
-[node name="Bat17" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(493, -1374)
-
-[node name="Bat18" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(792, -1754)
-
-[node name="Bat19" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(626, -1914)
-
-[node name="Bat20" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1047, -2128)
-
-[node name="Bat21" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1273, -1864)
-
-[node name="Bat22" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1752, -2056)
-
-[node name="Bat23" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1321, -342)
-
-[node name="Bat24" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(819, 396)
-
-[node name="Bat25" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(-79, 296)
-
-[node name="Bat62" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(-240, 555)
-
-[node name="Bat63" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(-353, 881)
-
-[node name="Bat64" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(34, 635)
-
-[node name="Bat65" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(-166, 208)
-
-[node name="Bat26" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1022, -2572)
-
-[node name="Bat27" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1505, -2360)
-
-[node name="Bat32" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1452, -2216)
-
-[node name="Bat33" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1668, -2845)
-
-[node name="Bat34" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1545, -2986)
-
-[node name="Bat35" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1679, -3121)
-
-[node name="Bat36" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1533, -3226)
-
-[node name="Bat37" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1617, -3347)
-
-[node name="Bat38" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1352, -3493)
-
-[node name="Bat39" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1610, -3636)
-
-[node name="Bat40" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1519, -3795)
-
-[node name="Bat41" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1654, -3932)
-
-[node name="Bat42" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1581, -4116)
-
-[node name="Bat43" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1652, -4296)
-
-[node name="Bat44" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1556, -4453)
-
-[node name="Bat45" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1638, -4661)
-
-[node name="Bat46" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1510, -4812)
-
-[node name="Bat47" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1604, -5054)
-
-[node name="Bat48" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1568, -5357)
-
-[node name="Bat49" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1545, -5647)
-
-[node name="Bat50" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1328, -5923)
-
-[node name="Bat51" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1201, -6356)
-
-[node name="Bat52" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1126, -6737)
-
-[node name="Bat53" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1188, -7150)
-
-[node name="Bat54" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(2875, -7134)
-
-[node name="Bat55" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(2734, -6486)
-
-[node name="Bat56" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1974, -5930)
-
-[node name="Bat57" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(2106, -4282)
-
-[node name="Bat58" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(2218, -2614)
-
-[node name="Bat59" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(2618, -1554)
-
-[node name="Bat60" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(2582, -218)
-
-[node name="Bat61" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1922, 342)
-
-[node name="Bat28" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1524, -2563)
-
-[node name="Bat29" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1536, -2754)
-
-[node name="Bat30" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1631, -2452)
-
-[node name="Bat31" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(1657, -2664)
-
-[node name="Bat2" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
+[node name="Bat2" parent="EnemiesChunk1/EnemiesBlack" instance=ExtResource("6_3rti8")]
 position = Vector2(534, -541)
 
-[node name="Bat3" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
-position = Vector2(528, -393)
+[node name="EnemiesChunk2" type="Node2D" parent="."]
+position = Vector2(908, -1311.69)
+script = ExtResource("5_tvi1u")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_5j7se")
-volume_db = -28.0
-autoplay = true
-bus = &"SFX"
+[node name="EnemiesWhite" type="Node" parent="EnemiesChunk2"]
+
+[node name="Bat23" parent="EnemiesChunk2/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(192, -1197)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat16" parent="EnemiesChunk2/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1284, -1203)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat17" parent="EnemiesChunk2/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1301, -1114)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat18" parent="EnemiesChunk2/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1499, -1137)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat19" parent="EnemiesChunk2/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1371, -1251)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat20" parent="EnemiesChunk2/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1489, -1262)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat21" parent="EnemiesChunk2/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1619, -1200)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat22" parent="EnemiesChunk2/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1421, -1184)
+scale = Vector2(1, 0.940958)
+
+[node name="EnemiesBlack" type="Node" parent="EnemiesChunk2"]
+
+[node name="Bat6" parent="EnemiesChunk2/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(181, -1023)
+
+[node name="Bat9" parent="EnemiesChunk2/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1632, -1447)
+
+[node name="Bat12" parent="EnemiesChunk2/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(707, -1319)
+
+[node name="Bat13" parent="EnemiesChunk2/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(506, -1381)
+
+[node name="Bat8" parent="EnemiesChunk2/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1827, -1317)
+
+[node name="EnemiesChunk3" type="Node2D" parent="."]
+position = Vector2(491, -1914.27)
+script = ExtResource("5_tvi1u")
+
+[node name="EnemiesWhite" type="Node" parent="EnemiesChunk3"]
+
+[node name="Bat22" parent="EnemiesChunk3/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(372, -1537)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat23" parent="EnemiesChunk3/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(439, -1814)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat24" parent="EnemiesChunk3/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(313, -1881)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat25" parent="EnemiesChunk3/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(541, -1738)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat26" parent="EnemiesChunk3/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(101, -1925)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat27" parent="EnemiesChunk3/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(12, -2082)
+scale = Vector2(1, 0.940958)
+
+[node name="EnemiesBlack" type="Node" parent="EnemiesChunk3"]
+
+[node name="Bat9" parent="EnemiesChunk3/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(726, -1679)
+
+[node name="Bat10" parent="EnemiesChunk3/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(678, -1860)
+
+[node name="Bat12" parent="EnemiesChunk3/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(200, -2094)
+
+[node name="Bat11" parent="EnemiesChunk3/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(776, -1797)
+
+[node name="Bat13" parent="EnemiesChunk3/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(838, -2051)
+
+[node name="EnemiesChunk4" type="Node2D" parent="."]
+position = Vector2(1180, -3153.43)
+script = ExtResource("5_tvi1u")
+activation_distance = 1400
+
+[node name="EnemiesWhite" type="Node" parent="EnemiesChunk4"]
+
+[node name="Bat22" parent="EnemiesChunk4/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(868, -2351)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat24" parent="EnemiesChunk4/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(885, -2781)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat25" parent="EnemiesChunk4/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1030, -2902)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat26" parent="EnemiesChunk4/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1267, -2722)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat27" parent="EnemiesChunk4/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1158, -2401)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat29" parent="EnemiesChunk4/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1283, -2956)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat30" parent="EnemiesChunk4/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1239, -3228)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat31" parent="EnemiesChunk4/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1085, -3525)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat32" parent="EnemiesChunk4/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1185, -3800)
+scale = Vector2(1, 0.940958)
+
+[node name="EnemiesBlack" type="Node" parent="EnemiesChunk4"]
+
+[node name="Bat8" parent="EnemiesChunk4/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(661, -1555)
+
+[node name="Bat9" parent="EnemiesChunk4/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1062, -2585)
+
+[node name="Bat10" parent="EnemiesChunk4/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1139, -2154)
+
+[node name="Bat11" parent="EnemiesChunk4/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1546, -2336)
+
+[node name="Bat12" parent="EnemiesChunk4/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1637, -2592)
+
+[node name="Bat13" parent="EnemiesChunk4/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1502, -2814)
+
+[node name="Bat15" parent="EnemiesChunk4/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1543, -3298)
+
+[node name="Bat16" parent="EnemiesChunk4/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1395, -3490)
+
+[node name="Bat17" parent="EnemiesChunk4/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1570, -3678)
+
+[node name="EnemiesChunk5" type="Node2D" parent="."]
+position = Vector2(961, -5245.98)
+script = ExtResource("5_tvi1u")
+activation_distance = 1600
+
+[node name="EnemiesWhite" type="Node" parent="EnemiesChunk5"]
+
+[node name="Bat32" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1185, -3800)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat33" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1315, -4013)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat34" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1427, -4466)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat35" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1263, -4295)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat36" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1196, -4823)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat37" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1194, -5200)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat38" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(880, -5503)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat39" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(743, -5804)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat40" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(404, -5865)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat41" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(568, -5569)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat42" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(191, -6083)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat43" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(191, -6083)
+scale = Vector2(1, 0.940958)
+
+[node name="EnemiesBlack" type="Node" parent="EnemiesChunk5"]
+
+[node name="Bat17" parent="EnemiesChunk5/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1570, -3678)
+
+[node name="Bat18" parent="EnemiesChunk5/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1512, -3909)
+
+[node name="Bat19" parent="EnemiesChunk5/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1635, -4082)
+
+[node name="Bat20" parent="EnemiesChunk5/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1458, -4250)
+
+[node name="Bat21" parent="EnemiesChunk5/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1581, -4414)
+
+[node name="Bat22" parent="EnemiesChunk5/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1520, -4697)
+
+[node name="Bat23" parent="EnemiesChunk5/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1493, -5101)
+
+[node name="Bat24" parent="EnemiesChunk5/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1484, -5510)
+
+[node name="Bat25" parent="EnemiesChunk5/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1318, -5691)
+
+[node name="Bat26" parent="EnemiesChunk5/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1527, -5880)
+
+[node name="Bat27" parent="EnemiesChunk5/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1089, -5936)
+
+[node name="EnemiesChunk6" type="Node2D" parent="."]
+position = Vector2(1306, -7539.38)
+script = ExtResource("5_tvi1u")
+activation_distance = 1400
+
+[node name="EnemiesWhite" type="Node" parent="EnemiesChunk6"]
+
+[node name="Bat43" parent="EnemiesChunk6/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(700, -6541)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat44" parent="EnemiesChunk6/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(736, -6868)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat45" parent="EnemiesChunk6/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(970, -7326)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat46" parent="EnemiesChunk6/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1503, -7746)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat47" parent="EnemiesChunk6/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1449, -8106)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat48" parent="EnemiesChunk6/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(1809, -8172)
+scale = Vector2(1, 0.940958)
+
+[node name="EnemiesBlack" type="Node" parent="EnemiesChunk6"]
+
+[node name="Bat27" parent="EnemiesChunk6/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1089, -5936)
+
+[node name="Bat28" parent="EnemiesChunk6/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1287, -6379)
+
+[node name="Bat29" parent="EnemiesChunk6/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1179, -6805)
+
+[node name="Bat30" parent="EnemiesChunk6/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1344, -7240)
+
+[node name="Bat31" parent="EnemiesChunk6/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(1748, -7651)
+
+[node name="EnemiesChunk7" type="Node2D" parent="."]
+position = Vector2(-362, 696.902)
+script = ExtResource("5_tvi1u")
+activation_distance = 700
+
+[node name="EnemiesWhite" type="Node" parent="EnemiesChunk7"]
+
+[node name="Bat48" parent="EnemiesChunk7/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(-174, 944)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat49" parent="EnemiesChunk7/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(-398, 369)
+scale = Vector2(1, 0.940958)
+
+[node name="Bat50" parent="EnemiesChunk7/EnemiesWhite" instance=ExtResource("5_tc25b")]
+position = Vector2(-193, 832)
+scale = Vector2(1, 0.940958)
+
+[node name="EnemiesBlack" type="Node" parent="EnemiesChunk7"]
+
+[node name="Bat31" parent="EnemiesChunk7/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(-327, 565)
+
+[node name="Bat32" parent="EnemiesChunk7/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(-350, 854)
+
+[node name="Bat33" parent="EnemiesChunk7/EnemiesBlack" instance=ExtResource("6_3rti8")]
+position = Vector2(-147, 412)
