@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://l0g2a5t8bhtb"]
+[gd_scene load_steps=19 format=3 uid="uid://l0g2a5t8bhtb"]
 
 [ext_resource type="PackedScene" uid="uid://bvnv1y16o8ah7" path="res://assets/player/ice_axe_q.tscn" id="1_f4ijt"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_l1tqt"]
@@ -9,11 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://chl37bcttp2bi" path="res://assets/player/ice_axe_e.tscn" id="7_kupps"]
 [ext_resource type="PackedScene" uid="uid://y4d1uca33vw0" path="res://assets/components/health_component.tscn" id="8_bxfbr"]
 [ext_resource type="PackedScene" uid="uid://doratto4po304" path="res://assets/components/hurtbox_component.tscn" id="9_i0wew"]
-[ext_resource type="AudioStream" path="res://assets/sfx/axe_hit_stream.tres" id="10_qfyim"]
-[ext_resource type="PackedScene" path="res://assets/sfx/event_play_component.tscn" id="11_64ofr"]
-[ext_resource type="AudioStream" path="res://assets/sfx/axe_swing_stream.tres" id="12_pdko4"]
-[ext_resource type="PackedScene" path="res://assets/sfx/event_stop_component.tscn" id="13_4wtxd"]
-[ext_resource type="AudioStream" path="res://assets/sfx/axe_miss_stream.tres" id="14_oicgn"]
+[ext_resource type="AudioStream" uid="uid://c7rgp4y1lldxt" path="res://assets/sfx/axe_hit_stream.tres" id="10_qfyim"]
+[ext_resource type="PackedScene" uid="uid://dow1gqxx3y27j" path="res://assets/sfx/event_play_component.tscn" id="11_64ofr"]
+[ext_resource type="AudioStream" uid="uid://xh0w7obt8x52" path="res://assets/sfx/axe_swing_stream.tres" id="12_pdko4"]
+[ext_resource type="PackedScene" uid="uid://dbivaqyebe0kt" path="res://assets/sfx/event_stop_component.tscn" id="13_4wtxd"]
+[ext_resource type="AudioStream" uid="uid://dyscwbw8iu6n8" path="res://assets/sfx/axe_miss_stream.tres" id="14_oicgn"]
+[ext_resource type="AudioStream" uid="uid://duvpqnc2qfd0g" path="res://assets/sfx/bat_hit_stream.tres" id="15_8ltb1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i7eyc"]
 size = Vector2(14, 26)
@@ -183,6 +184,13 @@ bus = &"SFX"
 
 [node name="EventPlayComponent" parent="AxeMissStreamPlayer" instance=ExtResource("11_64ofr")]
 
+[node name="BatHitStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_8ltb1")
+volume_db = -8.0
+bus = &"SFX"
+
+[node name="EventPlayComponent" parent="BatHitStreamPlayer" instance=ExtResource("11_64ofr")]
+
 [connection signal="axe_hit" from="IceAxe_Q" to="AxeHitStreamPlayer/EventPlayComponent" method="_on_invoke"]
 [connection signal="axe_hit" from="IceAxe_Q" to="AxeSwingStreamPlayer/EventStopComponent" method="_on_invoke"]
 [connection signal="axe_miss" from="IceAxe_Q" to="AxeMissStreamPlayer/EventPlayComponent" method="_on_invoke"]
@@ -191,3 +199,4 @@ bus = &"SFX"
 [connection signal="axe_hit" from="IceAxe_E" to="AxeSwingStreamPlayer/EventStopComponent" method="_on_invoke"]
 [connection signal="axe_miss" from="IceAxe_E" to="AxeMissStreamPlayer/EventPlayComponent" method="_on_invoke"]
 [connection signal="axe_swing" from="IceAxe_E" to="AxeSwingStreamPlayer/EventPlayComponent" method="_on_invoke"]
+[connection signal="hit" from="HealthComponent" to="BatHitStreamPlayer/EventPlayComponent" method="_on_invoke"]

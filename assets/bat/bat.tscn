@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dmghy70lwdw71"]
+[gd_scene load_steps=12 format=3 uid="uid://dmghy70lwdw71"]
 
 [ext_resource type="Script" path="res://assets/bat/bat.gd" id="1_xpgfq"]
 [ext_resource type="SpriteFrames" uid="uid://qm8qnoggaj8j" path="res://assets/bat/bat_sprite_frames.tres" id="2_wd3hf"]
@@ -9,8 +9,6 @@
 [ext_resource type="Script" path="res://src/states/state_machine.gd" id="7_tyhce"]
 [ext_resource type="Script" path="res://assets/bat/bat_idle.gd" id="8_h8d6a"]
 [ext_resource type="Script" path="res://assets/bat/bat_chase.gd" id="9_3to8h"]
-[ext_resource type="AudioStream" uid="uid://duvpqnc2qfd0g" path="res://assets/sfx/bat_hit_stream.tres" id="10_ehc24"]
-[ext_resource type="PackedScene" uid="uid://dow1gqxx3y27j" path="res://assets/sfx/event_play_component.tscn" id="11_bwa68"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ticgl"]
 radius = 5.0
@@ -61,13 +59,5 @@ script = ExtResource("8_h8d6a")
 [node name="BatChase" type="Node" parent="StateMachine"]
 script = ExtResource("9_3to8h")
 
-[node name="HitStreamPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("10_ehc24")
-volume_db = -15.0
-bus = &"SFX"
-
-[node name="EventPlayComponent" parent="HitStreamPlayer" instance=ExtResource("11_bwa68")]
-
-[connection signal="player_hit" from="." to="HitStreamPlayer/EventPlayComponent" method="_on_invoke"]
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
 [connection signal="body_entered" from="HurtboxComponent" to="." method="_on_hurtbox_component_body_entered"]

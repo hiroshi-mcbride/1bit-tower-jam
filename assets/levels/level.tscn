@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c204g7tfrfxb8"]
+[gd_scene load_steps=10 format=3 uid="uid://c204g7tfrfxb8"]
 
 [ext_resource type="Script" path="res://src/world/polygontool.gd" id="1_6pbfe"]
 [ext_resource type="Script" path="res://src/world/polygontoolhelper.gd" id="1_c36oo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://src/world/polygon_shape_updater.gd" id="3_g0ryx"]
 [ext_resource type="PackedScene" uid="uid://dmghy70lwdw71" path="res://assets/bat/bat.tscn" id="5_tc25b"]
 [ext_resource type="PackedScene" uid="uid://b65qohlwd6fe1" path="res://assets/bat/bat_flipped.tscn" id="6_3rti8"]
+[ext_resource type="AudioStream" uid="uid://dfbf1c3h20t0h" path="res://assets/sfx/wind-sound-fx-long-loop.ogg" id="7_5j7se"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1n8qv"]
 
@@ -674,3 +675,9 @@ position = Vector2(534, -541)
 
 [node name="Bat3" parent="EnemiesBlack" instance=ExtResource("6_3rti8")]
 position = Vector2(528, -393)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_5j7se")
+volume_db = -28.0
+autoplay = true
+bus = &"SFX"
