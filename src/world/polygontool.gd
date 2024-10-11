@@ -1,6 +1,7 @@
 @tool
 extends CollisionPolygon2D
 
+
 @export var helper: PolygonToolHelper = get_parent():
 	set(value):
 		if Engine.is_editor_hint():

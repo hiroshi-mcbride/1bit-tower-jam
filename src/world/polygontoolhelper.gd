@@ -13,5 +13,6 @@ extends StaticBody2D
 
 @export var color: Color
 
+
 func get_color() -> Color:
 	return color
