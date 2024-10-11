@@ -1,7 +1,6 @@
 class_name IceAxe
 extends RigidBody2D
 
-signal axe_hit()
 
 @export var hand: PinJoint2D
 @export var hand_torque: float = 45.0
@@ -15,8 +14,6 @@ signal axe_hit()
 @export var unflipped_on_wall_angular_limit_upper: float
 @export var flipped_angular_limit_upper: float
 @export var flipped_on_wall_angular_limit_upper: float
-var unflipped_ray_cast_angle_exclusion_angle: float = 180
-var flipped_ray_cast_angle_exclusion_angle: float = 0
 @export var ray_cast_angle_exclusion_range: float = 80
 @export var ray_cast_dot_limit: float = 0.5
 
@@ -24,15 +21,20 @@ var flipped_ray_cast_angle_exclusion_angle: float = 0
 @onready var trigger: CollisionShape2D = $Area2D/Trigger
 @onready var collider: CollisionPolygon2D = $Collider
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
+@onready var timer: Timer = $Timer
 
+signal axe_hit()
+
+var flipped: bool = false
 var hit_pos: Vector2 = Vector2.ZERO
 var hit_angle: float
 var is_on_wall: bool = false
 var area_entered: bool = false
 var ray_entered: bool = false
-var dist: Vector2
+
+var unflipped_ray_cast_angle_exclusion_angle: float = 180
+var flipped_ray_cast_angle_exclusion_angle: float = 0
 var ray_cast_angle_exclusion_angle: float
-var flipped: bool = false
 
 
 func _ready() -> void:
@@ -41,10 +43,15 @@ func _ready() -> void:
 
 func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 	if ray_cast_2d.enabled and ray_cast_2d.is_colliding():
+		if !timer.is_stopped():
+			timer.stop()
+			timer.start()
+			return;
+		
 		# Get the global raycast direction
 		var global_direction = ray_cast_2d.global_transform.basis_xform(ray_cast_2d.target_position).normalized()
 		
-		# Prevent the axe from freezing if it hits a floor or ceiling
+		# Prevent the axe from freezing if it hits behind player (all angles within -exlusion and +exclusion range)
 		var axe_angle = fposmod(rad_to_deg(global_direction.angle()), 360)
 		if flipped:
 			if axe_angle > fposmod(ray_cast_angle_exclusion_angle - ray_cast_angle_exclusion_range, 360) ||\
@@ -62,7 +69,7 @@ func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 		# Freeze the axe if it hits the wall within a certain range of angles
 		if dot < -ray_cast_dot_limit or dot > ray_cast_dot_limit:
 			hit_pos = ray_cast_2d.get_collision_point()
-			dist = hit_pos - ray_cast_2d.global_position
+			var dist = hit_pos - ray_cast_2d.global_position
 			disable_motors()
 			global_translate(dist)
 			axe_hit.emit()
@@ -74,12 +81,14 @@ func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 			hand.angular_limit_lower = deg_to_rad(flipped_on_wall_angular_limit_lower if flipped else unflipped_on_wall_angular_limit_lower)
 			hand.angular_limit_upper = deg_to_rad(flipped_on_wall_angular_limit_upper if flipped else unflipped_on_wall_angular_limit_upper)
 
+
 func swing() -> void:
 	shoulder.motor_target_velocity = -shoulder_torque
 	shoulder.motor_enabled = true
 	hand.motor_target_velocity = -shoulder_torque
 	hand.motor_enabled = true
 	ray_cast_2d.enabled = true
+	timer.start()
 
 
 func drop() -> void:
@@ -92,6 +101,7 @@ func drop() -> void:
 	ray_cast_2d.enabled = false
 	freeze = false
 	disable_motors()
+	timer.stop()
 
 
 func disable_motors() -> void:
