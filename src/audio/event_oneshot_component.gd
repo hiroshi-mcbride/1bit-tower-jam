@@ -1,8 +1,14 @@
 extends Node
 
+
+var audio_stream_player: AudioStreamPlayer2D
+
+
 func _ready() -> void:
-	owner = get_parent()
-	assert(owner is AudioStreamPlayer2D)
+	if get_parent() is AudioStreamPlayer2D:
+		audio_stream_player = get_parent()
+
 
 func _on_invoke() -> void:
-	owner.play()
+	if !audio_stream_player.playing:
+		audio_stream_player.play()
