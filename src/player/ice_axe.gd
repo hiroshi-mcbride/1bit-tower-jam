@@ -58,13 +58,11 @@ func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 		if flipped:
 			if axe_angle > fposmod(ray_cast_angle_exclusion_angle - ray_cast_angle_exclusion_range, 360) ||\
 			   axe_angle < fposmod(ray_cast_angle_exclusion_angle + ray_cast_angle_exclusion_range, 360):
-				print("miss")
 				axe_miss.emit()
 				return
 		else:
 			if axe_angle > fposmod(ray_cast_angle_exclusion_angle - ray_cast_angle_exclusion_range, 360) &&\
 			   axe_angle < fposmod(ray_cast_angle_exclusion_angle + ray_cast_angle_exclusion_range, 360):
-				print("miss")
 				axe_miss.emit()
 				return
 		
@@ -87,9 +85,7 @@ func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 			hand.angular_limit_lower = deg_to_rad(flipped_on_wall_angular_limit_lower if flipped else unflipped_on_wall_angular_limit_lower)
 			hand.angular_limit_upper = deg_to_rad(flipped_on_wall_angular_limit_upper if flipped else unflipped_on_wall_angular_limit_upper)
 		else:
-			print("miss")
 			axe_miss.emit()
-		
 
 
 func swing() -> void:
