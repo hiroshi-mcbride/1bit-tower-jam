@@ -2,6 +2,7 @@ class_name IceAxe
 extends RigidBody2D
 
 signal axe_hit()
+signal axe_swing()
 
 @export var hand: PinJoint2D
 @export var hand_torque: float = 45.0
@@ -74,6 +75,7 @@ func swing() -> void:
 	hand.motor_target_velocity = -shoulder_torque
 	hand.motor_enabled = true
 	ray_cast_2d.enabled = true
+	axe_swing.emit()
 
 
 func drop() -> void:
