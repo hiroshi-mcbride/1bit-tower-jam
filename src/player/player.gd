@@ -109,6 +109,9 @@ func respawn() -> void:
 
 
 func hit() -> void:
-	ice_axe_left.drop()
-	ice_axe_right.drop()
+	if ice_axe_left.is_on_wall:
+		ice_axe_left.drop()
+	if ice_axe_right.is_on_wall:
+		ice_axe_right.drop()
+	
 	health_component.gain_health(1)
