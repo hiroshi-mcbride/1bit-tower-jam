@@ -14,7 +14,7 @@ extends CollisionPolygon2D
 @export var other_collision_polygon: CollisionPolygon2D
 @export var other_polygon2d: Polygon2D
 
-@export var generate: bool = false:
+@export var generate: bool = is_instance_valid(polygon2d):
 	set(value):
 		if Engine.is_editor_hint():
 			if value:
