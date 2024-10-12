@@ -4,8 +4,9 @@
 resource_name = "Reverb"
 predelay_msec = 20.0
 predelay_feedback = 0.0
-room_size = 1.0
+room_size = 0.9
 damping = 1.0
+spread = 0.8
 hipass = 0.05
 wet = 0.01
 
