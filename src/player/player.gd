@@ -17,14 +17,16 @@ var distance: float
 var flip_position: Vector2 = Vector2.ZERO
 var saved_spawn_pos: Vector2
 
-func _ready() -> void:
+func _enter_tree() -> void:
 	# Singleton pattern
 	if instance == null:
 		instance = self
 	if instance != self:
 		push_warning("Multiple players found in scene, deleting last loaded")
 		queue_free()
-	
+
+
+func _ready() -> void:
 	# Get sprite references that are inside other scenes
 	sprites.append(ice_axe_left.sprite_2d)
 	sprites.append(ice_axe_right.sprite_2d)
@@ -77,6 +79,11 @@ func _physics_process(_delta: float) -> void:
 		# Color switching logic
 		if Input.is_action_just_pressed("color_switch"):
 			color_switch(is_left_axe)
+
+
+func _exit_tree() -> void:
+	if instance == self:
+		instance = null
 
 
 func color_switch(_is_left_axe: bool) -> void:

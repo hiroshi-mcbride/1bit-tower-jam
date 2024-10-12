@@ -11,7 +11,7 @@ process_mode = 3
 script = ExtResource("1_qafgu")
 first_menu_file = ExtResource("2_cb8ne")
 pause_menu_file = ExtResource("3_8l3r8")
-first_level = ExtResource("4_arsbm")
+first_level_file = ExtResource("4_arsbm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

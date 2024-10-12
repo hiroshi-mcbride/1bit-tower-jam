@@ -17,7 +17,8 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	squared_distance = global_position.distance_squared_to(Player.instance.global_position)
+	if Player.instance != null:
+		squared_distance = global_position.distance_squared_to(Player.instance.global_position)
 
 
 func die() -> void:
