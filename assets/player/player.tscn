@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://l0g2a5t8bhtb"]
+[gd_scene load_steps=20 format=3 uid="uid://l0g2a5t8bhtb"]
 
 [ext_resource type="PackedScene" uid="uid://bvnv1y16o8ah7" path="res://assets/player/ice_axe_q.tscn" id="1_f4ijt"]
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_l1tqt"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dbivaqyebe0kt" path="res://assets/sfx/event_stop_component.tscn" id="13_4wtxd"]
 [ext_resource type="AudioStream" uid="uid://dyscwbw8iu6n8" path="res://assets/sfx/axe_miss_stream.tres" id="14_oicgn"]
 [ext_resource type="AudioStream" uid="uid://duvpqnc2qfd0g" path="res://assets/sfx/bat_hit_stream.tres" id="15_8ltb1"]
+[ext_resource type="AudioStream" uid="uid://cegjd4mvxliss" path="res://assets/sfx/flip.ogg" id="16_ahtv4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i7eyc"]
 size = Vector2(14, 26)
@@ -186,11 +187,19 @@ bus = &"SFX"
 
 [node name="BatHitStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_8ltb1")
-volume_db = -5.0
+volume_db = -1.0
 bus = &"SFX"
 
 [node name="EventPlayComponent" parent="BatHitStreamPlayer" instance=ExtResource("11_64ofr")]
 
+[node name="FlipStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_ahtv4")
+volume_db = -1.935
+bus = &"SFX"
+
+[node name="EventPlayComponent" parent="FlipStreamPlayer" instance=ExtResource("11_64ofr")]
+
+[connection signal="flipped" from="." to="FlipStreamPlayer/EventPlayComponent" method="_on_invoke"]
 [connection signal="axe_hit" from="IceAxe_Q" to="AxeHitStreamPlayer/EventPlayComponent" method="_on_invoke"]
 [connection signal="axe_hit" from="IceAxe_Q" to="AxeSwingStreamPlayer/EventStopComponent" method="_on_invoke"]
 [connection signal="axe_miss" from="IceAxe_Q" to="AxeMissStreamPlayer/EventPlayComponent" method="_on_invoke"]

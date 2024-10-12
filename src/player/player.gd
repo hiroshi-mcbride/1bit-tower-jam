@@ -8,6 +8,8 @@ extends RigidBody2D
 @export var rigidbodies: Array[RigidBody2D]
 @export var sprites: Array[CanvasItem]
 
+signal flipped()
+
 static var instance: Player = null
 var color_flipped: bool = false
 var flip_entered: bool = false
@@ -99,6 +101,8 @@ func color_switch(_is_left_axe: bool) -> void:
 		elif sprite.get_modulate() == Color.BLACK:
 			sprite.set_modulate(Color.WHITE)
 		
+	
+	flipped.emit()
 	flip_position = Vector2.ZERO
 	distance = 0
 

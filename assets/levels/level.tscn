@@ -15,7 +15,6 @@
 [node name="Level1" type="Node2D"]
 process_mode = 1
 position = Vector2(0, 1.24425)
-scale = Vector2(1, 0.940958)
 
 [node name="WhiteStaticBody" type="StaticBody2D" parent="." node_paths=PackedStringArray("other_helper")]
 position = Vector2(-2, -7.6988)
@@ -144,31 +143,24 @@ script = ExtResource("5_tvi1u")
 
 [node name="Bat2" parent="EnemiesChunk1/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(253, -505)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat4" parent="EnemiesChunk1/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(235, -313)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat7" parent="EnemiesChunk1/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(64, -464)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat9" parent="EnemiesChunk1/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(31, -680)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat10" parent="EnemiesChunk1/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(33, -902)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat35" parent="EnemiesChunk1/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(-346, -269)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat36" parent="EnemiesChunk1/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(-443, 74)
-scale = Vector2(1, 0.940958)
 
 [node name="EnemiesBlack" type="Node" parent="EnemiesChunk1"]
 
@@ -201,35 +193,27 @@ script = ExtResource("5_tvi1u")
 
 [node name="Bat23" parent="EnemiesChunk2/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(192, -1197)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat16" parent="EnemiesChunk2/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1284, -1203)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat17" parent="EnemiesChunk2/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1301, -1114)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat18" parent="EnemiesChunk2/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1499, -1137)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat19" parent="EnemiesChunk2/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1371, -1251)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat20" parent="EnemiesChunk2/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1489, -1262)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat21" parent="EnemiesChunk2/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1619, -1200)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat22" parent="EnemiesChunk2/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1421, -1184)
-scale = Vector2(1, 0.940958)
 
 [node name="EnemiesBlack" type="Node" parent="EnemiesChunk2"]
 
@@ -256,27 +240,21 @@ script = ExtResource("5_tvi1u")
 
 [node name="Bat22" parent="EnemiesChunk3/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(372, -1537)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat23" parent="EnemiesChunk3/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(439, -1814)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat24" parent="EnemiesChunk3/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(313, -1881)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat25" parent="EnemiesChunk3/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(541, -1738)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat26" parent="EnemiesChunk3/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(101, -1925)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat27" parent="EnemiesChunk3/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(12, -2082)
-scale = Vector2(1, 0.940958)
 
 [node name="EnemiesBlack" type="Node" parent="EnemiesChunk3"]
 
@@ -304,39 +282,30 @@ activation_distance = 1400
 
 [node name="Bat22" parent="EnemiesChunk4/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(868, -2351)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat24" parent="EnemiesChunk4/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(885, -2781)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat25" parent="EnemiesChunk4/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1030, -2902)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat26" parent="EnemiesChunk4/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1267, -2722)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat27" parent="EnemiesChunk4/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1158, -2401)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat29" parent="EnemiesChunk4/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1283, -2956)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat30" parent="EnemiesChunk4/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1239, -3228)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat31" parent="EnemiesChunk4/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1085, -3525)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat32" parent="EnemiesChunk4/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1185, -3800)
-scale = Vector2(1, 0.940958)
 
 [node name="EnemiesBlack" type="Node" parent="EnemiesChunk4"]
 
@@ -376,51 +345,39 @@ activation_distance = 1600
 
 [node name="Bat32" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1185, -3800)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat33" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1315, -4013)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat34" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1427, -4466)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat35" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1263, -4295)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat36" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1196, -4823)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat37" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1194, -5200)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat38" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(880, -5503)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat39" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(743, -5804)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat40" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(404, -5865)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat41" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(568, -5569)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat42" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(191, -6083)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat43" parent="EnemiesChunk5/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(191, -6083)
-scale = Vector2(1, 0.940958)
 
 [node name="EnemiesBlack" type="Node" parent="EnemiesChunk5"]
 
@@ -466,27 +423,21 @@ activation_distance = 1400
 
 [node name="Bat43" parent="EnemiesChunk6/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(700, -6541)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat44" parent="EnemiesChunk6/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(736, -6868)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat45" parent="EnemiesChunk6/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(970, -7326)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat46" parent="EnemiesChunk6/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1503, -7746)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat47" parent="EnemiesChunk6/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1449, -8106)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat48" parent="EnemiesChunk6/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(1809, -8172)
-scale = Vector2(1, 0.940958)
 
 [node name="EnemiesBlack" type="Node" parent="EnemiesChunk6"]
 
@@ -514,15 +465,12 @@ activation_distance = 700
 
 [node name="Bat48" parent="EnemiesChunk7/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(-174, 944)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat49" parent="EnemiesChunk7/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(-398, 369)
-scale = Vector2(1, 0.940958)
 
 [node name="Bat50" parent="EnemiesChunk7/EnemiesWhite" instance=ExtResource("5_tc25b")]
 position = Vector2(-193, 832)
-scale = Vector2(1, 0.940958)
 
 [node name="EnemiesBlack" type="Node" parent="EnemiesChunk7"]
 
