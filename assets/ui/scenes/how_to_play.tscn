@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=3 uid="uid://dpnqn22li1imc"]
 
-[ext_resource type="Script" path="res://src/ui/specific_button_menu.gd" id="1_u04bp"]
-[ext_resource type="Texture2D" uid="uid://b7b8yymr6gpih" path="res://assets/ui/howtoplay_v2.png" id="2_icyhe"]
+[ext_resource type="Script" path="res://src/ui/menu_specific_button.gd" id="1_u04bp"]
+[ext_resource type="Texture2D" uid="uid://b7b8yymr6gpih" path="res://assets/ui/cards/howtoplay_v2.png" id="2_icyhe"]
 [ext_resource type="Texture2D" uid="uid://bus3dcohr0l0d" path="res://assets/ui/input/key_q.png" id="2_mbaet"]
 [ext_resource type="Texture2D" uid="uid://bkftb0cl1160j" path="res://assets/ui/input/key_a.png" id="3_i6xgy"]
 [ext_resource type="Texture2D" uid="uid://blyagsge8r8li" path="res://assets/ui/text/txt_swing_left_axe.png" id="4_fldpj"]
@@ -119,6 +119,7 @@ alignment = 1
 
 [node name="SwingLeftAxe" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 6
 alignment = 1
 
 [node name="KeyLH" type="TextureRect" parent="VBoxContainer/SwingLeftAxe"]
@@ -153,6 +154,7 @@ stretch_mode = 3
 
 [node name="SwingRightAxe" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 6
 alignment = 1
 
 [node name="KeyRH" type="TextureRect" parent="VBoxContainer/SwingRightAxe"]
@@ -190,6 +192,7 @@ theme_override_constants/margin_top = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 6
 alignment = 1
 
 [node name="KeySpace" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer"]
