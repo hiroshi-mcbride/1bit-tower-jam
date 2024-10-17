@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqf2rmmq2ovuk"]
+
+[ext_resource type="Script" path="res://src/ui/button_wrapper.gd" id="1_co8v3"]
+[ext_resource type="Texture2D" uid="uid://5pwsoocgw74w" path="res://assets/ui/arrow.png" id="2_h0g6o"]
+
+[node name="ButtonWrapper" type="HBoxContainer"]
+size_flags_horizontal = 4
+alignment = 1
+script = ExtResource("1_co8v3")
+
+[node name="Arrow" type="TextureRect" parent="."]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_h0g6o")
+stretch_mode = 3

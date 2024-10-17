@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ocaqhxu8j5lw"]
+
+[ext_resource type="Script" path="res://src/ui/first_focus_component.gd" id="1_x8m6m"]
+
+[node name="FocusGrabComponent" type="Node"]
+script = ExtResource("1_x8m6m")

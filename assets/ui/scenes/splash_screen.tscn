@@ -1,8 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt8c6rv0t35au"]
+[gd_scene load_steps=2 format=3 uid="uid://dt8c6rv0t35au"]
 
-[ext_resource type="Script" path="res://src/ui/menu_timed.gd" id="1_a8lg8"]
 [ext_resource type="Texture2D" uid="uid://gq58gksqlcp0" path="res://assets/ui/cards/splash.png" id="1_u5imi"]
-[ext_resource type="PackedScene" uid="uid://kdk3s0p7etlx" path="res://assets/ui/scenes/main_menu.tscn" id="2_420sa"]
 
 [node name="SplashScreen" type="Control"]
 layout_mode = 3
@@ -11,9 +9,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_a8lg8")
-next_scene = ExtResource("2_420sa")
-time = 3.0
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
