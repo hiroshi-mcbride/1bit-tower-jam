@@ -1,0 +1,255 @@
+[gd_scene load_steps=28 format=3 uid="uid://dpnqn22li1imc"]
+
+[ext_resource type="Script" path="res://src/ui/menu_specific_button.gd" id="1_u04bp"]
+[ext_resource type="Texture2D" uid="uid://b7b8yymr6gpih" path="res://assets/ui/cards/howtoplay_v2.png" id="2_icyhe"]
+[ext_resource type="Texture2D" uid="uid://bus3dcohr0l0d" path="res://assets/ui/input/key_q.png" id="2_mbaet"]
+[ext_resource type="Texture2D" uid="uid://bkftb0cl1160j" path="res://assets/ui/input/key_a.png" id="3_i6xgy"]
+[ext_resource type="Texture2D" uid="uid://blyagsge8r8li" path="res://assets/ui/text/txt_swing_left_axe.png" id="4_fldpj"]
+[ext_resource type="Texture2D" uid="uid://cb8bnjbyl5smv" path="res://assets/ui/text/txt_slash.png" id="4_xeq17"]
+[ext_resource type="Texture2D" uid="uid://conprp0rkkovh" path="res://assets/ui/text/txt_swing_right_axe.png" id="5_6hbc4"]
+[ext_resource type="Texture2D" uid="uid://8h24w1gwc8xr" path="res://assets/ui/input/pad_lt.png" id="5_6qc1f"]
+[ext_resource type="Texture2D" uid="uid://u4uf5ik5uh06" path="res://assets/ui/input/key_e.png" id="5_lw0fg"]
+[ext_resource type="Texture2D" uid="uid://b6pydurh84yku" path="res://assets/ui/input/key_d.png" id="6_8yd88"]
+[ext_resource type="Texture2D" uid="uid://b2txt8x4bhiey" path="res://assets/ui/input/pad_l2.png" id="6_v5w5h"]
+[ext_resource type="Texture2D" uid="uid://cjrrw7gks7i5l" path="res://assets/ui/input/pad_rt.png" id="10_t407u"]
+[ext_resource type="Texture2D" uid="uid://b734rrrgs0gol" path="res://assets/ui/input/pad_r2.png" id="11_jd141"]
+[ext_resource type="Texture2D" uid="uid://comr2w5aqsgk" path="res://assets/ui/input/key_space.png" id="13_dh7vs"]
+[ext_resource type="Texture2D" uid="uid://c1y5yp4qnipfr" path="res://assets/ui/input/pad_lb.png" id="14_ssvm2"]
+[ext_resource type="Texture2D" uid="uid://cvb0baosqq0dm" path="res://assets/ui/input/pad_l1.png" id="15_uapa6"]
+[ext_resource type="Texture2D" uid="uid://c6ja1x7mkq3ex" path="res://assets/ui/input/pad_rb.png" id="16_fsxud"]
+[ext_resource type="Texture2D" uid="uid://u77d82bqs4sh" path="res://assets/ui/input/pad_r1.png" id="17_srmid"]
+[ext_resource type="Texture2D" uid="uid://dnhqatiymnpin" path="res://assets/ui/text/txt_switchcolor.png" id="18_i0rby"]
+[ext_resource type="Texture2D" uid="uid://dh3mlx86e5hjw" path="res://assets/ui/text/txt_onlyoneaxe.png" id="19_3iaws"]
+[ext_resource type="Texture2D" uid="uid://bme6rikwcgqcw" path="res://assets/ui/text/txt_swingbothtostart.png" id="20_mjgkc"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_eot7t"]
+frames = 2
+frame_0/texture = ExtResource("2_mbaet")
+frame_1/texture = ExtResource("3_i6xgy")
+frame_1/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_6s5xl"]
+frames = 2
+frame_0/texture = ExtResource("5_6qc1f")
+frame_1/texture = ExtResource("6_v5w5h")
+frame_1/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_bh2h6"]
+frames = 2
+frame_0/texture = ExtResource("5_lw0fg")
+frame_1/texture = ExtResource("6_8yd88")
+frame_1/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_yx7pj"]
+frames = 2
+frame_0/texture = ExtResource("10_t407u")
+frame_1/texture = ExtResource("11_jd141")
+frame_1/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_vv0o6"]
+frames = 2
+frame_0/texture = ExtResource("14_ssvm2")
+frame_1/texture = ExtResource("15_uapa6")
+frame_1/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_t7t2v"]
+frames = 2
+frame_0/texture = ExtResource("16_fsxud")
+frame_1/texture = ExtResource("17_srmid")
+frame_1/duration = 1.0
+
+[node name="HowToPlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u04bp")
+pressing_starts_game = true
+actions = Array[StringName]([&"axe_left", &"axe_right"])
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -72.0
+offset_right = 128.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_icyhe")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+custom_minimum_size = Vector2(256, 144)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -72.0
+offset_right = 128.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(256, 144)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -72.0
+offset_right = 128.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="SwingLeftAxe" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="KeyLH" type="TextureRect" parent="VBoxContainer/SwingLeftAxe"]
+custom_minimum_size = Vector2(10, 13)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = SubResource("AnimatedTexture_eot7t")
+stretch_mode = 2
+
+[node name="TxtSlash2" type="TextureRect" parent="VBoxContainer/SwingLeftAxe"]
+custom_minimum_size = Vector2(3, 9)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("4_xeq17")
+stretch_mode = 2
+
+[node name="PadLH" type="TextureRect" parent="VBoxContainer/SwingLeftAxe"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AnimatedTexture_6s5xl")
+stretch_mode = 3
+
+[node name="TxtSwingLeftAxe" type="TextureRect" parent="VBoxContainer/SwingLeftAxe"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_fldpj")
+stretch_mode = 3
+
+[node name="SwingRightAxe" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="KeyRH" type="TextureRect" parent="VBoxContainer/SwingRightAxe"]
+custom_minimum_size = Vector2(10, 13)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = SubResource("AnimatedTexture_bh2h6")
+
+[node name="TxtSlash2" type="TextureRect" parent="VBoxContainer/SwingRightAxe"]
+custom_minimum_size = Vector2(3, 9)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("4_xeq17")
+stretch_mode = 2
+
+[node name="PadRH" type="TextureRect" parent="VBoxContainer/SwingRightAxe"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AnimatedTexture_yx7pj")
+stretch_mode = 3
+
+[node name="TxtSwingRightAxe" type="TextureRect" parent="VBoxContainer/SwingRightAxe"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_6hbc4")
+stretch_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="KeySpace" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("13_dh7vs")
+stretch_mode = 3
+
+[node name="TxtSlash3" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(3, 9)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("4_xeq17")
+stretch_mode = 2
+
+[node name="PadSwitchLH" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AnimatedTexture_vv0o6")
+stretch_mode = 3
+
+[node name="TxtSlash4" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(3, 9)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("4_xeq17")
+stretch_mode = 2
+
+[node name="PadSwitchRH" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AnimatedTexture_t7t2v")
+stretch_mode = 3
+
+[node name="TxtSwitchcolor" type="TextureRect" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("18_i0rby")
+stretch_mode = 3
+
+[node name="TxtOnlyoneaxe" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("19_3iaws")
+stretch_mode = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="TxtSwingbothtostart" type="TextureRect" parent="VBoxContainer/MarginContainer3"]
+layout_mode = 2
+texture = ExtResource("20_mjgkc")
+stretch_mode = 3

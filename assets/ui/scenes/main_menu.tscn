@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bbhpkuljxtb5"]
+[gd_scene load_steps=12 format=3 uid="uid://bbhpkuljxtb5"]
 
 [ext_resource type="Texture2D" uid="uid://baukgo57kbjxc" path="res://assets/ui/text/txt_title.png" id="1_npuen"]
 [ext_resource type="PackedScene" uid="uid://dqf2rmmq2ovuk" path="res://assets/ui/scenes/button_wrapper.tscn" id="2_3dpm3"]
 [ext_resource type="Texture2D" uid="uid://e443v0js3jhr" path="res://assets/ui/text/txt_play.png" id="3_y4bsj"]
+[ext_resource type="Script" path="res://src/ui/button_swap_menu.gd" id="4_1m60n"]
 [ext_resource type="PackedScene" uid="uid://ocaqhxu8j5lw" path="res://assets/ui/scenes/focus_grab_component.tscn" id="4_tfp4p"]
+[ext_resource type="PackedScene" path="res://assets/ui/scenes/how_to_play.tscn" id="5_gd2dl"]
 [ext_resource type="Texture2D" uid="uid://d1sxlpc4q0jq5" path="res://assets/ui/text/txt_options.png" id="5_gptow"]
 [ext_resource type="Script" path="res://src/ui/button_submenu_open.gd" id="6_1qyu7"]
 [ext_resource type="Texture2D" uid="uid://b0gv7wv00i2qd" path="res://assets/ui/text/txt_quit.png" id="6_lnrji"]
@@ -69,6 +71,8 @@ focus_neighbor_top = NodePath("../../ButtonWrapper3/TextureButton")
 focus_neighbor_bottom = NodePath("../../ButtonWrapper2/TextureButton")
 texture_normal = ExtResource("3_y4bsj")
 stretch_mode = 3
+script = ExtResource("4_1m60n")
+new_menu = ExtResource("5_gd2dl")
 
 [node name="FocusGrabComponent" parent="ReferenceRect/MainMenuContainer/ButtonWrapper/TextureButton" instance=ExtResource("4_tfp4p")]
 
