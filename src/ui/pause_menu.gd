@@ -2,6 +2,7 @@ extends Control
 
 @onready var overlay: ColorRect = $ReferenceRect/overlay
 
+signal paused
 
 func _ready() -> void:
 	overlay.visible = false
@@ -18,6 +19,7 @@ func toggle_paused() -> void:
 	overlay.visible = get_tree().paused
 	if overlay.visible:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		paused.emit()
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 

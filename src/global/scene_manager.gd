@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var first_menu_file: PackedScene
+@export var main_menu_file: PackedScene
 @export var pause_menu_file: PackedScene
 @export var first_level_file: PackedScene
 @export var win_screen_file: PackedScene
@@ -19,13 +20,9 @@ func _ready() -> void:
 	GlobalSignals.level_changed.connect(_on_level_changed)
 	GlobalSignals.menu_changed.connect(_on_menu_changed)
 	GlobalSignals.game_won.connect(_on_game_won)
+	GlobalSignals.level_reset.connect(restart_level)
 	current_menu = first_menu_file.instantiate()
 	canvas_layer.add_child(current_menu)
-
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("reset") and reset_enabled:
-		restart_level()
 
 
 # Connect a UI button to GlobalSignals.game_started to execute this function
@@ -59,10 +56,15 @@ func _on_game_won() -> void:
 	await get_tree().create_timer(0.2).timeout
 	current_level = null
 
+func _on_game_quit() -> void:
+	current_level.queue_free()
+	load_menu(main_menu_file)
+	await get_tree().create_timer(0.2).timeout
+	current_level = null
+
 
 func restart_level() -> void:
 	_on_level_changed(current_level_file)
-	GlobalSignals.level_reset.emit()
 
 
 func load_level(new_level: PackedScene) -> void:
