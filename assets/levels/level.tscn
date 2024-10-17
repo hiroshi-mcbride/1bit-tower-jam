@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c204g7tfrfxb8"]
+[gd_scene load_steps=9 format=3 uid="uid://c204g7tfrfxb8"]
 
 [ext_resource type="PackedScene" uid="uid://l0g2a5t8bhtb" path="res://assets/player/player.tscn" id="2_mdfpn"]
+[ext_resource type="Script" path="res://src/world/win_trigger.gd" id="5_jk7lw"]
 [ext_resource type="PackedScene" uid="uid://dmghy70lwdw71" path="res://assets/bat/bat.tscn" id="5_tc25b"]
 [ext_resource type="Script" path="res://assets/levels/chunk.gd" id="5_tvi1u"]
 [ext_resource type="PackedScene" uid="uid://b65qohlwd6fe1" path="res://assets/bat/bat_flipped.tscn" id="6_3rti8"]
@@ -8,6 +9,9 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1n8qv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pckde"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kctp5"]
+radius = 28.0713
 
 [node name="Level1" type="Node2D"]
 process_mode = 1
@@ -444,3 +448,25 @@ position = Vector2(-350, 854)
 
 [node name="Bat33" parent="EnemiesChunk7/EnemiesBlack" instance=ExtResource("6_3rti8")]
 position = Vector2(-147, 412)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(2028, -8749.24)
+
+[node name="WinTrigger" type="Area2D" parent="Node2D"]
+collision_layer = 0
+script = ExtResource("5_jk7lw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/WinTrigger"]
+shape = SubResource("CircleShape2D_kctp5")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Node2D"]
+amount = 32
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.1
+damping_min = 5.0
+damping_max = 5.0
+scale_amount_max = 2.0

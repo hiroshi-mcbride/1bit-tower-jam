@@ -1,6 +1,6 @@
 extends Control
 
-@onready var overlay: ColorRect = $overlay
+@onready var overlay: ColorRect = $ReferenceRect/overlay
 
 
 func _ready() -> void:
