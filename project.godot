@@ -24,6 +24,7 @@ buses/default_bus_layout="res://assets/default_bus_layout.tres"
 
 GlobalSignals="*res://src/global/global_signals.gd"
 LayerNames="*res://addons/layerNames/layerNames.gd"
+AudioManager="*res://src/audio/audio_manager.gd"
 
 [display]
 

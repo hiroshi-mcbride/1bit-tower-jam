@@ -39,18 +39,22 @@ func _on_level_changed(new_level: PackedScene) -> void:
 	remove_child(current_level)
 	load_level.call_deferred(new_level)
 
+
 func _on_menu_changed(new_menu: PackedScene) -> void:
 	current_menu.queue_free()
 	load_menu.call_deferred(new_menu)
+
 
 func restart_level() -> void:
 	_on_level_changed(current_level_file)
 	GlobalSignals.level_reset.emit()
 
+
 func load_level(new_level: PackedScene) -> void:
 	current_level_file = new_level
 	current_level = new_level.instantiate()
 	add_child(current_level)
+
 
 func load_menu(new_menu: PackedScene) -> void:
 	current_menu = new_menu.instantiate()

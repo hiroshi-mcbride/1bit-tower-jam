@@ -6,6 +6,7 @@ extends Control
 
 var triggered: bool = false
 
+
 func _ready() -> void:
 	if actions.size() == 0:
 		printerr("no actions assigned to menu " + name)
@@ -14,6 +15,7 @@ func _ready() -> void:
 		for a: StringName in actions:
 			if !InputMap.has_action(a):
 				printerr("Action " + a + " not valid")
+
 
 func _process(delta: float) -> void:
 	# flag to avoid repeating signal
