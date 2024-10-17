@@ -1,0 +1,33 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://b6k5p2wksbost"]
+
+[ext_resource type="Texture2D" uid="uid://bxq7jx64pgamc" path="res://assets/ui/slider_true.png" id="1_avv4m"]
+[ext_resource type="Texture2D" uid="uid://64ltq1k1vdbq" path="res://assets/ui/slider_grabber.png" id="1_c5qi4"]
+[ext_resource type="Texture2D" uid="uid://don5bsryy4nky" path="res://assets/ui/slider_grabber_hl.png" id="2_gpa47"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vll2p"]
+texture = ExtResource("1_avv4m")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hg71v"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_10wg7"]
+content_margin_top = 3.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0, 0, 0)
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[resource]
+HSlider/icons/grabber = ExtResource("1_c5qi4")
+HSlider/icons/grabber_highlight = ExtResource("2_gpa47")
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_vll2p")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_hg71v")
+HSlider/styles/slider = SubResource("StyleBoxFlat_10wg7")
