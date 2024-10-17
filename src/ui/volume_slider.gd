@@ -11,5 +11,5 @@ func _ready() -> void:
 func _on_mouse_entered() -> void:
 	grab_focus.call_deferred()
 
-func _on_value_changed(value: float) -> void:
-	GlobalSignals.volume_changed.emit(type, linear_to_db(value))
+func _on_value_changed(val: float) -> void:
+	GlobalSignals.volume_changed.emit(type, linear_to_db(val))

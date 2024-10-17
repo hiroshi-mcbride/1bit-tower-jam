@@ -1,0 +1,104 @@
+[gd_scene load_steps=10 format=3 uid="uid://bbhpkuljxtb5"]
+
+[ext_resource type="Texture2D" uid="uid://baukgo57kbjxc" path="res://assets/ui/text/txt_title.png" id="1_npuen"]
+[ext_resource type="PackedScene" uid="uid://dqf2rmmq2ovuk" path="res://assets/ui/scenes/button_wrapper.tscn" id="2_3dpm3"]
+[ext_resource type="Texture2D" uid="uid://e443v0js3jhr" path="res://assets/ui/text/txt_play.png" id="3_y4bsj"]
+[ext_resource type="PackedScene" uid="uid://ocaqhxu8j5lw" path="res://assets/ui/scenes/focus_grab_component.tscn" id="4_tfp4p"]
+[ext_resource type="Texture2D" uid="uid://d1sxlpc4q0jq5" path="res://assets/ui/text/txt_options.png" id="5_gptow"]
+[ext_resource type="Script" path="res://src/ui/button_submenu_open.gd" id="6_1qyu7"]
+[ext_resource type="Texture2D" uid="uid://b0gv7wv00i2qd" path="res://assets/ui/text/txt_quit.png" id="6_lnrji"]
+[ext_resource type="Script" path="res://src/ui/button_quitdesktop.gd" id="9_81se6"]
+[ext_resource type="PackedScene" uid="uid://bjq8veq5kyrig" path="res://assets/ui/scenes/options_menu.tscn" id="9_tn7wt"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+custom_minimum_size = Vector2(256, 144)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -72.0
+offset_right = 128.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="MainMenuContainer" type="VBoxContainer" parent="ReferenceRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ReferenceRect/MainMenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="ReferenceRect/MainMenuContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_npuen")
+stretch_mode = 3
+
+[node name="ButtonWrapper" parent="ReferenceRect/MainMenuContainer" instance=ExtResource("2_3dpm3")]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="ReferenceRect/MainMenuContainer/ButtonWrapper"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../../ButtonWrapper3/TextureButton")
+focus_neighbor_bottom = NodePath("../../ButtonWrapper2/TextureButton")
+texture_normal = ExtResource("3_y4bsj")
+stretch_mode = 3
+
+[node name="FocusGrabComponent" parent="ReferenceRect/MainMenuContainer/ButtonWrapper/TextureButton" instance=ExtResource("4_tfp4p")]
+
+[node name="ButtonWrapper2" parent="ReferenceRect/MainMenuContainer" instance=ExtResource("2_3dpm3")]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="ReferenceRect/MainMenuContainer/ButtonWrapper2" node_paths=PackedStringArray("previous_menu", "submenu")]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../../ButtonWrapper/TextureButton")
+focus_neighbor_bottom = NodePath("../../ButtonWrapper3/TextureButton")
+texture_normal = ExtResource("5_gptow")
+stretch_mode = 3
+script = ExtResource("6_1qyu7")
+previous_menu = NodePath("../..")
+submenu = NodePath("../../../OptionsMenu")
+
+[node name="ButtonWrapper3" parent="ReferenceRect/MainMenuContainer" instance=ExtResource("2_3dpm3")]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="ReferenceRect/MainMenuContainer/ButtonWrapper3"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../../ButtonWrapper2/TextureButton")
+focus_neighbor_bottom = NodePath("../../ButtonWrapper/TextureButton")
+texture_normal = ExtResource("6_lnrji")
+stretch_mode = 3
+script = ExtResource("9_81se6")
+
+[node name="OptionsMenu" parent="ReferenceRect" instance=ExtResource("9_tn7wt")]
+process_mode = 4
+visible = false
+layout_mode = 1

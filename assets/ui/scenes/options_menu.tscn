@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjq8veq5kyrig"]
+[gd_scene load_steps=10 format=3 uid="uid://bjq8veq5kyrig"]
 
+[ext_resource type="Script" path="res://src/ui/submenu.gd" id="1_3pnjv"]
 [ext_resource type="Texture2D" uid="uid://dgprbdpspsqx5" path="res://assets/ui/text/txt_sfxvolume.png" id="1_gxoxy"]
 [ext_resource type="Theme" uid="uid://b6k5p2wksbost" path="res://assets/ui/menu_theme.tres" id="2_sms3f"]
 [ext_resource type="Script" path="res://src/ui/volume_slider.gd" id="3_b0gq7"]
@@ -7,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://rsg6iwt70tfb" path="res://assets/ui/text/txt_musicvolume.png" id="5_p1l12"]
 [ext_resource type="PackedScene" uid="uid://dqf2rmmq2ovuk" path="res://assets/ui/scenes/button_wrapper.tscn" id="6_2un21"]
 [ext_resource type="Texture2D" uid="uid://ci7p3deka178x" path="res://assets/ui/text/txt_back.png" id="7_7m8mq"]
+[ext_resource type="Script" path="res://src/ui/button_submenu_close.gd" id="8_oj5nu"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -15,24 +17,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3pnjv")
 
-[node name="ReferenceRect" type="ReferenceRect" parent="."]
-custom_minimum_size = Vector2(256, 144)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -72.0
-offset_right = 128.0
-offset_bottom = 72.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_lock_ = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ReferenceRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -40,20 +27,20 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -40.0
-offset_top = -32.0
+offset_top = -36.0
 offset_right = 40.0
-offset_bottom = 32.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="TxtSFXVolume" type="TextureRect" parent="ReferenceRect/VBoxContainer"]
+[node name="TxtSFXVolume" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("1_gxoxy")
 stretch_mode = 3
 
-[node name="SFXSlider" type="HSlider" parent="ReferenceRect/VBoxContainer"]
+[node name="SFXSlider" type="HSlider" parent="VBoxContainer"]
 custom_minimum_size = Vector2(64, 13)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -63,15 +50,15 @@ step = 0.01
 script = ExtResource("3_b0gq7")
 type = 2
 
-[node name="FocusGrabComponent" parent="ReferenceRect/VBoxContainer/SFXSlider" instance=ExtResource("4_oqanu")]
+[node name="FocusGrabComponent" parent="VBoxContainer/SFXSlider" instance=ExtResource("4_oqanu")]
 
-[node name="TxtMusicVolume" type="TextureRect" parent="ReferenceRect/VBoxContainer"]
+[node name="TxtMusicVolume" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("5_p1l12")
 stretch_mode = 3
 
-[node name="MusicSlider" type="HSlider" parent="ReferenceRect/VBoxContainer"]
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer"]
 custom_minimum_size = Vector2(64, 13)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -81,10 +68,13 @@ step = 0.01
 script = ExtResource("3_b0gq7")
 type = 1
 
-[node name="BackWrapper" parent="ReferenceRect/VBoxContainer" node_paths=PackedStringArray("button_component") instance=ExtResource("6_2un21")]
+[node name="BackWrapper" parent="VBoxContainer" instance=ExtResource("6_2un21")]
 layout_mode = 2
-button_component = NodePath("TextureButton")
 
-[node name="TextureButton" type="TextureButton" parent="ReferenceRect/VBoxContainer/BackWrapper"]
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/BackWrapper" node_paths=PackedStringArray("parent_submenu")]
 layout_mode = 2
 texture_normal = ExtResource("7_7m8mq")
+script = ExtResource("8_oj5nu")
+parent_submenu = NodePath("../../..")
+
+[connection signal="opened" from="." to="VBoxContainer/SFXSlider/FocusGrabComponent" method="enable"]
