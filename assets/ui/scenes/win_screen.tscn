@@ -48,4 +48,4 @@ stretch_mode = 3
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
-autostart = true
+one_shot = true

@@ -7,6 +7,7 @@ signal paused
 func _ready() -> void:
 	overlay.visible = false
 	GlobalSignals.level_reset.connect(_on_restart)
+	GlobalSignals.game_quit.connect(_on_game_quit)
 
 
 func _unhandled_input(event: InputEvent) -> void:

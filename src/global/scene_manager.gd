@@ -20,6 +20,7 @@ func _ready() -> void:
 	GlobalSignals.level_changed.connect(_on_level_changed)
 	GlobalSignals.menu_changed.connect(_on_menu_changed)
 	GlobalSignals.game_won.connect(_on_game_won)
+	GlobalSignals.game_quit.connect(_on_game_quit)
 	GlobalSignals.level_reset.connect(restart_level)
 	current_menu = first_menu_file.instantiate()
 	canvas_layer.add_child(current_menu)

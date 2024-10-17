@@ -6,6 +6,7 @@ extends Control
 
 
 func _ready() -> void:
+	timer.timeout.connect(_on_timer_timeout)
 	timer.start(time)
 
 
