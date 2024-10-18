@@ -33,7 +33,6 @@ func _on_game_started() -> void:
 	load_level.call_deferred(first_level_file)
 	pause_menu = pause_menu_file.instantiate()
 	canvas_layer.add_child(pause_menu)
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	# Add a small delay before allowing the scene to be reset
 	# so the scene can finish loading first
