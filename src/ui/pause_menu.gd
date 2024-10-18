@@ -20,10 +20,7 @@ func toggle_paused() -> void:
 	get_tree().paused = !get_tree().paused
 	overlay.visible = get_tree().paused
 	if overlay.visible:
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		paused.emit()
-	else:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _on_restart() -> void:
