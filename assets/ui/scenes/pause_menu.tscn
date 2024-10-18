@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://08oioyqg87oe"]
+[gd_scene load_steps=11 format=3 uid="uid://08oioyqg87oe"]
 
 [ext_resource type="Script" path="res://src/ui/pause_menu.gd" id="1_8wrl4"]
 [ext_resource type="Texture2D" uid="uid://bcvgq1b70o04g" path="res://assets/ui/text/txt_paused_v2.png" id="1_pnr22"]
+[ext_resource type="Texture2D" uid="uid://ionxdnkgfqol" path="res://assets/ui/dither_die5.png" id="2_5s10s"]
 [ext_resource type="PackedScene" uid="uid://dqf2rmmq2ovuk" path="res://assets/ui/scenes/button_wrapper.tscn" id="3_s08py"]
 [ext_resource type="Script" path="res://src/ui/button_resume.gd" id="4_76jfu"]
 [ext_resource type="Texture2D" uid="uid://5ar8gwa85s6o" path="res://assets/ui/text/txt_resume.png" id="4_j101o"]
@@ -36,7 +37,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="overlay" type="ColorRect" parent="ReferenceRect"]
+[node name="overlay" type="TextureRect" parent="ReferenceRect"]
 process_mode = 2
 layout_mode = 1
 anchors_preset = 15
@@ -44,54 +45,84 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.309804)
+texture = ExtResource("2_5s10s")
+stretch_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ReferenceRect/overlay"]
+[node name="ColorRect" type="ColorRect" parent="ReferenceRect/overlay"]
+custom_minimum_size = Vector2(96, 104)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -37.0
+offset_right = 40.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ReferenceRect/overlay/ColorRect"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -37.0
+offset_right = 40.0
+offset_bottom = 37.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="ReferenceRect/overlay/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_bottom = 14
-
-[node name="TextureRect" type="TextureRect" parent="ReferenceRect/overlay/VBoxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ReferenceRect/overlay/ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_bottom = 14
+
+[node name="TextureRect" type="TextureRect" parent="ReferenceRect/overlay/ColorRect/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("1_pnr22")
 stretch_mode = 3
 
-[node name="ButtonWrapper" parent="ReferenceRect/overlay/VBoxContainer" instance=ExtResource("3_s08py")]
+[node name="ButtonWrapper" parent="ReferenceRect/overlay/ColorRect/VBoxContainer" instance=ExtResource("3_s08py")]
 layout_mode = 2
+size_flags_vertical = 4
 
-[node name="TextureButton" type="TextureButton" parent="ReferenceRect/overlay/VBoxContainer/ButtonWrapper"]
+[node name="TextureButton" type="TextureButton" parent="ReferenceRect/overlay/ColorRect/VBoxContainer/ButtonWrapper"]
 layout_mode = 2
 texture_normal = ExtResource("4_j101o")
 script = ExtResource("4_76jfu")
 
-[node name="FocusGrabComponent" parent="ReferenceRect/overlay/VBoxContainer/ButtonWrapper/TextureButton" instance=ExtResource("6_ea8so")]
+[node name="FocusGrabComponent" parent="ReferenceRect/overlay/ColorRect/VBoxContainer/ButtonWrapper/TextureButton" instance=ExtResource("6_ea8so")]
 
-[node name="ButtonWrapper2" parent="ReferenceRect/overlay/VBoxContainer" instance=ExtResource("3_s08py")]
+[node name="ButtonWrapper2" parent="ReferenceRect/overlay/ColorRect/VBoxContainer" instance=ExtResource("3_s08py")]
 layout_mode = 2
+size_flags_vertical = 4
 
-[node name="TextureButton" type="TextureButton" parent="ReferenceRect/overlay/VBoxContainer/ButtonWrapper2"]
+[node name="TextureButton" type="TextureButton" parent="ReferenceRect/overlay/ColorRect/VBoxContainer/ButtonWrapper2"]
 layout_mode = 2
 texture_normal = ExtResource("7_iypkv")
 script = ExtResource("8_cldnt")
 signal_name = &"level_reset"
 
-[node name="ButtonWrapper3" parent="ReferenceRect/overlay/VBoxContainer" instance=ExtResource("3_s08py")]
+[node name="ButtonWrapper3" parent="ReferenceRect/overlay/ColorRect/VBoxContainer" instance=ExtResource("3_s08py")]
 layout_mode = 2
+size_flags_vertical = 4
 
-[node name="TextureButton" type="TextureButton" parent="ReferenceRect/overlay/VBoxContainer/ButtonWrapper3"]
+[node name="TextureButton" type="TextureButton" parent="ReferenceRect/overlay/ColorRect/VBoxContainer/ButtonWrapper3"]
 layout_mode = 2
 texture_normal = ExtResource("9_b1ars")
 script = ExtResource("8_cldnt")
 signal_name = &"game_quit"
 
-[connection signal="paused" from="." to="ReferenceRect/overlay/VBoxContainer/ButtonWrapper/TextureButton/FocusGrabComponent" method="enable"]
-[connection signal="resumed" from="ReferenceRect/overlay/VBoxContainer/ButtonWrapper/TextureButton" to="." method="toggle_paused"]
+[connection signal="paused" from="." to="ReferenceRect/overlay/ColorRect/VBoxContainer/ButtonWrapper/TextureButton/FocusGrabComponent" method="enable"]
+[connection signal="resumed" from="ReferenceRect/overlay/ColorRect/VBoxContainer/ButtonWrapper/TextureButton" to="." method="toggle_paused"]

@@ -1,12 +1,13 @@
 extends Control
 
-@onready var overlay: ColorRect = $ReferenceRect/overlay
+@onready var overlay: TextureRect = $ReferenceRect/overlay
 
 signal paused
 
 func _ready() -> void:
 	overlay.visible = false
 	GlobalSignals.level_reset.connect(_on_restart)
+	GlobalSignals.game_won.connect(_on_game_quit)
 	GlobalSignals.game_quit.connect(_on_game_quit)
 
 

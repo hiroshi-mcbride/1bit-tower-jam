@@ -26,6 +26,11 @@ func _ready() -> void:
 	canvas_layer.add_child(current_menu)
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("reset") and reset_enabled:
+		GlobalSignals.level_reset.emit()
+
+
 # Connect a UI button to GlobalSignals.game_started to execute this function
 func _on_game_started() -> void:
 	current_menu.queue_free()
