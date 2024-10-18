@@ -22,13 +22,9 @@ func _ready() -> void:
 	GlobalSignals.game_won.connect(_on_game_won)
 	GlobalSignals.game_quit.connect(_on_game_quit)
 	GlobalSignals.level_reset.connect(restart_level)
+	
 	current_menu = first_menu_file.instantiate()
 	canvas_layer.add_child(current_menu)
-
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("reset") and reset_enabled:
-		GlobalSignals.level_reset.emit()
 
 
 # Connect a UI button to GlobalSignals.game_started to execute this function
@@ -38,7 +34,10 @@ func _on_game_started() -> void:
 	pause_menu = pause_menu_file.instantiate()
 	canvas_layer.add_child(pause_menu)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	await get_tree().create_timer(0.2).timeout
+	
+	# Add a small delay before allowing the scene to be reset
+	# so the scene can finish loading first
+	await get_tree().create_timer(0).timeout
 	reset_enabled = true
 
 
@@ -46,8 +45,9 @@ func _on_level_changed(new_level: PackedScene) -> void:
 	reset_enabled = false
 	current_level.queue_free()
 	remove_child(current_level)
-	load_level.call_deferred(new_level)
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0).timeout
+	load_level(new_level)
+	await get_tree().create_timer(0).timeout
 	reset_enabled = true
 
 
@@ -58,19 +58,20 @@ func _on_menu_changed(new_menu: PackedScene) -> void:
 
 func _on_game_won() -> void:
 	current_level.queue_free()
-	load_menu(win_screen_file)
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0).timeout
 	current_level = null
+	load_menu(win_screen_file)
 
 func _on_game_quit() -> void:
 	current_level.queue_free()
-	load_menu(main_menu_file)
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0).timeout
 	current_level = null
+	load_menu(main_menu_file)
 
 
 func restart_level() -> void:
-	_on_level_changed(current_level_file)
+	if reset_enabled:
+		_on_level_changed(current_level_file)
 
 
 func load_level(new_level: PackedScene) -> void:

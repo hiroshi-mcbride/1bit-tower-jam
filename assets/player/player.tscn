@@ -121,7 +121,7 @@ angular_limit_enabled = true
 angular_limit_lower = -0.349066
 angular_limit_upper = 2.0944
 
-[node name="IceAxe_Q" parent="." node_paths=PackedStringArray("hand", "shoulder") instance=ExtResource("1_f4ijt")]
+[node name="IceAxe_Q" parent="." node_paths=PackedStringArray("hand", "shoulder", "other_axe") instance=ExtResource("1_f4ijt")]
 position = Vector2(-65, -4)
 rotation = -0.0635476
 mass = 1.0
@@ -136,8 +136,9 @@ unflipped_angular_limit_upper = 120.0
 unflipped_on_wall_angular_limit_upper = 140.0
 flipped_angular_limit_upper = 20.0
 flipped_on_wall_angular_limit_upper = 60.0
+other_axe = NodePath("../IceAxe_E")
 
-[node name="IceAxe_E" parent="." node_paths=PackedStringArray("hand", "shoulder") instance=ExtResource("7_kupps")]
+[node name="IceAxe_E" parent="." node_paths=PackedStringArray("hand", "shoulder", "other_axe") instance=ExtResource("7_kupps")]
 position = Vector2(66, -4)
 rotation = -0.074772
 mass = 1.0
@@ -151,6 +152,7 @@ unflipped_angular_limit_upper = 120.0
 unflipped_on_wall_angular_limit_upper = 140.0
 flipped_angular_limit_upper = 20.0
 flipped_on_wall_angular_limit_upper = 60.0
+other_axe = NodePath("../IceAxe_Q")
 
 [node name="HealthComponent" parent="." instance=ExtResource("8_bxfbr")]
 health = 100
@@ -165,13 +167,14 @@ shape = SubResource("CapsuleShape2D_sw4us")
 
 [node name="AxeHitStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_qfyim")
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="EventPlayComponent" parent="AxeHitStreamPlayer" instance=ExtResource("11_64ofr")]
 
 [node name="AxeSwingStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_pdko4")
-volume_db = -5.321
+volume_db = -3.0
 bus = &"SFX"
 
 [node name="EventPlayComponent" parent="AxeSwingStreamPlayer" instance=ExtResource("11_64ofr")]
@@ -180,7 +183,7 @@ bus = &"SFX"
 
 [node name="AxeMissStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_oicgn")
-volume_db = -14.0
+volume_db = -10.0
 bus = &"SFX"
 
 [node name="EventPlayComponent" parent="AxeMissStreamPlayer" instance=ExtResource("11_64ofr")]
@@ -194,10 +197,13 @@ bus = &"SFX"
 
 [node name="FlipStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_ahtv4")
-volume_db = -1.935
 bus = &"SFX"
 
 [node name="EventPlayComponent" parent="FlipStreamPlayer" instance=ExtResource("11_64ofr")]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 120)
+collision_mask = 2
 
 [connection signal="flipped" from="." to="FlipStreamPlayer/EventPlayComponent" method="_on_invoke"]
 [connection signal="axe_hit" from="IceAxe_Q" to="AxeHitStreamPlayer/EventPlayComponent" method="_on_invoke"]

@@ -33,6 +33,7 @@ var hit_angle: float
 var is_on_wall: bool = false
 var area_entered: bool = false
 var ray_entered: bool = false
+var wall_normal: Vector2
 
 var unflipped_ray_cast_angle_exclusion_angle: float = 180
 var flipped_ray_cast_angle_exclusion_angle: float = 0
@@ -66,7 +67,7 @@ func _integrate_forces(_state: PhysicsDirectBodyState2D) -> void:
 				axe_miss.emit()
 				return
 		
-		var wall_normal = ray_cast_2d.get_collision_normal()
+		wall_normal = ray_cast_2d.get_collision_normal()
 		hit_angle = wall_normal.angle_to(-global_direction)
 		var dot: float = wall_normal.dot(global_direction)
 		
@@ -100,6 +101,7 @@ func swing() -> void:
 
 func drop() -> void:
 	is_on_wall = false
+	wall_normal = Vector2.ZERO
 	
 	# Lessen the angular limits of the hands during loosy time
 	hand.angular_limit_lower = deg_to_rad(flipped_angular_limit_lower if flipped else unflipped_angular_limit_lower)
@@ -128,7 +130,7 @@ func stop_pulling() -> void:
 	hand.motor_enabled = false
 
 
-func flip(color_flipped: bool, distance: float) -> void:
+func flip(color_flipped: bool, offset: Vector2) -> void:
 	flipped = color_flipped
 	
 	# Flip torque directions
@@ -138,7 +140,8 @@ func flip(color_flipped: bool, distance: float) -> void:
 	# Apply rotation based on at what angle the axe hit the wall, and flip angular limits
 	if is_on_wall:
 		# Undo distance translation
-		global_translate(Vector2(-distance if color_flipped else distance, 0))
+		#global_translate(Vector2(-distance if color_flipped else distance, 0))
+		global_translate(-offset)
 		
 		hit_angle = -hit_angle
 		rotate(hit_angle * 2)
@@ -166,3 +169,5 @@ func flip(color_flipped: bool, distance: float) -> void:
 	
 	if is_on_wall:
 		freeze = true
+	else:
+		position = Vector2.ZERO

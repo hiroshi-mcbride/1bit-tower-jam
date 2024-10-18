@@ -2,6 +2,7 @@ class_name Player
 extends RigidBody2D
 
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var ray_cast_2d: RayCast2D = $RayCast2D
 
 @export var ice_axe_left: IceAxe
 @export var ice_axe_right: IceAxe
@@ -16,6 +17,8 @@ var flip_entered: bool = false
 var distance: float
 var flip_position: Vector2 = Vector2.ZERO
 var saved_spawn_pos: Vector2
+var initial_positions = {}
+
 
 func _enter_tree() -> void:
 	# Singleton pattern
@@ -27,6 +30,7 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
+	initial_positions = {"left": ice_axe_left.position, "right": ice_axe_right.position}
 	# Get sprite references that are inside other scenes
 	sprites.append(ice_axe_left.sprite_2d)
 	sprites.append(ice_axe_right.sprite_2d)
@@ -90,16 +94,27 @@ func color_switch(_is_left_axe: bool) -> void:
 	flip_entered = true
 	color_flipped = !color_flipped
 	
+	var normal: Vector2 = ice_axe_left.wall_normal if _is_left_axe else ice_axe_right.wall_normal
+	
+	# Get the offset between the body and the wall
+	ray_cast_2d.target_position = -normal * 120.0
+	var offset: Vector2
+	ray_cast_2d.force_raycast_update()
+	if ray_cast_2d.is_colliding():
+		offset = ray_cast_2d.get_collision_point() - global_position
+	
 	# Flip player collision masks
 	for rigidbody in rigidbodies:
 		rigidbody.collision_mask = LayerNames.PHYSICS_2D.BLACK if color_flipped else LayerNames.PHYSICS_2D.WHITE
+	ray_cast_2d.collision_mask = LayerNames.PHYSICS_2D.BLACK if color_flipped else LayerNames.PHYSICS_2D.WHITE
 	
-	# Flip everything visually
-	global_translate(Vector2(distance if color_flipped else -distance, 0))
+	# move the player slightly over the flip threshold
+	offset *= 1.2
+	global_translate(offset)
 	
 	# Flip ice axe collision masks
-	ice_axe_left.flip(color_flipped, distance)
-	ice_axe_right.flip(color_flipped, distance)
+	ice_axe_left.flip(color_flipped, offset)
+	ice_axe_right.flip(color_flipped, offset)
 	
 	# Flip player color
 	for sprite in sprites:
