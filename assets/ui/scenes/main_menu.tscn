@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bbhpkuljxtb5"]
+[gd_scene load_steps=12 format=3 uid="uid://bbhpkuljxtb5"]
 
 [ext_resource type="Texture2D" uid="uid://baukgo57kbjxc" path="res://assets/ui/text/txt_title.png" id="1_npuen"]
 [ext_resource type="PackedScene" uid="uid://dqf2rmmq2ovuk" path="res://assets/ui/scenes/button_wrapper.tscn" id="2_3dpm3"]
@@ -8,8 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dpnqn22li1imc" path="res://assets/ui/scenes/how_to_play.tscn" id="5_gd2dl"]
 [ext_resource type="Texture2D" uid="uid://d1sxlpc4q0jq5" path="res://assets/ui/text/txt_options.png" id="5_gptow"]
 [ext_resource type="Script" path="res://src/ui/button_submenu_open.gd" id="6_1qyu7"]
-[ext_resource type="Texture2D" uid="uid://b0gv7wv00i2qd" path="res://assets/ui/text/txt_quit.png" id="6_lnrji"]
-[ext_resource type="Script" path="res://src/ui/button_quitdesktop.gd" id="9_81se6"]
 [ext_resource type="PackedScene" uid="uid://bjq8veq5kyrig" path="res://assets/ui/scenes/options_menu.tscn" id="9_tn7wt"]
 [ext_resource type="Texture2D" uid="uid://r3fkbued6x1r" path="res://assets/ui/prompts/prompt_confirm.png" id="11_wt3wo"]
 [ext_resource type="Texture2D" uid="uid://nnwu3mqmf8j3" path="res://assets/ui/prompts/prompt_navigate.png" id="12_4k6fd"]
@@ -77,7 +75,7 @@ layout_mode = 2
 [node name="TextureButton" type="TextureButton" parent="MainMenuContainer/ReferenceRect/VBoxContainer/ButtonWrapper"]
 layout_mode = 2
 size_flags_horizontal = 4
-focus_neighbor_top = NodePath("../../ButtonWrapper3/TextureButton")
+focus_neighbor_top = NodePath("../../ButtonWrapper2/TextureButton")
 focus_neighbor_bottom = NodePath("../../ButtonWrapper2/TextureButton")
 texture_normal = ExtResource("3_y4bsj")
 stretch_mode = 3
@@ -94,24 +92,12 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_top = NodePath("../../ButtonWrapper/TextureButton")
-focus_neighbor_bottom = NodePath("../../ButtonWrapper3/TextureButton")
+focus_neighbor_bottom = NodePath("../../ButtonWrapper/TextureButton")
 texture_normal = ExtResource("5_gptow")
 stretch_mode = 3
 script = ExtResource("6_1qyu7")
 previous_menu = NodePath("../../../..")
 submenu = NodePath("../../../../../OptionsMenu")
-
-[node name="ButtonWrapper3" parent="MainMenuContainer/ReferenceRect/VBoxContainer" instance=ExtResource("2_3dpm3")]
-layout_mode = 2
-
-[node name="TextureButton" type="TextureButton" parent="MainMenuContainer/ReferenceRect/VBoxContainer/ButtonWrapper3"]
-layout_mode = 2
-size_flags_horizontal = 4
-focus_neighbor_top = NodePath("../../ButtonWrapper2/TextureButton")
-focus_neighbor_bottom = NodePath("../../ButtonWrapper/TextureButton")
-texture_normal = ExtResource("6_lnrji")
-stretch_mode = 3
-script = ExtResource("9_81se6")
 
 [node name="TextureRect" type="TextureRect" parent="MainMenuContainer/ReferenceRect"]
 layout_mode = 1
